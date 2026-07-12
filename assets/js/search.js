@@ -4,7 +4,7 @@ let currentFilters = { severity: null, canDrive: null, category: null, brand: nu
 
 async function initSearch() {
   try {
-    const res = await fetch('assets/data/symbols.json');
+    const res = await fetch('../data/symbols.json');
     allSymbols = await res.json();
     
     // Parse URL params

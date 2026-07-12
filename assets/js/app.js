@@ -16,11 +16,10 @@ const App = {
   async loadData() {
     try {
       const [symbolsRes, categoriesRes, brandsRes] = await Promise.all([
-        fetch('../assets/data/categories.json'),
-        fetch('../assets/data/categories.json'),
-        fetch('../assets/data/categories.json')
+        fetch('../data/categories.json'),
+        fetch('../data/categories.json'),
+        fetch('../data/categories.json')
       ]);
-      
       
       this.symbols = await symbolsRes.json();
       this.categories = await categoriesRes.json();
