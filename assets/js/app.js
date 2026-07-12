@@ -21,6 +21,7 @@ const App = {
         fetch('../data/brands.json')
       ]);
       
+      
       this.symbols = await symbolsRes.json();
       this.categories = await categoriesRes.json();
       this.brands = await brandsRes.json();
