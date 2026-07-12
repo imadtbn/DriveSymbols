@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>المفضلة - DriveSymbols DZ</title>
+  <meta name="description" content="قائمة رموز لوحة القيادة المفضلة لديك في DriveSymbols DZ.">
+  <link rel="../manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#2563eb">
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/animations.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <a href="../index.html" class="logo">
+        <i class="fas fa-tachometer-alt"></i>
+        <span>DriveSymbols DZ</span>
+      </a>
+      <nav class="nav" id="mainNav">
+        <a href="../index.html" class="nav-link">الرئيسية</a>
+        <a href="search.html" class="nav-link">البحث</a>
+        <a href="categories.html" class="nav-link">التصنيفات</a>
+        <a href="about.html" class="nav-link">عن الموقع</a>
+        <a href="contact.html" class="nav-link">اتصل بنا</a>
+      </nav>
+      <div class="header-actions">
+        <button class="btn-icon tooltip active" data-tooltip="المفضلة" onclick="window.location.href='favorites.html'" style="color: var(--primary-color); background: var(--bg-secondary);">
+          <i class="fas fa-heart"></i>
+        </button>
+        <button class="btn-icon tooltip" data-tooltip="الوضع الليلي" id="themeToggle">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="القائمة">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="container">
+      <div style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-xs); font-size: var(--font-size-sm); color: var(--text-muted);">
+        <a href="../index.html" style="color: var(--text-muted);">الرئيسية</a>
+        <span>/</span>
+        <span>المفضلة</span>
+      </div>
+      <h1><i class="fas fa-heart" style="color: #ef4444;"></i> المفضلة</h1>
+      <p>الرموز التي حفظتها للوصول السريع</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <!-- Stats Bar -->
+      <div id="favStats" style="display: none; margin-bottom: var(--space-xl);">
+        <div style="display: flex; align-items: center; gap: var(--space-md); flex-wrap: wrap; padding: var(--space-md); background: var(--bg-secondary); border-radius: var(--radius-lg);">
+          <span style="font-weight: 600; color: var(--text-primary);">
+            <i class="fas fa-heart" style="color: #ef4444; margin-left: 4px;"></i>
+            <span id="favCount">0</span> رمز في المفضلة
+          </span>
+          <span style="color: var(--text-muted);">|</span>
+          <span id="favSeverityStats" style="font-size: var(--font-size-sm); color: var(--text-secondary);"></span>
+          <div style="margin-right: auto;">
+            <button class="btn btn-secondary" style="font-size: var(--font-size-sm); padding: var(--space-xs) var(--space-md);" onclick="clearAllFavorites()">
+              <i class="fas fa-trash-can"></i>
+              إفراغ المفضلة
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Empty State -->
+      <div id="emptyState" style="display: none; text-align: center; padding: var(--space-2xl) 0;">
+        <div style="width: 120px; height: 120px; border-radius: 50%; background: var(--bg-secondary); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-xl); font-size: 3rem; color: var(--text-muted);">
+          <i class="far fa-heart"></i>
+        </div>
+        <h2 style="font-size: var(--font-size-xl); font-weight: 700; margin-bottom: var(--space-md); color: var(--text-primary);">المفضلة فارغة</h2>
+        <p style="color: var(--text-muted); max-width: 500px; margin: 0 auto var(--space-xl); line-height: 1.8;">
+          لم تضف أي رموز للمفضلة بعد. تصفح الرموز واضغط على زر القلب
+          <i class="fas fa-heart" style="color: #ef4444;"></i>
+          لإضافتها هنا للوصول السريع.
+        </p>
+        <div style="display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap;">
+          <a href="search.html" class="btn btn-primary">
+            <i class="fas fa-search"></i>
+            تصفح الرموز
+          </a>
+          <a href="categories.html" class="btn btn-secondary">
+            <i class="fas fa-layer-group"></i>
+            التصنيفات
+          </a>
+        </div>
+      </div>
+
+      <!-- Favorites Grid -->
+      <div class="grid grid-4" id="favoritesGrid">
+        <div class="loading" style="grid-column: 1 / -1;"><div class="spinner"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Delete Confirmation Modal -->
+  <div id="deleteModal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center;">
+    <div style="background: var(--bg-card); border-radius: var(--radius-lg); padding: var(--space-xl); max-width: 400px; width: 90%; text-align: center; box-shadow: var(--shadow-xl);" class="animate-scale-in">
+      <div style="width: 60px; height: 60px; border-radius: 50%; background: rgba(239, 68, 68, 0.1); color: var(--severity-red); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-md); font-size: 1.5rem;">
+        <i class="fas fa-trash-can"></i>
+      </div>
+      <h3 style="font-size: var(--font-size-lg); font-weight: 700; margin-bottom: var(--space-sm);">تأكيد الحذف</h3>
+      <p style="color: var(--text-secondary); margin-bottom: var(--space-lg);">هل أنت متأكد من حذف جميع الرموز من المفضلة؟</p>
+      <div style="display: flex; gap: var(--space-md); justify-content: center;">
+        <button class="btn btn-secondary" onclick="closeDeleteModal()">إلغاء</button>
+        <button class="btn btn-primary" style="background: var(--severity-red);" onclick="confirmClearFavorites()">
+          <i class="fas fa-trash-can"></i>
+          نعم، احذف الكل
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" style="display: none; position: fixed; top: 90px; left: 50%; transform: translateX(-50%); background: var(--bg-card); color: var(--text-primary); padding: var(--space-md) var(--space-lg); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); z-index: 9998; align-items: center; gap: var(--space-sm); font-weight: 600; border: 1px solid var(--border-color);">
+    <i class="fas fa-circle-check" style="color: var(--severity-green);"></i>
+    <span id="toastMessage"></span>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3><i class="fas fa-tachometer-alt"></i> DriveSymbols DZ</h3>
+          <p>دليل شامل لرموز لوحة القيادة وعلامات الأعطال في السيارات.</p>
+        </div>
+        <div class="footer-links">
+          <h4>روابط سريعة</h4>
+          <ul>
+            <li><a href="../index.html">الرئيسية</a></li>
+            <li><a href="search.html">البحث</a></li>
+            <li><a href="categories.html">التصنيفات</a></li>
+            <li><a href="favorites.html">المفضلة</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>المعلومات</h4>
+          <ul>
+            <li><a href="about.html">عن الموقع</a></li>
+            <li><a href="contact.html">اتصل بنا</a></li>
+            <li><a href="privacy.html">سياسة الخصوصية</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>تواصل معنا</h4>
+          <ul>
+            <li><a href="#"><i class="fab fa-facebook"></i> فيسبوك</a></li>
+            <li><a href="#"><i class="fab fa-telegram"></i> تيليجرام</a></li>
+            <li><a href="mailto:contact@drivesymbols.dz"><i class="fas fa-envelope"></i> البريد</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 DriveSymbols DZ. جميع الحقوق محفوظة.</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script src="../assets/js/app.js"></script>
+  <script src="../assets/js/ui.js"></script>
+  
+  <script>
+    let allSymbols = [];
+    let favoriteIds = [];
+
+    async function loadFavorites() {
+      try {
+        const res = await fetch('../assets/data/symbols.json');
+        allSymbols = await res.json();
+        favoriteIds = JSON.parse(localStorage.getItem('favorites') || '[]');
+        renderFavorites();
+      } catch (e) {
+        console.error(e);
+        document.getElementById('favoritesGrid').innerHTML = `
+          <div class="alert alert-danger" style="grid-column: 1 / -1;">
+            <i class="fas fa-circle-exclamation"></i>
+            حدث خطأ أثناء تحميل البيانات.
+          </div>
+        `;
+      }
+    }
+
+    function renderFavorites() {
+      const container = document.getElementById('favoritesGrid');
+      const emptyState = document.getElementById('emptyState');
+      const statsBar = document.getElementById('favStats');
+
+      if (favoriteIds.length === 0) {
+        container.style.display = 'none';
+        statsBar.style.display = 'none';
+        emptyState.style.display = 'block';
+        return;
+      }
+
+      emptyState.style.display = 'none';
+      statsBar.style.display = 'block';
+      container.style.display = 'grid';
+
+      const favSymbols = allSymbols.filter(s => favoriteIds.includes(s.id));
+
+      // Update stats
+      document.getElementById('favCount').textContent = favSymbols.length;
+
+      const severityCounts = { High: 0, Medium: 0, Low: 0 };
+      favSymbols.forEach(s => { if (severityCounts[s.severity] !== undefined) severityCounts[s.severity]++; });
+
+      const severityText = [];
+      if (severityCounts.High > 0) severityText.push(`<span style="color: var(--severity-red);"><i class="fas fa-circle" style="font-size: 0.4rem;"></i> ${severityCounts.High} خطير</span>`);
+      if (severityCounts.Medium > 0) severityText.push(`<span style="color: var(--severity-yellow);"><i class="fas fa-circle" style="font-size: 0.4rem;"></i> ${severityCounts.Medium} متوسط</span>`);
+      if (severityCounts.Low > 0) severityText.push(`<span style="color: var(--severity-green);"><i class="fas fa-circle" style="font-size: 0.4rem;"></i> ${severityCounts.Low} منخفض</span>`);
+
+      document.getElementById('favSeverityStats').innerHTML = severityText.join(' &nbsp; ');
+
+      // Render cards
+      container.innerHTML = favSymbols.map((symbol, index) => `
+        <div class="symbol-card reveal" style="position: relative; animation-delay: ${index * 0.05}s">
+          <button class="favorite-btn active" style="position: absolute; top: 8px; left: 8px; z-index: 2; background: rgba(239, 68, 68, 0.1);" onclick="event.preventDefault(); removeFavorite(${symbol.id});" title="إزالة من المفضلة">
+            <i class="fas fa-heart" style="color: #ef4444;"></i>
+          </button>
+          <a href="symbol.html?id=${symbol.id}" style="display: block; color: inherit;">
+            <div class="symbol-card-image" style="display: flex; align-items: center; justify-content: center; font-size: 4rem; color: var(--primary-color);">
+              <i class="fas fa-${getIconForCategory(symbol.category)}"></i>
+            </div>
+            <div class="symbol-card-body">
+              <div class="symbol-card-title">${symbol.arabicName}</div>
+              <div class="symbol-card-meta">
+                <span class="severity-badge ${symbol.severityColor}">
+                  <i class="fas fa-circle" style="font-size: 0.4rem;"></i>
+                  ${symbol.severityArabic}
+                </span>
+                <span>${symbol.categoryArabic}</span>
+              </div>
+              <div style="margin-top: var(--space-sm); font-size: var(--font-size-xs); color: var(--text-muted); display: flex; align-items: center; gap: var(--space-sm);">
+                <span><i class="fas fa-eye" style="margin-left: 4px;"></i>${symbol.views}</span>
+                <span>${symbol.canDrive ? '<i class="fas fa-check-circle" style="margin-left: 4px; color: var(--severity-green);"></i>يمكن القيادة' : '<i class="fas fa-circle-xmark" style="margin-left: 4px; color: var(--severity-red);"></i>لا تقود'}</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      `).join('');
+
+      initScrollReveal();
+    }
+
+    function removeFavorite(id) {
+      favoriteIds = favoriteIds.filter(fid => fid !== id);
+      localStorage.setItem('favorites', JSON.stringify(favoriteIds));
+      renderFavorites();
+      showToast('تمت الإزالة من المفضلة');
+    }
+
+    function clearAllFavorites() {
+      document.getElementById('deleteModal').style.display = 'flex';
+    }
+
+    function closeDeleteModal() {
+      document.getElementById('deleteModal').style.display = 'none';
+    }
+
+    function confirmClearFavorites() {
+      favoriteIds = [];
+      localStorage.setItem('favorites', JSON.stringify(favoriteIds));
+      renderFavorites();
+      closeDeleteModal();
+      showToast('تم إفراغ المفضلة');
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastMessage').textContent = message;
+      toast.style.display = 'flex';
+      setTimeout(() => { toast.style.display = 'none'; }, 3000);
+    }
+
+    function getIconForCategory(category) {
+      const icons = {
+        'Engine': 'engine', 'Brakes': 'circle-stop', 'Battery': 'battery-half',
+        'Oil': 'droplet', 'Temperature': 'temperature-high', 'Fuel': 'gas-pump',
+        'Tires': 'circle-notch', 'Airbag': 'user-shield', 'Stability': 'car-side',
+        'Transmission': 'gears', 'Electrical': 'bolt', 'Lights': 'lightbulb',
+        'Assistance': 'hand-holding-hand'
+      };
+      return icons[category] || 'circle-question';
+    }
+
+    // Close modal on backdrop click
+    document.getElementById('deleteModal').addEventListener('click', function(e) {
+      if (e.target === this) closeDeleteModal();
+    });
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeDeleteModal();
+    });
+
+    loadFavorites();
+  </script>
+</body>
+</html>

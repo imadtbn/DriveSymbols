@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="pageTitle">رمز - DriveSymbols DZ</title>
+  <meta name="description" content="تفاصيل رمز لوحة القيادة - DriveSymbols DZ" id="pageDescription">
+  <link rel="../manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#2563eb">
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/animations.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+      <a href="../index.html" class="logo">
+        <i class="fas fa-tachometer-alt"></i>
+        <span>DriveSymbols DZ</span>
+      </a>
+      <nav class="nav" id="mainNav">
+        <a href="../index.html" class="nav-link">الرئيسية</a>
+        <a href="search.html" class="nav-link">البحث</a>
+        <a href="categories.html" class="nav-link">التصنيفات</a>
+        <a href="about.html" class="nav-link">عن الموقع</a>
+        <a href="contact.html" class="nav-link">اتصل بنا</a>
+      </nav>
+      <div class="header-actions">
+        <button class="btn-icon tooltip" data-tooltip="المفضلة" onclick="window.location.href='favorites.html'">
+          <i class="fas fa-heart"></i>
+        </button>
+        <button class="btn-icon tooltip" data-tooltip="الوضع الليلي" id="themeToggle">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="القائمة">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="container">
+      <div style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-xs);">
+        <a href="../index.html" style="color: var(--text-muted);">الرئيسية</a>
+        <span style="color: var(--text-muted);">/</span>
+        <a href="search.html" style="color: var(--text-muted);">الرموز</a>
+        <span style="color: var(--text-muted);">/</span>
+        <span id="breadcrumbName">رمز</span>
+      </div>
+      <h1 id="headerTitle">تفاصيل الرمز</h1>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div id="symbolDetail">
+        <div class="loading">
+          <div class="spinner"></div>
+        </div>
+      </div>
+
+      <!-- Similar Symbols -->
+      <div style="margin-top: var(--space-2xl);">
+        <div class="section-header">
+          <h2><i class="fas fa-clone"></i> رموز مشابهة</h2>
+        </div>
+        <div class="grid grid-4" id="similarSymbols">
+          <!-- سيتم ملؤها بالJavaScript -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3><i class="fas fa-tachometer-alt"></i> DriveSymbols DZ</h3>
+          <p>دليل شامل لرموز لوحة القيادة وعلامات الأعطال في السيارات. نساعدك على فهم معنى كل رمز والتصرف الصحيح.</p>
+        </div>
+        <div class="footer-links">
+          <h4>روابط سريعة</h4>
+          <ul>
+            <li><a href="../index.html">الرئيسية</a></li>
+            <li><a href="search.html">البحث</a></li>
+            <li><a href="categories.html">التصنيفات</a></li>
+            <li><a href="favorites.html">المفضلة</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>المعلومات</h4>
+          <ul>
+            <li><a href="about.html">عن الموقع</a></li>
+            <li><a href="contact.html">اتصل بنا</a></li>
+            <li><a href="privacy.html">سياسة الخصوصية</a></li>
+            <li><a href="terms.html">شروط الاستخدام</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>تواصل معنا</h4>
+          <ul>
+            <li><a href="#"><i class="fab fa-facebook"></i> فيسبوك</a></li>
+            <li><a href="#"><i class="fab fa-telegram"></i> تيليجرام</a></li>
+            <li><a href="#"><i class="fab fa-whatsapp"></i> واتساب</a></li>
+            <li><a href="mailto:contact@drivesymbols.dz"><i class="fas fa-envelope"></i> البريد الإلكتروني</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 DriveSymbols DZ. جميع الحقوق محفوظة.</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script src="../assets/js/app.js"></script>
+  <script src="../assets/js/ui.js"></script>
+  <script src="../assets/js/share.js"></script>
+
+    <script src="../assets/js/filters.js"></script>
+  <script src="../assets/js/favorites.js"></script>
+  <script src="../assets/js/share.js"></script>
+
+
+  <script>
+    // Get symbol ID from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const symbolId = parseInt(urlParams.get('id'));
+
+    let allSymbols = [];
+    let currentSymbol = null;
+
+    async function loadSymbol() {
+      try {
+        const response = await fetch('../assets/data/symbols.json');
+        allSymbols = await response.json();
+        currentSymbol = allSymbols.find(s => s.id === symbolId);
+
+        if (!currentSymbol) {
+          document.getElementById('symbolDetail').innerHTML = `
+            <div class="no-results">
+              <i class="fas fa-circle-xmark"></i>
+              <h3>الرمز غير موجود</h3>
+              <p>الرمز المطلوب غير موجود في قاعدة البيانات</p>
+              <a href="search.html" class="btn btn-primary" style="margin-top: var(--space-md);">العودة للبحث</a>
+            </div>
+          `;
+          return;
+        }
+
+        // Update page metadata
+        document.getElementById('pageTitle').textContent = `${currentSymbol.arabicName} (${currentSymbol.name}) - DriveSymbols DZ`;
+        document.getElementById('pageDescription').content = currentSymbol.description;
+        document.getElementById('breadcrumbName').textContent = currentSymbol.arabicName;
+        document.getElementById('headerTitle').textContent = currentSymbol.arabicName;
+
+        // Update views count (in real app, this would be saved to server)
+        currentSymbol.views++;
+
+        const isFav = isFavorite(symbolId);
+
+        document.getElementById('symbolDetail').innerHTML = `
+          <div class="symbol-detail">
+            <div class="symbol-detail-image">
+              <div style="width: 200px; height: 200px; background: var(--bg-primary); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; font-size: 6rem; color: var(--primary-color);">
+                <i class="fas fa-${getIconForCategory(currentSymbol.category)}"></i>
+              </div>
+            </div>
+            <div class="symbol-detail-info">
+              <div style="display: flex; align-items: center; gap: var(--space-md); flex-wrap: wrap; margin-bottom: var(--space-md);">
+                <h1>${currentSymbol.arabicName}</h1>
+                <span style="color: var(--text-muted); font-size: var(--font-size-lg);">(${currentSymbol.name})</span>
+              </div>
+              
+              <div class="symbol-detail-meta">
+                <span class="badge severity-${currentSymbol.severityColor}">
+                  <i class="fas fa-circle" style="font-size: 0.5rem;"></i>
+                  ${currentSymbol.severityArabic}
+                </span>
+                <span class="badge" style="background: var(--bg-secondary); color: var(--text-secondary);">
+                  <i class="fas fa-palette"></i>
+                  ${currentSymbol.colorArabic}
+                </span>
+                <span class="badge" style="background: var(--bg-secondary); color: var(--text-secondary);">
+                  <i class="fas fa-folder"></i>
+                  ${currentSymbol.categoryArabic}
+                </span>
+                <span class="badge" style="background: var(--bg-secondary); color: var(--text-secondary);">
+                  <i class="fas fa-eye"></i>
+                  ${currentSymbol.views} مشاهدة
+                </span>
+              </div>
+              
+              <div class="drive-status ${currentSymbol.driveStatus}">
+                <i class="fas fa-${currentSymbol.canDrive ? 'check-circle' : 'circle-xmark'}"></i>
+                ${currentSymbol.driveText}
+              </div>
+              
+              <div class="symbol-detail-section">
+                <h2><i class="fas fa-circle-info"></i> الوصف</h2>
+                <p>${currentSymbol.description}</p>
+              </div>
+              
+              <div class="symbol-detail-section">
+                <h2><i class="fas fa-list-ul"></i> الأسباب المحتملة</h2>
+                <ul>
+                  ${currentSymbol.causes.map(cause => `<li>${cause}</li>`).join('')}
+                </ul>
+              </div>
+              
+              <div class="symbol-detail-section">
+                <h2><i class="fas fa-wrench"></i> طريقة الإصلاح</h2>
+                <p>${currentSymbol.solution}</p>
+              </div>
+              
+              <div class="symbol-detail-section">
+                <h2><i class="fas fa-money-bill-wave"></i> التكلفة التقريبية</h2>
+                <p style="font-size: var(--font-size-xl); color: var(--primary-color); font-weight: 700;">${currentSymbol.cost}</p>
+              </div>
+              
+              <div style="display: flex; gap: var(--space-md); flex-wrap: wrap; margin-top: var(--space-xl);">
+                <button class="btn btn-primary" onclick="toggleFavorite(${currentSymbol.id})" id="favBtn">
+                  <i class="fas fa-${isFav ? 'heart' : 'heart-o'}"></i>
+                  ${isFav ? 'إزالة من المفضلة' : 'إضافة للمفضلة'}
+                </button>
+                <button class="btn btn-secondary" onclick="printSymbol()">
+                  <i class="fas fa-print"></i>
+                  طباعة
+                </button>
+              </div>
+              
+              <div class="share-buttons">
+                <span style="color: var(--text-muted); font-weight: 600;">مشاركة:</span>
+                <button class="share-btn share-whatsapp" onclick="shareSymbol('whatsapp')" title="واتساب">
+                  <i class="fab fa-whatsapp"></i>
+                </button>
+                <button class="share-btn share-facebook" onclick="shareSymbol('facebook')" title="فيسبوك">
+                  <i class="fab fa-facebook-f"></i>
+                </button>
+                <button class="share-btn share-telegram" onclick="shareSymbol('telegram')" title="تيليجرام">
+                  <i class="fab fa-telegram-plane"></i>
+                </button>
+                <button class="share-btn share-x" onclick="shareSymbol('x')" title="X">
+                  <i class="fab fa-x-twitter"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+
+        // Load similar symbols
+        loadSimilarSymbols();
+
+      } catch (error) {
+        console.error('Error loading symbol:', error);
+        document.getElementById('symbolDetail').innerHTML = `
+          <div class="alert alert-danger">
+            <i class="fas fa-circle-exclamation"></i>
+            حدث خطأ أثناء تحميل البيانات. يرجى المحاولة مرة أخرى.
+          </div>
+        `;
+      }
+    }
+
+    function loadSimilarSymbols() {
+      const similar = allSymbols
+        .filter(s => s.id !== symbolId && s.category === currentSymbol.category)
+        .slice(0, 4);
+
+      const container = document.getElementById('similarSymbols');
+
+      if (similar.length === 0) {
+        container.innerHTML = '<p style="text-align: center; color: var(--text-muted);">لا توجد رموز مشابهة</p>';
+        return;
+      }
+
+      container.innerHTML = similar.map(symbol => `
+        <a href="symbol.html?id=${symbol.id}" class="symbol-card">
+          <div class="symbol-card-image" style="display: flex; align-items: center; justify-content: center; font-size: 4rem; color: var(--primary-color);">
+            <i class="fas fa-${getIconForCategory(symbol.category)}"></i>
+          </div>
+          <div class="symbol-card-body">
+            <div class="symbol-card-title">${symbol.arabicName}</div>
+            <div class="symbol-card-meta">
+              <span class="severity-badge severity-${symbol.severityColor}">
+                <i class="fas fa-circle" style="font-size: 0.4rem;"></i>
+                ${symbol.severityArabic}
+              </span>
+              <span>${symbol.categoryArabic}</span>
+            </div>
+          </div>
+        </a>
+      `).join('');
+    }
+
+    function getIconForCategory(category) {
+      const icons = {
+        'Engine': 'engine',
+        'Brakes': 'circle-stop',
+        'Battery': 'battery-half',
+        'Oil': 'droplet',
+        'Temperature': 'temperature-high',
+        'Fuel': 'gas-pump',
+        'Tires': 'circle-notch',
+        'Airbag': 'user-shield',
+        'Stability': 'car-side',
+        'Transmission': 'gears',
+        'Electrical': 'bolt',
+        'Lights': 'lightbulb',
+        'Assistance': 'hand-holding-hand'
+      };
+      return icons[category] || 'circle-question';
+    }
+
+    function toggleFavorite(id) {
+      const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+      const index = favorites.indexOf(id);
+
+      if (index > -1) {
+        favorites.splice(index, 1);
+      } else {
+        favorites.push(id);
+      }
+
+      localStorage.setItem('favorites', JSON.stringify(favorites));
+
+      const btn = document.getElementById('favBtn');
+      const isFav = index === -1;
+      btn.innerHTML = `<i class="fas fa-${isFav ? 'heart' : 'heart-o'}"></i> ${isFav ? 'إزالة من المفضلة' : 'إضافة للمفضلة'}`;
+    }
+
+    function isFavorite(id) {
+      const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+      return favorites.includes(id);
+    }
+
+    function printSymbol() {
+      window.print();
+    }
+
+    loadSymbol();
+  </script>
+</body>
+
+</html>

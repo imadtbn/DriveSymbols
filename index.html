@@ -1,539 +1,298 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
-    <title>دليل رموز لوحة القيادة</title>
-    <!-- Font Awesome for Icons (used for visual enhancement) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DriveSymbols DZ - دليل رموز لوحة القيادة وعلامات الأعطال</title>
+  <meta name="description" content="دليل شامل لرموز لوحة القيادة وعلامات الأعطال في السيارات. اعرف معنى كل رمز وتحرك بأمان.">
+  <meta name="keywords" content="رموز لوحة القيادة, علامات الأعطال, Check Engine, ABS, دليل السيارات">
+  <meta name="author" content="DriveSymbols DZ">
 
-        body {
-            background: linear-gradient(145deg, #f0f4f8 0%, #e6ecf3 100%);
-            min-height: 100vh;
-            padding: 20px;
-            color: #1a2639;
-        }
-
-        /* الحاوية الرئيسية */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            background: rgba(255,255,255,0.6);
-            backdrop-filter: blur(2px);
-            border-radius: 48px 48px 32px 32px;
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
-            padding: 30px 25px;
-            border: 1px solid rgba(255,255,255,0.7);
-        }
-
-        /* الرأس والشرح العلوي */
-        .hero {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .hero h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #0b2b40, #1e4b6e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.02em;
-            margin-bottom: 10px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: #2c3e50;
-            max-width: 800px;
-            margin: 0 auto 20px;
-            background: #ffffffb3;
-            padding: 15px 25px;
-            border-radius: 60px;
-            box-shadow: 0 4px 6px -2px rgba(0,20,30,0.1);
-            border: 1px solid white;
-        }
-
-        /* دليل الألوان السريع */
-        .color-legend {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 25px;
-            margin: 30px 0 20px;
-            padding: 20px 15px;
-            background: #1e2b3c;
-            border-radius: 80px;
-            color: white;
-            box-shadow: inset 0 2px 8px rgba(0,0,0,0.3), 0 8px 14px rgba(0,30,40,0.2);
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 1.1rem;
-            font-weight: 500;
-            padding: 5px 20px;
-            border-radius: 40px;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(2px);
-        }
-
-        .legend-color {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            box-shadow: 0 0 0 2px white, 0 4px 10px black;
-        }
-
-        .red-dot { background: #dc2626; }
-        .amber-dot { background: #f59e0b; }
-        .green-dot { background: #10b981; }
-        .blue-dot { background: #3b82f6; }
-
-        /* أزرار التصفية الديناميكية */
-        .filter-bar {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-            margin: 30px 0 35px;
-        }
-
-        .filter-btn {
-            border: none;
-            background: white;
-            padding: 12px 28px;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #1e293b;
-            cursor: pointer;
-            box-shadow: 0 6px 12px -6px rgba(0,0,0,0.1);
-            transition: all 0.2s ease;
-            border: 1px solid transparent;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .filter-btn i {
-            font-size: 1.1rem;
-        }
-
-        .filter-btn.active {
-            background: #1e2b3c;
-            color: white;
-            box-shadow: 0 10px 18px -8px #0f172a;
-            border-color: #ffffff50;
-            transform: scale(1.05);
-        }
-
-        .filter-btn[data-filter="red"]:hover { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
-        .filter-btn[data-filter="amber"]:hover { background: #fef3c7; color: #92400e; border-color: #fde68a; }
-        .filter-btn[data-filter="green"]:hover { background: #d1fae5; color: #065f46; border-color: #a7f3d0; }
-        .filter-btn[data-filter="blue"]:hover { background: #dbeafe; color: #1e40af; border-color: #bfdbfe; }
-        .filter-btn[data-filter="all"]:hover { background: #e2e8f0; color: #0f172a; }
-
-        /* مربع البحث */
-        .search-wrapper {
-            position: relative;
-            max-width: 500px;
-            margin: 20px auto 30px;
-        }
-
-        .search-wrapper i {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #6b7280;
-            font-size: 1.2rem;
-        }
-
-        #searchInput {
-            width: 100%;
-            padding: 16px 50px 16px 25px;
-            border: none;
-            border-radius: 60px;
-            font-size: 1.1rem;
-            background: white;
-            box-shadow: 0 10px 25px -8px #1e293b80;
-            border: 1px solid #ffffff;
-            transition: 0.2s;
-        }
-
-        #searchInput:focus {
-            outline: 4px solid #bfdbfe;
-            border-color: #2563eb;
-        }
-
-        /* شبكة البطاقات */
-        .symbols-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 24px;
-            margin-top: 30px;
-        }
-
-        /* بطاقة الرمز */
-        .symbol-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(8px);
-            border-radius: 40px;
-            padding: 22px 20px;
-            box-shadow: 0 20px 35px -12px rgba(0,20,30,0.2);
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(255,255,255,0.8);
-            display: flex;
-            flex-direction: column;
-            opacity: 0;
-            animation: fadeInUp 0.4s ease forwards;
-        }
-
-        .symbol-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            background: white;
-            box-shadow: 0 30px 45px -15px #0b2b40;
-            border-color: #ffffff;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* رأس البطاقة */
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 18px;
-        }
-
-        .icon-box {
-            width: 70px;
-            height: 70px;
-            background: #f8fafc;
-            border-radius: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.8rem;
-            box-shadow: inset 0 -3px 0 rgba(0,0,0,0.05), 0 8px 12px -6px #1e293b33;
-            border: 1px solid white;
-        }
-
-        .icon-box i {
-            filter: drop-shadow(2px 4px 4px rgba(0,20,30,0.2));
-        }
-
-        .title-area {
-            flex: 1;
-        }
-
-        .title-area h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            line-height: 1.3;
-            margin-bottom: 5px;
-        }
-
-        .badge-color {
-            display: inline-block;
-            padding: 4px 16px;
-            border-radius: 40px;
-            font-size: 0.75rem;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-            color: white;
-            text-shadow: 0 1px 2px black;
-            box-shadow: 0 2px 6px currentColor;
-            text-transform: uppercase;
-        }
-
-        .badge-red { background: #dc2626; }
-        .badge-amber { background: #f59e0b; }
-        .badge-green { background: #10b981; }
-        .badge-blue { background: #3b82f6; }
-
-        /* محتوى الشرح */
-        .meaning {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #1e293b;
-            margin: 15px 0 12px;
-            padding-right: 8px;
-            font-weight: 500;
-        }
-
-        .action {
-            background: #f1f5f9;
-            border-radius: 28px;
-            padding: 14px 18px;
-            margin: 12px 0 10px;
-            border-right: 5px solid #0284c7;
-            font-size: 0.95rem;
-            color: #0c4a6e;
-            transition: 0.2s;
-        }
-
-        .action i {
-            margin-left: 8px;
-            color: #0369a1;
-        }
-
-        .card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 10px;
-            font-size: 0.85rem;
-            color: #64748b;
-            border-top: 1px dashed #cbd5e1;
-            padding-top: 12px;
-        }
-
-        .more-btn {
-            background: none;
-            border: 1px solid #cbd5e1;
-            padding: 6px 18px;
-            border-radius: 50px;
-            color: #334155;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.15s;
-            font-size: 0.85rem;
-        }
-
-        .more-btn:hover {
-            background: #1e2b3c;
-            color: white;
-            border-color: #1e2b3c;
-        }
-
-        /* لا توجد نتائج */
-        .no-results {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 60px;
-            background: rgba(255,255,240,0.7);
-            border-radius: 70px;
-            font-size: 1.6rem;
-            color: #4b5563;
-        }
-
-        /* تذييل */
-        .footer-note {
-            margin-top: 50px;
-            text-align: center;
-            font-size: 0.95rem;
-            color: #3a4a5e;
-            background: #d9e2ef70;
-            padding: 20px;
-            border-radius: 100px;
-        }
-
-        /* تجاوب ممتاز للهواتف */
-        @media (max-width: 640px) {
-            body { padding: 10px; }
-            .container { padding: 20px 12px; border-radius: 32px; }
-            .hero h1 { font-size: 2rem; }
-            .hero p { font-size: 1rem; border-radius: 30px; }
-            .color-legend { border-radius: 40px; gap: 10px; }
-            .legend-item { font-size: 0.85rem; padding: 5px 12px; }
-            .filter-btn { padding: 9px 16px; font-size: 0.85rem; }
-            .symbols-grid { grid-template-columns: 1fr; gap: 18px; }
-            .icon-box { width: 60px; height: 60px; font-size: 2.2rem; }
-            .title-area h3 { font-size: 1.2rem; }
-        }
-    </style>
+  <!-- Open Graph -->
+  <meta property="og:title" content="DriveSymbols DZ - دليل رموز لوحة القيادة">
+  <meta property="og:description" content="دليل شامل لرموز لوحة القيادة وعلامات الأعطال في السيارات">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ar_DZ">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DriveSymbols DZ - دليل رموز لوحة القيادة">
+  <meta name="twitter:description" content="دليل شامل لرموز لوحة القيادة وعلامات الأعطال في السيارات">
+  
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#2563eb">
+  <link rel="apple-touch-icon" href="images/icons/icon-192x192.png">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "DriveSymbols DZ",
+    "description": "دليل رموز لوحة القيادة وعلامات الأعطال",
+    "url": "https://drivesymbols.dz",
+    "inLanguage": "ar",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://drivesymbols.dz/search.html?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
 </head>
 <body>
-<div class="container">
-    <div class="hero">
-        <h1><i class="fas fa-car" style="color: #2563eb; margin-left: 10px;"></i>دليل رموز لوحة القيادة وعلامات الاعطال</h1>
-        <p>تعرف على معاني إشارات لوحة القيادة حسب اللون: الأحمر خطر يجب التوقف الفوري، الأصفر يحتاج فحصاً قريباً، الأخضر والأزرق للتشغيل الطبيعي.</p>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <i class="fas fa-tachometer-alt"></i>
+        <span>DriveSymbols DZ</span>
+      </a>
+      
+      <nav class="nav" id="mainNav">
+        <a href="index.html" class="nav-link active">الرئيسية</a>
+        <a href="pages/search.html" class="nav-link">البحث</a>
+        <a href="pages/categories.html" class="nav-link">التصنيفات</a>
+        <a href="pages/about.html" class="nav-link">عن الموقع</a>
+        <a href="pages/contact.html" class="nav-link">اتصل بنا</a>
+      </nav>
+      
+      <div class="header-actions">
+        <button class="btn-icon tooltip" data-tooltip="المفضلة" onclick="window.location.href='favorites.html'">
+          <i class="fas fa-heart"></i>
+        </button>
+        <button class="btn-icon tooltip" data-tooltip="الوضع الليلي" id="themeToggle">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="القائمة">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </div>
+  </header>
 
-    <!-- دليل الألوان -->
-    <div class="color-legend">
-        <div class="legend-item"><span class="legend-color red-dot"></span> أحمر : توقف فوري</div>
-        <div class="legend-item"><span class="legend-color amber-dot"></span> برتقالي/أصفر : فحص قريب</div>
-        <div class="legend-item"><span class="legend-color green-dot"></span> أخضر : نظام يعمل</div>
-        <div class="legend-item"><span class="legend-color blue-dot"></span> أزرق : تشغيل عادي</div>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-particles"></div>
+    <div class="container">
+      <h1 class="hero-title animate-fade-in-up">اعرف معنى كل رمز...<br>وتحرك بأمان.</h1>
+      <p class="hero-subtitle animate-fade-in-up delay-200">
+        دليل شامل لرموز لوحة القيادة وعلامات الأعطال في السيارات. 
+        فهم درجة الخطورة، أسباب العطل، وخطوات التصرف الصحيحة.
+      </p>
+      
+      <div class="search-box animate-fade-in-up delay-300">
+        <input type="text" class="search-input" id="heroSearch" placeholder="ابحث عن رمز، مثال: Check Engine, ABS, زيت..." autocomplete="off">
+        <button class="search-btn" onclick="performHeroSearch()">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+      
+      <div class="stats animate-fade-in-up delay-400">
+        <div class="stat-card">
+          <div class="stat-number" id="statSymbols">30+</div>
+          <div class="stat-label">رمز موثق</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="statCategories">13</div>
+          <div class="stat-label">تصنيف</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="statBrands">12</div>
+          <div class="stat-label">علامة تجارية</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="statSeverity">4</div>
+          <div class="stat-label">درجة خطورة</div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <!-- فلتر + بحث -->
-    <div class="filter-bar">
-        <button class="filter-btn active" data-filter="all"><i class="fas fa-border-all"></i> الكل</button>
-        <button class="filter-btn" data-filter="red"><i class="fas fa-exclamation-triangle" style="color:#b91c1c;"></i> أحمر</button>
-        <button class="filter-btn" data-filter="amber"><i class="fas fa-tools" style="color:#b45309;"></i> أصفر/برتقالي</button>
-        <button class="filter-btn" data-filter="green"><i class="fas fa-check-circle" style="color:#047857;"></i> أخضر</button>
-        <button class="filter-btn" data-filter="blue"><i class="fas fa-lightbulb" style="color:#1e3a8a;"></i> أزرق</button>
+  <!-- Danger Symbols Section -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2><i class="fas fa-triangle-exclamation"></i> رموز الأعطال الخطيرة</h2>
+        <a href="pages/search.html?severity=High" class="view-all">عرض الكل <i class="fas fa-arrow-left"></i></a>
+      </div>
+      
+      <div class="danger-symbols">
+        <div class="alert alert-danger" style="margin-bottom: var(--space-lg);">
+          <i class="fas fa-circle-exclamation"></i>
+          <strong>تنبيه:</strong> هذه الرموز تتطلب التوقف الفوري. لا تهملها أبداً.
+        </div>
+        <div class="grid grid-4" id="dangerSymbolsGrid">
+          <!-- سيتم ملؤها بالJavaScript -->
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="search-wrapper">
-        <i class="fas fa-search"></i>
-        <input type="text" id="searchInput" placeholder="ابحث عن رمز... مثل: زيت، مكابح، وسادة هوائية">
+  <!-- Categories Section -->
+  <section class="section" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header">
+        <h2><i class="fas fa-layer-group"></i> التصنيفات</h2>
+        <a href="pages/categories.html" class="view-all">عرض الكل <i class="fas fa-arrow-left"></i></a>
+      </div>
+      
+      <div class="grid grid-3" id="categoriesGrid">
+        <!-- سيتم ملؤها بالJavaScript -->
+      </div>
     </div>
+  </section>
 
-    <!-- شبكة الرموز الديناميكية -->
-    <div id="symbolsContainer" class="symbols-grid"></div>
-
-    <div class="footer-note">
-        <i class="fas fa-book-open"></i> أقصى مجموعة رموز عالمية - تم جمعها من كبرى الشركات (مرسيدس، تويوتا، فورد، بي إم دبليو، هيونداي..) مع شرح معتمد.
+  <!-- Popular Symbols Section -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2><i class="fas fa-fire"></i> أكثر الرموز مشاهدة</h2>
+        <a href="pages/search.html?sort=views" class="view-all">عرض الكل <i class="fas fa-arrow-left"></i></a>
+      </div>
+      
+      <div class="grid grid-4" id="popularSymbolsGrid">
+        <!-- سيتم ملؤها بالJavaScript -->
+      </div>
     </div>
-</div>
+  </section>
 
-<script>
-    (function() {
-        // ---------- قاعدة البيانات: أكبر قدر من الرموز مع الشرح بالعربية ----------
-        const symbolsData = [
-            // ================== المجموعة الحمراء (RED) ==================
-            { name: "تحذير الزيت", icon: "fas fa-oil-can", color: "red", meaning: "انخفاض حاد في ضغط الزيت أو نقص شديد في الزيت.", action: "توقف فوراً وأطفئ المحرك. تحقق من مستوى الزيت ولا تَقُد حتى تصحيح المشكلة." },
-            { name: "حرارة المحرك", icon: "fas fa-temperature-high", color: "red", meaning: "ارتفاع حرارة المحرك إلى درجة خطيرة (قد يكون سبب تسريب مبرد أو عطل مروحة).", action: "توقف في أسرع مكان آمن، أطفئ المحرك وانتظر حتى يبرد. لا تفتح غطاء الردياتير أبداً وهو ساخن." },
-            { name: "بطارية", icon: "fas fa-battery-full", color: "red", meaning: "عطل في نظام الشحن (الدينامو أو البطارية لا تشحن بشكل صحيح).", action: "أوقف الأحمال الكهربائية غير الضرورية وتوجه إلى أقرب ورشة؛ قد يتوقف المحرك فجأة." },
-            { name: "نظام المكابح", icon: "fas fa-exclamation-circle", color: "red", meaning: "خلل خطير في المكابح (انخفاض سائل الفرامل أو توقف النظام).", action: "توقف فوراً وتحقق من فرامل اليد. إذا كانت حرة والمكابح لا تعمل كما ينبغي، اسحب السيارة إلى ورشة." },
-            { name: "وسادة هوائية", icon: "fas fa-air-freshener", color: "red", meaning: "عطل في نظام الوسائد الهوائية (SRS) قد يؤدي لعدم انتفاخها عند الحادث.", action: "اذهب لأقرب مركز صيانة فوراً؛ قيادة السيارة آمنة ولكن السلامة معرضة للخطر." },
-            { name: "حزام الأمان", icon: "fas fa-user-check", color: "red", meaning: "حزام الأمان غير مربوط للسائق أو الراكب الأمامي.", action: "اربط الحزام فوراً وتأكد من ربط جميع الركاب." },
-            { name: "الباب مفتوح", icon: "fas fa-car-side", color: "red", meaning: "أحد الأبواب أو صندوق الخلفي غير مغلق تماماً.", action: "توقف وتأكد من إغلاق جميع الأبواب والشنطة بإحكام." },
-            { name: "ضغط الإطارات", icon: "fas fa-exclamation-triangle", color: "red", meaning: "انخفاض شديد في ضغط أحد الإطارات أو ثقب.", action: "انزل بهدوء، افحص الإطارات. استخدم الإطار الاحتياطي أو تواصل مع خدمة الطوارئ." },
-            { name: "نظام التوجيه", icon: "fas fa-steering-wheel", color: "red", meaning: "عطل في نظام التوجيه الكهربائي أو الهيدروليكي (قد يصبح المقود ثقيلاً جداً).", action: "توقف فوراً إذا كان التوجيه صعباً جداً، وإلا فتوجه بحذر لأقرب ورشة." },
-            { name: "ناقل الحركة", icon: "fas fa-cogs", color: "red", meaning: "ارتفاع حرارة القير أو عطل داخلي خطير.", action: "أوقف السيارة واترك القير يبرد. قد تحتاج إلى سحب السيارة." },
-            { name: "المانع للانغلاق ABS", icon: "fas fa-brake-warning", color: "red", meaning: "خلل في نظام ABS (الفرامل المانعة للانغلاق) قد لا تعمل بشكل صحيح على الطرق الزلقة.", action: "يمكن القيادة بحذر، لكن افحص في أقرب وقت." },
-            { name: "الوقود منخفض جداً", icon: "fas fa-gas-pump", color: "red", meaning: "الوقود على وشك النفاد.", action: "توقف في أقرب محطة لتزويد الوقود." },
+  <!-- Latest Symbols Section -->
+  <section class="section" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header">
+        <h2><i class="fas fa-clock"></i> أحدث الرموز</h2>
+        <a href="pages/search.html?sort=date" class="view-all">عرض الكل <i class="fas fa-arrow-left"></i></a>
+      </div>
+      
+      <div class="grid grid-4" id="latestSymbolsGrid">
+        <!-- سيتم ملؤها بالJavaScript -->
+      </div>
+    </div>
+  </section>
 
-            // ================== المجموعة البرتقالية/الصفراء (AMBER) ==================
-            { name: "فحص المحرك", icon: "fas fa-engine", color: "amber", meaning: "مشكلة في المحرك أو نظام الانبعاثات (قد تكون بسيطة كغطاء الوقود).", action: "افحص ضغط الوقود أو قم بفحص كمبيوتر السيارة في أقرب ورشة. إذا كان يومض فتوقف." },
-            { name: "TPMS", icon: "fas fa-circle-exclamation", color: "amber", meaning: "نظام مراقبة الإطارات يشير إلى ضغط غير طبيعي في أحد الإطارات.", action: "افحص ضغط الهواء في جميع الإطارات وأعد ضبط النظام." },
-            { name: "ABS (تحذير)", icon: "fas fa-brake-warning", color: "amber", meaning: "خلل في نظام المكابح المانعة للانغلاق (ABS) فقط.", action: "المكابح العادية تعمل، لكن خذ السيارة للفحص في أقرب وقت." },
-            { name: "جر السحب/TC", icon: "fas fa-tachometer-alt", color: "amber", meaning: "نظام التحكم بالجر معطل أو يعمل.", action: "إذا كان ثابتاً فقد يكون هناك عطل في المستشعرات؛ افحص في ورشة." },
-            { name: "فلتر الديزل DPF", icon: "fas fa-filter", color: "amber", meaning: "فلتر الجسيمات الديزل مسدود (خاص بالديزل).", action: "قم بقيادة السيارة بسرعة ثابتة (مثل الطريق السريع) لحرق السناج أو توجه للورشة." },
-            { name: "مؤشر الصقيع", icon: "fas fa-snowflake", color: "amber", meaning: "درجة الحرارة الخارجية أقل من 4°C قد يكون الطريق زلقاً.", action: "كن حذراً أثناء القيادة، قد يوجد جليد على الطريق." },
-            { name: "نظام الثبات ESP", icon: "fas fa-car-crash", color: "amber", meaning: "نظام التوازن الإلكتروني معطل أو به خلل.", action: "يفضل إصلاحه قريباً للحصول على ثبات أفضل على المنعطفات." },
-            { name: "غسيل الزجاج", icon: "fas fa-wind", color: "amber", meaning: "مستوى سائل غسيل الزجاج الأمامي منخفض.", action: "أضف سائل غسيل عند أقرب محطة." },
-            { name: "مكابح (تحذير بسيط)", icon: "fas fa-brake-warning", color: "amber", meaning: "تآكل في تيل الفرامل أو حاجة لصيانة قريبة.", action: "افحص سمك التيل واستبدلها إذا لزم الأمر." },
-            { name: "زر التشغيل", icon: "fas fa-key", color: "amber", meaning: "مفتاح السيارة الذكي غير موجود داخل المقصورة أو بطاريته ضعيفة.", action: "استبدل بطارية الريموت أو اقترب بالمفتاح من مكان التشغيل." },
-            { name: "نظام الأمان", icon: "fas fa-shield-alt", color: "amber", meaning: "عطل في نظام منع التشغيل (الايموبيلايزر) أو تعارض في المفتاح.", action: "استخدم المفتاح الاحتياطي أو راجع مختص." },
-            { name: "المصابيح الخلفية", icon: "fas fa-lightbulb", color: "amber", meaning: "أحد المصابيح الخارجية (مثل الضوء الخلفي أو الفرامل) معطل.", action: "افحص واستبدل المصباح المنصهر." },
-            { name: "مستوى سائل التبريد", icon: "fas fa-water", color: "amber", meaning: "منسوب ماء الردياتير منخفض.", action: "أضف ماء مبرد بعد أن يبرد المحرك." },
+  <!-- Tips Section -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2><i class="fas fa-lightbulb"></i> نصائح القيادة</h2>
+      </div>
+      
+      <div class="tips-grid">
+        <div class="tip-card reveal">
+          <i class="fas fa-gauge-high"></i>
+          <h3>لا تهمل Check Engine</h3>
+          <p>قد يكون العطل بسيطاً لكن تجاهله لفترة طويلة قد يؤدي إلى تلف أجزاء أخرى ومبالغ أكبر.</p>
+        </div>
+        <div class="tip-card reveal">
+          <i class="fas fa-temperature-arrow-up"></i>
+          <h3>حرارة المحرك</h3>
+          <p>إذا ارتفعت حرارة المحرك، أوقف السيارة فوراً. الاستمرار قد يؤدي إلى تلف رأس المحرك.</p>
+        </div>
+        <div class="tip-card reveal">
+          <i class="fas fa-oil-can"></i>
+          <h3>زيت المحرك</h3>
+          <p>افحص زيت المحرك كل 5000 كم. الزيت القذر يسبب تآكل المحرك ويقلل من عمره.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            // ================== المجموعة الخضراء (GREEN) ==================
-            { name: "الضوء المنخفض", icon: "fas fa-lightbulb", color: "green", meaning: "المصابيح الأمامية المنخفضة (الضوء العادي) مضاءة.", action: "لا شيء، تأكد من إطفائها عند عدم الحاجة." },
-            { name: "إشارة الانعطاف", icon: "fas fa-arrow-left", color: "green", meaning: "إشارة الانعطاف (الغماز) يعمل.", action: "لا إجراء، فقط تأكد من إطفائه بعد تغيير الاتجاه." },
-            { name: "مثبت السرعة", icon: "fas fa-clock", color: "green", meaning: "نظام تثبيت السرعة (الكرتز) قيد التشغيل.", action: "يمكنك التحكم بالسرعة أو إلغاء التشغيل." },
-            { name: "مصابيح الضباب", icon: "fas fa-fog", color: "green", meaning: "مصابيح الضباب الأمامية مضاءة.", action: "أطفئها عند تحسن الرؤية لتجنب إبهار الآخرين." },
+  <!-- Brands Section -->
+  <section class="section" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header">
+        <h2><i class="fas fa-car"></i> علامات السيارات</h2>
+        <a href="pages/brands.html" class="view-all">عرض الكل <i class="fas fa-arrow-left"></i></a>
+      </div>
+      
+      <div class="brands-grid" id="brandsGrid">
+        <!-- سيتم ملؤها بالJavaScript -->
+      </div>
+    </div>
+  </section>
 
-            // ================== المجموعة الزرقاء (BLUE) ==================
-            { name: "الضوء العالي", icon: "fas fa-lightbulb", color: "blue", meaning: "المصابيح الأمامية العالية (الهاي بيم) قيد التشغيل.", action: "اخفض الضوء عند وجود مركبات قادمة لتجنب الإبهار." },
-            { name: "محرك بارد", icon: "fas fa-thermometer-half", color: "blue", meaning: "درجة حرارة المحرك لا زالت منخفضة (لم يسخن بعد).", action: "قد يظهر في الأجواء الباردة؛ قم بالقيادة بهدوء حتى يسخن." },
-            { name: "مكيف داخلي", icon: "fas fa-wind", color: "blue", meaning: "وضع إعادة تدوير الهواء داخل المقصورة نشط.", action: "لا إجراء، يمكنك تعطيله عند الحاجة لهواء نقي." },
-            { name: "الوضع الإقتصادي", icon: "fas fa-leaf", color: "blue", meaning: "وضع القيادة الاقتصادية (Eco) مفعل.", action: "لا إجراء، يعمل على تحسين استهلاك الوقود." },
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3><i class="fas fa-tachometer-alt"></i> DriveSymbols DZ</h3>
+          <p>دليل شامل لرموز لوحة القيادة وعلامات الأعطال في السيارات. نساعدك على فهم معنى كل رمز والتصرف الصحيح.</p>
+        </div>
+        <div class="footer-links">
+          <h4>روابط سريعة</h4>
+          <ul>
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="pages/search.html">البحث</a></li>
+            <li><a href="pages/categories.html">التصنيفات</a></li>
+            <li><a href="pages/favorites.html">المفضلة</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>المعلومات</h4>
+          <ul>
+            <li><a href="pages/about.html">عن الموقع</a></li>
+            <li><a href="pages/contact.html">اتصل بنا</a></li>
+            <li><a href="pages/privacy.html">سياسة الخصوصية</a></li>
+            <li><a href="pages/terms.html">شروط الاستخدام</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>تواصل معنا</h4>
+          <ul>
+            <li><a href="#"><i class="fab fa-facebook"></i> فيسبوك</a></li>
+            <li><a href="#"><i class="fab fa-telegram"></i> تيليجرام</a></li>
+            <li><a href="#"><i class="fab fa-whatsapp"></i> واتساب</a></li>
+            <li><a href="mailto:contact@drivesymbols.dz"><i class="fas fa-envelope"></i> البريد الإلكتروني</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 DriveSymbols DZ. جميع الحقوق محفوظة.</p>
+      </div>
+    </div>
+  </footer>
 
-            // أضف المزيد لتعظيم العدد (حتى 45 رمزًا)
-            { name: "تحذير المسار", icon: "fas fa-arrows-alt-h", color: "amber", meaning: "نظام البقاء في المسار ينبه لانحراف السيارة.", action: "انتبه لاتجاهك وقم بتصحيح المقود." },
-            { name: "نظام التصادم", icon: "fas fa-car-crash", color: "amber", meaning: "تحذير من التصادم الأمامي أو رادار معطل.", action: "افحص حساسات الرادار ونظفها." },
-            { name: "فتحة السقف", icon: "fas fa-chevron-up", color: "green", meaning: "فتحة السقف مفتوحة أو في وضع التهوية.", action: "أغلقها إذا أردت." },
-            { name: "المرايا المسخنة", icon: "fas fa-bolt", color: "green", meaning: "مرايا جانبية مسخنة تعمل.", action: "تطفأ تلقائياً بعد فترة." },
-            { name: "المقاعد المسخنة", icon: "fas fa-chair", color: "green", meaning: "مقعد ساخن يعمل.", action: "يمكن ضبط درجة الحرارة." },
-            { name: "نظام اوتو ستارت", icon: "fas fa-play-circle", color: "green", meaning: "نظام إيقاف/تشغيل المحرك التلقائي نشط.", action: "عادي جداً." },
-            { name: "انزلاق", icon: "fas fa-snowplow", color: "amber", meaning: "نظام منع الانزلاق يعمل.", action: "الطريق زلق، خفف السرعة." },
-            { name: "الضباب الخلفي", icon: "fas fa-car", color: "blue", meaning: "مصابيح الضباب الخلفية مضاءة.", action: "أطفئها عندما تتحسن الرؤية." },
-            { name: "المنعطف الأيمن", icon: "fas fa-arrow-right", color: "green", meaning: "إشارة اليمين.", action: "لا إجراء." },
-            { name: "المنعطف الأيسر", icon: "fas fa-arrow-left", color: "green", meaning: "إشارة اليسار.", action: "لا إجراء." },
-            { name: "مصابيح الطوارئ", icon: "fas fa-exclamation", color: "green", meaning: "أنوار الخطر (الفلشر) مضاءة.", action: "استخدمها فقط للتوقف الطارئ." },
-            { name: "نظام التعليق", icon: "fas fa-bus", color: "amber", meaning: "عطل في نظام التعليق المتكيف.", action: "افحص في ورشة متخصصة." },
-            { name: "زيت ناقل الحركة", icon: "fas fa-oil-can", color: "red", meaning: "حرارة زيت القير مرتفعة جداً.", action: "توقف واترك السيارة تبرد." },
-            { name: "المكابح المتوقفة", icon: "fas fa-parking", color: "red", meaning: "فرامل اليد مشدودة أو عطل.", action: "حررها قبل القيادة." }
-        ];
+  <!-- Install Button -->
+  <button class="install-btn" id="installBtn">
+    <i class="fas fa-download"></i>
+    <span>تثبيت التطبيق</span>
+  </button>
 
-        // دالة عرض الرموز
-        const container = document.getElementById('symbolsContainer');
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const searchInput = document.getElementById('searchInput');
+  <!-- Scroll Top -->
+  <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 
-        let activeFilter = 'all';
-        let searchTerm = '';
-
-        function renderSymbols() {
-            const filtered = symbolsData.filter(symbol => {
-                // فلتر حسب اللون
-                const matchesFilter = activeFilter === 'all' || symbol.color === activeFilter;
-                // فلتر حسب البحث
-                const matchesSearch = symbol.name.includes(searchTerm) || 
-                                      symbol.meaning.includes(searchTerm) || 
-                                      symbol.action.includes(searchTerm) ||
-                                      searchTerm === '';
-                return matchesFilter && matchesSearch;
-            });
-
-            if (filtered.length === 0) {
-                container.innerHTML = `<div class="no-results"><i class="fas fa-search-minus" style="font-size:3rem; opacity:0.5;"></i><br>لا توجد رموز مطابقة</div>`;
-                return;
-            }
-
-            let htmlStr = '';
-            filtered.forEach((sym, idx) => {
-                const badgeColor = sym.color === 'red' ? 'badge-red' : (sym.color === 'amber' ? 'badge-amber' : (sym.color === 'green' ? 'badge-green' : 'badge-blue'));
-                const colorDisplay = sym.color === 'red' ? 'أحمر' : (sym.color === 'amber' ? 'برتقالي/أصفر' : (sym.color === 'green' ? 'أخضر' : 'أزرق'));
-
-                htmlStr += `
-                    <div class="symbol-card" style="animation-delay: ${idx * 0.03}s">
-                        <div class="card-header">
-                            <div class="icon-box"><i class="${sym.icon}"></i></div>
-                            <div class="title-area">
-                                <h3>${sym.name}</h3>
-                                <span class="badge-color ${badgeColor}">${colorDisplay}</span>
-                            </div>
-                        </div>
-                        <div class="meaning"><i class="fas fa-info-circle" style="color:#2563eb;"></i> ${sym.meaning}</div>
-                        <div class="action"><i class="fas fa-hands-helping"></i> الإجراء: ${sym.action}</div>
-                        <div class="card-footer">
-                            <span><i class="far fa-bell"></i> رمز عالمي</span>
-                            <button class="more-btn" onclick="alert('${sym.name}: ${sym.meaning}')"><i class="fas fa-expand"></i> تفاصيل</button>
-                        </div>
-                    </div>
-                `;
-            });
-            container.innerHTML = htmlStr;
-        }
-
-        // أحداث الأزرار
-        filterButtons.forEach(btn => {
-            btn.addEventListener('click', function() {
-                filterButtons.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                activeFilter = this.dataset.filter;
-                renderSymbols();
-            });
-        });
-
-        // البحث
-        searchInput.addEventListener('input', function(e) {
-            searchTerm = e.target.value.trim();
-            renderSymbols();
-        });
-
-        // أول رسم
-        renderSymbols();
-
-        // جعل التابع عام للتنبيه
-        window.alert = function(msg) { 
-            window.alert(msg); 
-        };
-
-    })();
-</script>
-<!-- تنبيه: زر التفاصيل يعرض نافذة منبثقة تحتوي على مزيد من الشرح -->
+  <!-- JavaScript -->
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/ui.js"></script>
+  
+  <script>
+    // Hero Search
+    function performHeroSearch() {
+      const query = document.getElementById('heroSearch').value.trim();
+      if (query) {
+        window.location.href = 'search.html?q=' + encodeURIComponent(query);
+      }
+    }
+    
+    document.getElementById('heroSearch').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') performHeroSearch();
+    });
+  </script>
 </body>
 </html>
