@@ -16,9 +16,9 @@ const App = {
   async loadData() {
     try {
       const [symbolsRes, categoriesRes, brandsRes] = await Promise.all([
-        fetch('../data/symbols.json'),
-        fetch('../data/categories.json'),
-        fetch('../data/brands.json')
+        fetch('../assets/data/categories.json'),
+        fetch('../assets/data/categories.json'),
+        fetch('../assets/data/categories.json')
       ]);
       
       
