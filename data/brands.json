@@ -1,6 +1,4 @@
-//# 7. إنشاء ملف brands.json
-
-brands = [
+[
     {"id": "Toyota", "name": "تويوتا", "country": "اليابان", "image": "toyota.svg"},
     {"id": "Hyundai", "name": "هيونداي", "country": "كوريا الجنوبية", "image": "hyundai.svg"},
     {"id": "Kia", "name": "كيا", "country": "كوريا الجنوبية", "image": "kia.svg"},

@@ -1,7 +1,4 @@
-
-//# 6. إنشاء ملف categories.json
-
-categories = [
+[
     {
         "id": "Engine",
         "name": "المحرك",
