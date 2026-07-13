@@ -1,14 +1,14 @@
 [
-    {"id": "Toyota", "name": "تويوتا", "country": "اليابان", "image": "toyota.svg"},
-    {"id": "Hyundai", "name": "هيونداي", "country": "كوريا الجنوبية", "image": "hyundai.svg"},
-    {"id": "Kia", "name": "كيا", "country": "كوريا الجنوبية", "image": "kia.svg"},
-    {"id": "Peugeot", "name": "بيجو", "country": "فرنسا", "image": "peugeot.svg"},
-    {"id": "Renault", "name": "رينو", "country": "فرنسا", "image": "renault.svg"},
-    {"id": "Volkswagen", "name": "فولكس فاجن", "country": "ألمانيا", "image": "volkswagen.svg"},
-    {"id": "Mercedes", "name": "مرسيدس", "country": "ألمانيا", "image": "mercedes.svg"},
-    {"id": "BMW", "name": "بي إم دبليو", "country": "ألمانيا", "image": "bmw.svg"},
-    {"id": "Audi", "name": "أودي", "country": "ألمانيا", "image": "audi.svg"},
-    {"id": "Fiat", "name": "فيات", "country": "إيطاليا", "image": "fiat.svg"},
-    {"id": "Opel", "name": "أوبل", "country": "ألمانيا", "image": "opel.svg"},
-    {"id": "Nissan", "name": "نيسان", "country": "اليابان", "image": "nissan.svg"}
+    {"id": "Toyota", "name": "تويوتا", "country": "اليابان", "image": "images/brands/toyota.svg"},
+    {"id": "Hyundai", "name": "هيونداي", "country": "كوريا الجنوبية", "image": "images/brands/hyundai.svg"},
+    {"id": "Kia", "name": "كيا", "country": "كوريا الجنوبية", "image": "images/brands/kia.svg"},
+    {"id": "Peugeot", "name": "بيجو", "country": "فرنسا", "image": "images/brands/peugeot.svg"},
+    {"id": "Renault", "name": "رينو", "country": "فرنسا", "image": "images/brands/renault.svg"},
+    {"id": "Volkswagen", "name": "فولكس فاجن", "country": "ألمانيا", "image": "images/brands/volkswagen.svg"},
+    {"id": "Mercedes", "name": "مرسيدس", "country": "ألمانيا", "image": "images/brands/mercedes.svg"},
+    {"id": "BMW", "name": "بي إم دبليو", "country": "ألمانيا", "image": "images/brands/bmw.svg"},
+    {"id": "Audi", "name": "أودي", "country": "ألمانيا", "image": "images/brands/audi.svg"},
+    {"id": "Fiat", "name": "فيات", "country": "إيطاليا", "image": "images/brands/fiat.svg"},
+    {"id": "Opel", "name": "أوبل", "country": "ألمانيا", "image": "images/brands/opel.svg"},
+    {"id": "Nissan", "name": "نيسان", "country": "اليابان", "image": "images/brands/nissan.svg"}
 ]
