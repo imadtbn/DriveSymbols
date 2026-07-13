@@ -1,0 +1,109 @@
+
+//# 6. إنشاء ملف categories.json
+
+categories = [
+    {
+        "id": "Engine",
+        "name": "المحرك",
+        "icon": "fa-engine",
+        "color": "#ef4444",
+        "description": "رموز المحرك ونظام إدارة المحرك",
+        "count": 4
+    },
+    {
+        "id": "Brakes",
+        "name": "الفرامل",
+        "icon": "fa-circle-stop",
+        "color": "#dc2626",
+        "description": "رموز نظام الفرامل و ABS",
+        "count": 3
+    },
+    {
+        "id": "Battery",
+        "name": "البطارية",
+        "icon": "fa-battery-half",
+        "color": "#eab308",
+        "description": "رموز البطارية ونظام الشحن",
+        "count": 2
+    },
+    {
+        "id": "Oil",
+        "name": "الزيت",
+        "icon": "fa-droplet",
+        "color": "#f97316",
+        "description": "رموز زيت المحرك وضغط الزيت",
+        "count": 2
+    },
+    {
+        "id": "Temperature",
+        "name": "الحرارة",
+        "icon": "fa-temperature-high",
+        "color": "#dc2626",
+        "description": "رموز حرارة المحرك والتبريد",
+        "count": 2
+    },
+    {
+        "id": "Fuel",
+        "name": "الوقود",
+        "icon": "fa-gas-pump",
+        "color": "#f59e0b",
+        "description": "رموز الوقود وفلتر الوقود",
+        "count": 2
+    },
+    {
+        "id": "Tires",
+        "name": "الإطارات",
+        "icon": "fa-circle-notch",
+        "color": "#f97316",
+        "description": "رموز الإطارات ونظام TPMS",
+        "count": 2
+    },
+    {
+        "id": "Airbag",
+        "name": "الوسائد الهوائية",
+        "icon": "fa-person-seat",
+        "color": "#dc2626",
+        "description": "رموز الوسائد الهوائية وأحزمة الأمان",
+        "count": 2
+    },
+    {
+        "id": "Stability",
+        "name": "نظام الثبات",
+        "icon": "fa-car-side",
+        "color": "#f59e0b",
+        "description": "رموز ESP ونظام التحكم بالانزلاق",
+        "count": 2
+    },
+    {
+        "id": "Transmission",
+        "name": "ناقل الحركة",
+        "icon": "fa-gears",
+        "color": "#dc2626",
+        "description": "رموز الجيربوكس وناقل الحركة",
+        "count": 2
+    },
+    {
+        "id": "Electrical",
+        "name": "الكهرباء",
+        "icon": "fa-bolt",
+        "color": "#eab308",
+        "description": "رموز النظام الكهربائي والفيوزات",
+        "count": 2
+    },
+    {
+        "id": "Lights",
+        "name": "الإضاءة",
+        "icon": "fa-lightbulb",
+        "color": "#3b82f6",
+        "description": "رموز الإضاءة والأضواء",
+        "count": 3
+    },
+    {
+        "id": "Assistance",
+        "name": "أنظمة المساعدة",
+        "icon": "fa-hand-holding-hand",
+        "color": "#10b981",
+        "description": "رموز أنظمة مساعدة السائق",
+        "count": 3
+    }
+]

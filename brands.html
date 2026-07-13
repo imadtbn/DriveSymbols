@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>علامات السيارات - DriveSymbols DZ</title>
+    <meta name="description"
+        content="تصفح رموز لوحة القيادة حسب علامة السيارة. تويوتا، هيونداي، كيا، بيجو، رينو، فولكس فاجن، مرسيدس، بي إم دبليو، أودي، فيات، أوبل، نيسان.">
+    <link rel="../manifest" href="manifest.webmanifest">
+    <meta name="theme-color" content="#2563eb">
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>DriveSymbols DZ</span>
+            </a>
+            <nav class="nav" id="mainNav">
+                <a href="../index.html" class="nav-link">الرئيسية</a>
+                <a href="search.html" class="nav-link">البحث</a>
+                <a href="categories.html" class="nav-link">التصنيفات</a>
+                <a href="about.html" class="nav-link">عن الموقع</a>
+                <a href="contact.html" class="nav-link">اتصل بنا</a>
+            </nav>
+            <div class="header-actions">
+                <button class="btn-icon tooltip" data-tooltip="المفضلة" onclick="window.location.href='favorites.html'">
+                    <i class="fas fa-heart"></i>
+                </button>
+                <button class="btn-icon tooltip" data-tooltip="الوضع الليلي" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="القائمة">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <div class="container">
+            <div
+                style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-xs); font-size: var(--font-size-sm); color: var(--text-muted);">
+                <a href="../index.html" style="color: var(--text-muted);">الرئيسية</a>
+                <span>/</span>
+                <span>علامات السيارات</span>
+            </div>
+            <h1><i class="fas fa-car"></i> علامات السيارات</h1>
+            <p>اختر علامة السيارة لعرض الرموز الخاصة بها</p>
+        </div>
+    </div>
+
+    <section class="section">
+        <div class="container">
+            <!-- Brands Grid -->
+            <div class="grid grid-4" id="brandsGrid" style="margin-bottom: var(--space-2xl);">
+                <div class="loading" style="grid-column: 1 / -1;">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+
+            <!-- Brand Detail (shown when brand selected) -->
+            <div id="brandDetail" style="display: none;">
+                <div class="section-header" style="margin-bottom: var(--space-xl);">
+                    <div style="display: flex; align-items: center; gap: var(--space-md);">
+                        <div id="brandDetailIcon"
+                            style="width: 60px; height: 60px; border-radius: 50%; background: var(--bg-secondary); display: flex; align-items: center; justify-content: center; font-size: 1.75rem; color: var(--primary-color);">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <div>
+                            <h2 id="brandDetailName" style="font-size: var(--font-size-2xl); font-weight: 800;"></h2>
+                            <p id="brandDetailCountry"
+                                style="color: var(--text-muted); font-size: var(--font-size-sm);"></p>
+                        </div>
+                    </div>
+                    <button class="btn btn-secondary" onclick="closeBrandDetail()">
+                        <i class="fas fa-arrow-right"></i>
+                        عرض جميع العلامات
+                    </button>
+                </div>
+
+                <div class="alert alert-info" style="margin-bottom: var(--space-lg);">
+                    <i class="fas fa-circle-info"></i>
+                    <strong>ملاحظة:</strong> الرموز التالية شائعة في سيارات <span id="brandNoteName"></span>. قد تختلف
+                    بعض الرموز حسب الموديل والسنة.
+                </div>
+
+                <div class="grid grid-4" id="brandSymbolsGrid">
+                    <!-- سيتم ملؤها بالJavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3><i class="fas fa-tachometer-alt"></i> DriveSymbols DZ</h3>
+                    <p>دليل شامل لرموز لوحة القيادة وعلامات الأعطال في السيارات.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="../index.html">الرئيسية</a></li>
+                        <li><a href="search.html">البحث</a></li>
+                        <li><a href="categories.html">التصنيفات</a></li>
+                        <li><a href="favorites.html">المفضلة</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>المعلومات</h4>
+                    <ul>
+                        <li><a href="about.html">عن الموقع</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                        <li><a href="privacy.html">سياسة الخصوصية</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>تواصل معنا</h4>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-facebook"></i> فيسبوك</a></li>
+                        <li><a href="#"><i class="fab fa-telegram"></i> تيليجرام</a></li>
+                        <li><a href="mailto:contact@drivesymbols.dz"><i class="fas fa-envelope"></i> البريد</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 DriveSymbols DZ. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/ui.js"></script>
+
+    <script>
+        let allSymbols = [];
+        let allBrands = [];
+
+        async function loadBrands() {
+            try {
+                const [symbolsRes, brandsRes] = await Promise.all([
+                    fetch('data/symbols.json'),
+                    fetch('data/brands.json')
+                ]);
+
+                allSymbols = await symbolsRes.json();
+                allBrands = await brandsRes.json();
+
+                renderBrands();
+
+                // Check if brand is in URL
+                const params = new URLSearchParams(window.location.search);
+                const brandId = params.get('brand');
+                if (brandId) {
+                    showBrandDetail(brandId);
+                }
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('brandsGrid').innerHTML = `
+          <div class="alert alert-danger" style="grid-column: 1 / -1;">
+            <i class="fas fa-circle-exclamation"></i>
+            حدث خطأ أثناء تحميل البيانات. يرجى المحاولة مرة أخرى.
+          </div>
+        `;
+            }
+        }
+
+        function renderBrands() {
+            const container = document.getElementById('brandsGrid');
+
+            container.innerHTML = allBrands.map((brand, index) => {
+                const brandSymbols = allSymbols.filter(s => s.brands.includes(brand.id));
+                const highSeverity = brandSymbols.filter(s => s.severity === 'High').length;
+
+                return `
+          <div class="brand-card reveal" style="cursor: pointer; animation-delay: ${index * 0.05}s" onclick="showBrandDetail('${brand.id}')">
+            <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%); color: white; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-md); font-size: 2rem; box-shadow: var(--shadow-md);">
+              <i class="fas fa-car-side"></i>
+            </div>
+            <h4 style="font-size: var(--font-size-lg); font-weight: 700; margin-bottom: var(--space-xs);">${brand.name}</h4>
+            <p style="font-size: var(--font-size-sm); color: var(--text-muted); margin-bottom: var(--space-sm);">${brand.country}</p>
+            <div style="display: flex; align-items: center; justify-content: center; gap: var(--space-sm); flex-wrap: wrap;">
+              <span class="badge" style="background: var(--bg-secondary); color: var(--text-secondary); padding: 2px 10px; border-radius: 20px; font-size: var(--font-size-xs); font-weight: 600;">
+                <i class="fas fa-list" style="margin-left: 4px;"></i>
+                ${brandSymbols.length} رمز
+              </span>
+              ${highSeverity > 0 ? `
+                <span class="badge" style="background: rgba(239, 68, 68, 0.1); color: var(--severity-red); padding: 2px 10px; border-radius: 20px; font-size: var(--font-size-xs); font-weight: 600;">
+                  <i class="fas fa-triangle-exclamation" style="margin-left: 4px;"></i>
+                  ${highSeverity} خطير
+                </span>
+              ` : ''}
+            </div>
+          </div>
+        `;
+            }).join('');
+
+            initScrollReveal();
+        }
+
+        function showBrandDetail(brandId) {
+            const brand = allBrands.find(b => b.id === brandId);
+            if (!brand) return;
+
+            const brandSymbols = allSymbols.filter(s => s.brands.includes(brandId));
+
+            // Update URL without reloading
+            const url = new URL(window.location);
+            url.searchParams.set('brand', brandId);
+            window.history.pushState({}, '', url);
+
+            // Hide brands grid, show detail
+            document.getElementById('brandsGrid').style.display = 'none';
+            document.getElementById('brandDetail').style.display = 'block';
+
+            // Update detail header
+            document.getElementById('brandDetailName').textContent = brand.name;
+            document.getElementById('brandDetailCountry').textContent = brand.country;
+            document.getElementById('brandNoteName').textContent = brand.name;
+
+            // Render brand symbols
+            const container = document.getElementById('brandSymbolsGrid');
+
+            if (brandSymbols.length === 0) {
+                container.innerHTML = `
+          <div class="no-results" style="grid-column: 1 / -1;">
+            <i class="fas fa-circle-info" style="font-size: 3rem; color: var(--text-muted);"></i>
+            <h3 style="margin-top: var(--space-md); color: var(--text-muted);">لا توجد رموز خاصة مسجلة لـ ${brand.name}</h3>
+            <p style="color: var(--text-muted);">الرموز العامة تنطبق على جميع العلامات</p>
+          </div>
+        `;
+            } else {
+                container.innerHTML = brandSymbols.map(symbol => `
+          <a href="symbol.html?id=${symbol.id}" class="symbol-card">
+            <div class="symbol-card-image" style="display: flex; align-items: center; justify-content: center; font-size: 4rem; color: var(--primary-color);">
+              <i class="fas fa-${getIconForCategory(symbol.category)}"></i>
+            </div>
+            <div class="symbol-card-body">
+              <div class="symbol-card-title">${symbol.arabicName}</div>
+              <div class="symbol-card-meta">
+                <span class="severity-badge ${symbol.severityColor}">
+                  <i class="fas fa-circle" style="font-size: 0.4rem;"></i>
+                  ${symbol.severityArabic}
+                </span>
+                <span>${symbol.categoryArabic}</span>
+              </div>
+              <div style="margin-top: var(--space-sm); font-size: var(--font-size-xs); color: var(--text-muted);">
+                <i class="fas fa-eye" style="margin-left: 4px;"></i>
+                ${symbol.views} مشاهدة
+              </div>
+            </div>
+          </a>
+        `).join('');
+            }
+
+            // Scroll to detail
+            document.getElementById('brandDetail').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function closeBrandDetail() {
+            // Remove brand param from URL
+            const url = new URL(window.location);
+            url.searchParams.delete('brand');
+            window.history.pushState({}, '', url);
+
+            // Show brands grid, hide detail
+            document.getElementById('brandsGrid').style.display = 'grid';
+            document.getElementById('brandDetail').style.display = 'none';
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function getIconForCategory(category) {
+            const icons = {
+                'Engine': 'engine', 'Brakes': 'circle-stop', 'Battery': 'battery-half',
+                'Oil': 'droplet', 'Temperature': 'temperature-high', 'Fuel': 'gas-pump',
+                'Tires': 'circle-notch', 'Airbag': 'user-shield', 'Stability': 'car-side',
+                'Transmission': 'gears', 'Electrical': 'bolt', 'Lights': 'lightbulb',
+                'Assistance': 'hand-holding-hand'
+            };
+            return icons[category] || 'circle-question';
+        }
+
+        // Handle browser back button
+        window.addEventListener('popstate', () => {
+            const params = new URLSearchParams(window.location.search);
+            const brandId = params.get('brand');
+            if (brandId) {
+                showBrandDetail(brandId);
+            } else {
+                document.getElementById('brandsGrid').style.display = 'grid';
+                document.getElementById('brandDetail').style.display = 'none';
+            }
+        });
+
+        loadBrands();
+    </script>
+</body>
+
+</html>

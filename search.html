@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>البحث - DriveSymbols DZ</title>
+  <meta name="description" content="ابحث عن رموز لوحة القيادة وعلامات الأعطال في السيارات.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#2563eb">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <i class="fas fa-tachometer-alt"></i>
+        <span>DriveSymbols DZ</span>
+      </a>
+      <nav class="nav" id="mainNav">
+        <a href="index.html" class="nav-link">الرئيسية</a>
+        <a href="search.html" class="nav-link active">البحث</a>
+        <a href="categories.html" class="nav-link">التصنيفات</a>
+        <a href="about.html" class="nav-link">عن الموقع</a>
+        <a href="contact.html" class="nav-link">اتصل بنا</a>
+      </nav>
+      <div class="header-actions">
+        <button class="btn-icon tooltip" data-tooltip="المفضلة" onclick="window.location.href='favorites.html'">
+          <i class="fas fa-heart"></i>
+        </button>
+        <button class="btn-icon tooltip" data-tooltip="الوضع الليلي" id="themeToggle">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="القائمة">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="container">
+      <h1><i class="fas fa-search"></i> البحث في الرموز</h1>
+      <p>ابحث عن أي رمز باستخدام الاسم، التصنيف، اللون، أو الشركة</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="search-box" style="margin-bottom: var(--space-xl);">
+        <input type="text" class="search-input" id="searchInput" placeholder="ابحث عن رمز..." autocomplete="off">
+        <button class="search-btn" onclick="performSearch()">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+
+      <div class="filters" id="filters">
+        <button class="filter-btn active" data-filter="all">الكل</button>
+        <button class="filter-btn" data-filter="severity" data-value="High">🔴 خطير</button>
+        <button class="filter-btn" data-filter="severity" data-value="Medium">🟡 متوسط</button>
+        <button class="filter-btn" data-filter="severity" data-value="Low">🟢 منخفض</button>
+        <button class="filter-btn" data-filter="canDrive" data-value="true">✅ يمكن القيادة</button>
+        <button class="filter-btn" data-filter="canDrive" data-value="false">❌ لا تقود</button>
+      </div>
+
+      <div class="search-results">
+        <div class="search-results-header">
+          <h2 id="resultsTitle">جميع الرموز</h2>
+          <span id="resultsCount" style="color: var(--text-muted);"></span>
+        </div>
+        <div class="grid grid-4" id="searchResults">
+          <div class="loading">
+            <div class="spinner"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <p>© 2024 DriveSymbols DZ. جميع الحقوق محفوظة.</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script src="js/app.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/ui.js"></script>
+</body>
+
+</html>

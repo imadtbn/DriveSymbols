@@ -1,0 +1,246 @@
+
+/* 3. إنشاء ملف responsive.css responsive_css*/
+
+/* ===== التصميم المتجاوب ===== */
+
+/* شاشات كبيرة */
+@media (max-width: 1200px) {
+  .container {
+    max-width: 100%;
+  }
+  
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* شاشات متوسطة (تابلت) */
+@media (max-width: 992px) {
+  .grid-4 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .symbol-detail {
+    grid-template-columns: 1fr;
+  }
+  
+  .symbol-detail-image {
+    max-height: 250px;
+  }
+  
+  .tips-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .brands-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .hero-title {
+    font-size: 1.75rem;
+  }
+  
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+  }
+}
+
+/* شاشات صغيرة (موبايل) */
+@media (max-width: 768px) {
+  .header .container {
+    height: 60px;
+  }
+  
+  .nav {
+    position: fixed;
+    top: 60px;
+    right: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: calc(100vh - 60px);
+    background: var(--bg-card);
+    flex-direction: column;
+    padding: var(--space-xl);
+    gap: var(--space-lg);
+    border-left: 1px solid var(--border-color);
+    transition: right var(--transition-normal);
+    z-index: 999;
+    box-shadow: var(--shadow-xl);
+  }
+  
+  .nav.active {
+    right: 0;
+  }
+  
+  .nav-link {
+    font-size: var(--font-size-lg);
+  }
+  
+  .mobile-menu-btn {
+    display: flex;
+  }
+  
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .tips-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .brands-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .footer-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .hero-title {
+    font-size: 1.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: var(--font-size-md);
+  }
+  
+  .search-input {
+    font-size: var(--font-size-md);
+  }
+  
+  .section-header {
+    flex-direction: column;
+    gap: var(--space-sm);
+    text-align: center;
+  }
+  
+  .filters {
+    justify-content: center;
+  }
+  
+  .symbol-detail-meta {
+    justify-content: center;
+  }
+  
+  .share-buttons {
+    justify-content: center;
+  }
+  
+  .page-header h1 {
+    font-size: var(--font-size-xl);
+  }
+  
+  .category-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .danger-symbols {
+    padding: var(--space-md);
+  }
+}
+
+/* شاشات صغيرة جداً */
+@media (max-width: 480px) {
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .brands-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .hero {
+    padding: var(--space-xl) 0;
+  }
+  
+  .section {
+    padding: var(--space-xl) 0;
+  }
+  
+  .symbol-card-image {
+    height: 140px;
+  }
+  
+  .logo {
+    font-size: var(--font-size-md);
+  }
+  
+  .logo i {
+    font-size: 1.25rem;
+  }
+  
+  .btn-lg {
+    padding: var(--space-sm) var(--space-lg);
+    font-size: var(--font-size-md);
+  }
+  
+  .install-btn {
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    justify-content: center;
+  }
+  
+  .scroll-top {
+    right: 10px;
+    bottom: 70px;
+  }
+}
+
+/* شاشات عريضة جداً */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+  
+  .grid-4 {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* تفضيلات المستخدم - الحركة */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* تفضيلات المستخدم - الوضع الداكن */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-card: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #64748b;
+    --border-color: #334155;
+  }
+}

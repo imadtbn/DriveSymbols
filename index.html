@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl" data-theme="light">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DriveSymbols DZ - دليل رموز لوحة القيادة وعلامات الأعطال</title>
-  <meta name="description" content="دليل شامل لرموز لوحة القيادة وعلامات الأعطال في السيارات. اعرف معنى كل رمز وتحرك بأمان.">
+  <meta name="description"
+    content="دليل شامل لرموز لوحة القيادة وعلامات الأعطال في السيارات. اعرف معنى كل رمز وتحرك بأمان.">
   <meta name="keywords" content="رموز لوحة القيادة, علامات الأعطال, Check Engine, ABS, دليل السيارات">
   <meta name="author" content="DriveSymbols DZ">
 
@@ -13,26 +15,26 @@
   <meta property="og:description" content="دليل شامل لرموز لوحة القيادة وعلامات الأعطال في السيارات">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ar_DZ">
-  
+
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="DriveSymbols DZ - دليل رموز لوحة القيادة">
   <meta name="twitter:description" content="دليل شامل لرموز لوحة القيادة وعلامات الأعطال في السيارات">
-  
+
   <!-- PWA -->
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#2563eb">
   <link rel="apple-touch-icon" href="images/icons/icon-192x192.png">
-  
+
   <!-- CSS -->
-  <link rel="stylesheet" href="assets/css/variables.css">
-  <link rel="stylesheet" href="assets/css/main.css">
-  <link rel="stylesheet" href="assets/css/animations.css">
-  <link rel="stylesheet" href="assets/css/responsive.css">
-  
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
+
   <!-- Structured Data -->
   <script type="application/ld+json">
   {
@@ -50,6 +52,7 @@
   }
   </script>
 </head>
+
 <body>
   <!-- Header -->
   <header class="header">
@@ -58,15 +61,15 @@
         <i class="fas fa-tachometer-alt"></i>
         <span>DriveSymbols DZ</span>
       </a>
-      
+
       <nav class="nav" id="mainNav">
         <a href="index.html" class="nav-link active">الرئيسية</a>
-        <a href="pages/search.html" class="nav-link">البحث</a>
-        <a href="pages/categories.html" class="nav-link">التصنيفات</a>
-        <a href="pages/about.html" class="nav-link">عن الموقع</a>
-        <a href="pages/contact.html" class="nav-link">اتصل بنا</a>
+        <a href="search.html" class="nav-link">البحث</a>
+        <a href="categories.html" class="nav-link">التصنيفات</a>
+        <a href="about.html" class="nav-link">عن الموقع</a>
+        <a href="contact.html" class="nav-link">اتصل بنا</a>
       </nav>
-      
+
       <div class="header-actions">
         <button class="btn-icon tooltip" data-tooltip="المفضلة" onclick="window.location.href='favorites.html'">
           <i class="fas fa-heart"></i>
@@ -89,17 +92,18 @@
     <div class="container">
       <h1 class="hero-title animate-fade-in-up">اعرف معنى كل رمز...<br>وتحرك بأمان.</h1>
       <p class="hero-subtitle animate-fade-in-up delay-200">
-        دليل شامل لرموز لوحة القيادة وعلامات الأعطال في السيارات. 
+        دليل شامل لرموز لوحة القيادة وعلامات الأعطال في السيارات.
         فهم درجة الخطورة، أسباب العطل، وخطوات التصرف الصحيحة.
       </p>
-      
+
       <div class="search-box animate-fade-in-up delay-300">
-        <input type="text" class="search-input" id="heroSearch" placeholder="ابحث عن رمز، مثال: Check Engine, ABS, زيت..." autocomplete="off">
+        <input type="text" class="search-input" id="heroSearch"
+          placeholder="ابحث عن رمز، مثال: Check Engine, ABS, زيت..." autocomplete="off">
         <button class="search-btn" onclick="performHeroSearch()">
           <i class="fas fa-search"></i>
         </button>
       </div>
-      
+
       <div class="stats animate-fade-in-up delay-400">
         <div class="stat-card">
           <div class="stat-number" id="statSymbols">30+</div>
@@ -126,9 +130,9 @@
     <div class="container">
       <div class="section-header">
         <h2><i class="fas fa-triangle-exclamation"></i> رموز الأعطال الخطيرة</h2>
-        <a href="pages/search.html?severity=High" class="view-all">عرض الكل <i class="fas fa-arrow-left"></i></a>
+        <a href="search.html?severity=High" class="view-all">عرض الكل <i class="fas fa-arrow-left"></i></a>
       </div>
-      
+
       <div class="danger-symbols">
         <div class="alert alert-danger" style="margin-bottom: var(--space-lg);">
           <i class="fas fa-circle-exclamation"></i>
@@ -146,9 +150,9 @@
     <div class="container">
       <div class="section-header">
         <h2><i class="fas fa-layer-group"></i> التصنيفات</h2>
-        <a href="pages/categories.html" class="view-all">عرض الكل <i class="fas fa-arrow-left"></i></a>
+        <a href="categories.html" class="view-all">عرض الكل <i class="fas fa-arrow-left"></i></a>
       </div>
-      
+
       <div class="grid grid-3" id="categoriesGrid">
         <!-- سيتم ملؤها بالJavaScript -->
       </div>
@@ -160,9 +164,9 @@
     <div class="container">
       <div class="section-header">
         <h2><i class="fas fa-fire"></i> أكثر الرموز مشاهدة</h2>
-        <a href="pages/search.html?sort=views" class="view-all">عرض الكل <i class="fas fa-arrow-left"></i></a>
+        <a href="search.html?sort=views" class="view-all">عرض الكل <i class="fas fa-arrow-left"></i></a>
       </div>
-      
+
       <div class="grid grid-4" id="popularSymbolsGrid">
         <!-- سيتم ملؤها بالJavaScript -->
       </div>
@@ -174,9 +178,9 @@
     <div class="container">
       <div class="section-header">
         <h2><i class="fas fa-clock"></i> أحدث الرموز</h2>
-        <a href="pages/search.html?sort=date" class="view-all">عرض الكل <i class="fas fa-arrow-left"></i></a>
+        <a href="search.html?sort=date" class="view-all">عرض الكل <i class="fas fa-arrow-left"></i></a>
       </div>
-      
+
       <div class="grid grid-4" id="latestSymbolsGrid">
         <!-- سيتم ملؤها بالJavaScript -->
       </div>
@@ -189,7 +193,7 @@
       <div class="section-header">
         <h2><i class="fas fa-lightbulb"></i> نصائح القيادة</h2>
       </div>
-      
+
       <div class="tips-grid">
         <div class="tip-card reveal">
           <i class="fas fa-gauge-high"></i>
@@ -215,9 +219,9 @@
     <div class="container">
       <div class="section-header">
         <h2><i class="fas fa-car"></i> علامات السيارات</h2>
-        <a href="pages/brands.html" class="view-all">عرض الكل <i class="fas fa-arrow-left"></i></a>
+        <a href="brands.html" class="view-all">عرض الكل <i class="fas fa-arrow-left"></i></a>
       </div>
-      
+
       <div class="brands-grid" id="brandsGrid">
         <!-- سيتم ملؤها بالJavaScript -->
       </div>
@@ -236,18 +240,18 @@
           <h4>روابط سريعة</h4>
           <ul>
             <li><a href="index.html">الرئيسية</a></li>
-            <li><a href="pages/search.html">البحث</a></li>
-            <li><a href="pages/categories.html">التصنيفات</a></li>
-            <li><a href="pages/favorites.html">المفضلة</a></li>
+            <li><a href="search.html">البحث</a></li>
+            <li><a href="categories.html">التصنيفات</a></li>
+            <li><a href="favorites.html">المفضلة</a></li>
           </ul>
         </div>
         <div class="footer-links">
           <h4>المعلومات</h4>
           <ul>
-            <li><a href="pages/about.html">عن الموقع</a></li>
-            <li><a href="pages/contact.html">اتصل بنا</a></li>
-            <li><a href="pages/privacy.html">سياسة الخصوصية</a></li>
-            <li><a href="pages/terms.html">شروط الاستخدام</a></li>
+            <li><a href="about.html">عن الموقع</a></li>
+            <li><a href="contact.html">اتصل بنا</a></li>
+            <li><a href="privacy.html">سياسة الخصوصية</a></li>
+            <li><a href="terms.html">شروط الاستخدام</a></li>
           </ul>
         </div>
         <div class="footer-links">
@@ -278,9 +282,8 @@
   </button>
 
   <!-- JavaScript -->
-  <script src="assets/js/app.js"></script>
-  <script src="assets/js/ui.js"></script>
-  
+  <script src="js/app.js"></script>
+  <script src="js/ui.js"></script>
   <script>
     // Hero Search
     function performHeroSearch() {
@@ -289,10 +292,11 @@
         window.location.href = 'search.html?q=' + encodeURIComponent(query);
       }
     }
-    
-    document.getElementById('heroSearch').addEventListener('keypress', function(e) {
+
+    document.getElementById('heroSearch').addEventListener('keypress', function (e) {
       if (e.key === 'Enter') performHeroSearch();
     });
   </script>
 </body>
+
 </html>
