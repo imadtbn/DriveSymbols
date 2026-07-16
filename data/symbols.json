@@ -10,7 +10,7 @@
         "severity": "Medium",
         "severityArabic": "متوسطة",
         "severityColor": "severity-yellow",
-        "image": "engine-check.svg",
+        "image": "images/symbols/check-engine.png",
         "description": "يشير إلى وجود خلل في نظام إدارة المحرك أو أحد حساساته. يجب فحص السيارة لمعرفة سبب العطل.",
         "causes": [
             "عطل في حساس الأكسجين (O2 Sensor)",
@@ -26,7 +26,7 @@
         "solution": "فحص السيارة بجهاز OBD2 لمعرفة كود العطل. قد يكون العطل بسيطاً لكن يجب عدم تجاهله لفترة طويلة.",
         "cost": "200 - 1500 دج",
         "keywords": ["engine", "check", "motor", "محرك", "ميكانيك"],
-        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel", "Nissan"],
+        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel",  "Suzuki", "Nissan"],
         "views": 1250,
         "addedDate": "2024-01-15"
     },
@@ -41,7 +41,7 @@
         "severity": "High",
         "severityArabic": "عالية",
         "severityColor": "severity-red",
-        "image": "oil-pressure.svg",
+        "image": "images/symbols/oil.png",
         "description": "يشير إلى انخفاض ضغط زيت المحرك بشكل خطير. قد يؤدي إلى تلف المحرك إذا استمرت القيادة.",
         "causes": [
             "انخفاض مستوى زيت المحرك",
@@ -56,7 +56,7 @@
         "solution": "أوقف السيارة فوراً. افحص مستوى الزيت. إذا كان المستوى منخفضاً أضف زيت. إذا استمر التحذير، اتصل بورشة الإنقاذ.",
         "cost": "500 - 5000 دج",
         "keywords": ["oil", "pressure", "زيت", "ضغط", "lubrification"],
-        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel", "Nissan"],
+        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel",  "Suzuki", "Nissan"],
         "views": 980,
         "addedDate": "2024-01-15"
     },
@@ -71,7 +71,7 @@
         "severity": "High",
         "severityArabic": "عالية",
         "severityColor": "severity-red",
-        "image": "battery-charging.svg",
+        "image": "images/symbols/battery.webp",
         "description": "يشير إلى وجود مشكلة في نظام الشحن (الدينامو). البطارية لا تشحن أثناء القيادة.",
         "causes": [
             "تلف في الدينامو (Alternator)",
@@ -86,7 +86,7 @@
         "solution": "أوقف السيارة في مكان آمن. افحص سير الدينامو. إذا كان مقطوعاً لا تحاول القيادة. اتصل بورشة الإنقاذ.",
         "cost": "3000 - 15000 دج",
         "keywords": ["battery", "charging", "alternator", "بطارية", "دينامو", "شحن"],
-        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel", "Nissan"],
+        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel",  "Suzuki", "Nissan"],
         "views": 850,
         "addedDate": "2024-01-15"
     },
@@ -101,7 +101,7 @@
         "severity": "High",
         "severityArabic": "عالية",
         "severityColor": "severity-red",
-        "image": "brake-warning.svg",
+        "image": "images/symbols/brakes.png",
         "description": "يشير إلى انخفاض مستوى سائل الفرامل أو تلف في نظام الفرامل. يؤثر على سلامة القيادة.",
         "causes": [
             "انخفاض مستوى زيت الفرامل",
@@ -116,7 +116,7 @@
         "solution": "افحص مستوى سائل الفرامل. إذا كان منخفضاً أضف سائل فرامل من النوع المناسب. إذا استمر التحذير، لا تقود السيارة.",
         "cost": "500 - 8000 دج",
         "keywords": ["brake", "frein", "فرامل", "brake fluid", "ABS"],
-        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel", "Nissan"],
+        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel",  "Suzuki", "Nissan"],
         "views": 1100,
         "addedDate": "2024-01-15"
     },
@@ -131,7 +131,7 @@
         "severity": "Medium",
         "severityArabic": "متوسطة",
         "severityColor": "severity-yellow",
-        "image": "abs.svg",
+        "image": "images/symbols/Temperature.webp",
         "description": "نظام مانع الانغلاق (Anti-lock Braking System). يشير إلى وجود عطل في النظام. الفرامل العادية ستعمل لكن بدون ميزة ABS.",
         "causes": [
             "عطل في حساسات ABS",
@@ -146,7 +146,7 @@
         "solution": "يمكن القيادة لكن بحذر. الفرامل العادية ستعمل. اذهب لأقرب ورشة لإصلاح نظام ABS.",
         "cost": "3000 - 20000 دج",
         "keywords": ["ABS", "anti-lock", "brake", "فرامل", "مانع انغلاق"],
-        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel", "Nissan"],
+        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel",  "Suzuki", "Nissan"],
         "views": 920,
         "addedDate": "2024-01-15"
     },
@@ -161,7 +161,7 @@
         "severity": "High",
         "severityArabic": "عالية",
         "severityColor": "severity-red",
-        "image": "coolant-temp.svg",
+        "image": "images/symbols/Temperature.webp",
         "description": "ارتفاع درجة حرارة المحرك بشكل خطير. قد يؤدي إلى تلف المحرك (تشقق الرأس أو تلف الجوانات).",
         "causes": [
             "انخفاض مستوى ماء التبريد",
@@ -177,7 +177,7 @@
         "solution": "أوقف السيارة فوراً واطفئ المحرك. انتظر حتى يبرد المحرك. افحص مستوى ماء التبريد. لا تفتح غطاء الردياتير وهو ساخن.",
         "cost": "1000 - 30000 دج",
         "keywords": ["coolant", "temperature", "water", "حرارة", "تبريد", "radiator"],
-        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel", "Nissan"],
+        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel",  "Suzuki", "Nissan"],
         "views": 1050,
         "addedDate": "2024-01-15"
     },
@@ -192,7 +192,7 @@
         "severity": "Low",
         "severityArabic": "منخفضة",
         "severityColor": "severity-green",
-        "image": "fuel-low.svg",
+        "image": "images/symbols/Fuel.png",
         "description": "مستوى الوقود منخفض. يجب التزود بالوقود في أقرب محطة.",
         "causes": [
             "انخفاض مستوى الوقود في الخزان",
@@ -205,7 +205,7 @@
         "solution": "التزود بالوقود في أقرب محطة. لا تنتظر حتى ينفذ الوقود بالكامل لأن ذلك قد يضر بمضخة الوقود.",
         "cost": "500 - 3000 دج",
         "keywords": ["fuel", "gasoline", "essence", "وقود", "بنزين", "gasoil"],
-        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel", "Nissan"],
+        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel",  "Suzuki", "Nissan"],
         "views": 780,
         "addedDate": "2024-01-15"
     },
@@ -220,7 +220,7 @@
         "severity": "High",
         "severityArabic": "عالية",
         "severityColor": "severity-red",
-        "image": "airbag.svg",
+        "image": "images/symbols/Airbag.webp",
         "description": "عطل في نظام الوسائد الهوائية (Airbags). قد لا تنفجر الوسائد في حالة الحادث.",
         "causes": [
             "عطل في حساسات الاصطدام",
@@ -235,7 +235,7 @@
         "solution": "اذهب لأقرب ورشة متخصصة. عطل الوسائد الهوائية يتطلب فحصاً دقيقاً وقد يكون مكلفاً.",
         "cost": "5000 - 50000 دج",
         "keywords": ["airbag", "SRS", "وسائد هوائية", "safety", "أمان"],
-        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel", "Nissan"],
+        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel",  "Suzuki", "Nissan"],
         "views": 890,
         "addedDate": "2024-01-15"
     },
@@ -250,7 +250,7 @@
         "severity": "Medium",
         "severityArabic": "متوسطة",
         "severityColor": "severity-yellow",
-        "image": "tpms.svg",
+        "image": "images/symbols/tpms.webp",
         "description": "نظام مراقبة ضغط الإطارات (Tire Pressure Monitoring System). أحد الإطارات أو أكثر بضغط منخفض.",
         "causes": [
             "انخفاض ضغط الهواء في إحدى الإطارات",
@@ -264,7 +264,7 @@
         "solution": "افحص ضغط جميع الإطارات. أضف هواء حتى الضغط الموصى به (موجود على باب السائق). إذا استمر التحذير، قد يكون هناك ثقب.",
         "cost": "200 - 5000 دج",
         "keywords": ["TPMS", "tire", "pressure", "pneu", "إطار", "ضغط", "pneumatique"],
-        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel", "Nissan"],
+        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel",  "Suzuki", "Nissan"],
         "views": 750,
         "addedDate": "2024-01-15"
     },
@@ -279,7 +279,7 @@
         "severity": "Low",
         "severityArabic": "منخفضة",
         "severityColor": "severity-green",
-        "image": "seat-belt.svg",
+        "image": "images/symbols/check-engine.png",
         "description": "تذكير بربط حزام الأمان. يظهر عادة مع صوت تنبيه.",
         "causes": [
             "عدم ربط حزام الأمان",
@@ -292,7 +292,7 @@
         "solution": "ربط حزام الأمان. إذا كان الحزام مربوطاً ولا يزال التحذير ظاهراً، افحص الحساس.",
         "cost": "0 - 2000 دج",
         "keywords": ["seat belt", "ceinture", "حزام أمان", "safety"],
-        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel", "Nissan"],
+        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel",  "Suzuki", "Nissan"],
         "views": 650,
         "addedDate": "2024-01-15"
     },
@@ -307,7 +307,7 @@
         "severity": "Medium",
         "severityArabic": "متوسطة",
         "severityColor": "severity-yellow",
-        "image": "esp.svg",
+        "image": "images/symbols/check-engine.png",
         "description": "نظام التحكم الإلكتروني بالثبات (Electronic Stability Program). يشير إلى عطل في النظام أو أنه تم إيقافه.",
         "causes": [
             "عطل في حساسات ABS (مترابطة مع ESP)",
@@ -322,7 +322,7 @@
         "solution": "تأكد من عدم الضغط على زر إيقاف ESP. إذا استمر التحذير، اذهب لأقرب ورشة للفحص.",
         "cost": "3000 - 25000 دج",
         "keywords": ["ESP", "stability", "traction", "ثبات", "ESP OFF"],
-        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel", "Nissan"],
+        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel",  "Suzuki", "Nissan"],
         "views": 720,
         "addedDate": "2024-01-15"
     },
@@ -337,7 +337,7 @@
         "severity": "High",
         "severityArabic": "عالية",
         "severityColor": "severity-red",
-        "image": "transmission.svg",
+        "image": "images/symbols/Transmission.webp",
         "description": "عطل في ناقل الحركة (الجيربوكس). قد يسبب صعوبة في التبديل أو زيادة في استهلاك الوقود.",
         "causes": [
             "انخفاض مستوى زيت الجيربوكس",
@@ -352,7 +352,7 @@
         "solution": "لا تحاول القيادة. استخدم سطحة لنقل السيارة لأقرب ورشة متخصصة.",
         "cost": "5000 - 50000 دج",
         "keywords": ["transmission", "gearbox", "boite", "جيربوكس", "ناقل حركة", "clutch"],
-        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel", "Nissan"],
+        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel",  "Suzuki", "Nissan"],
         "views": 680,
         "addedDate": "2024-01-15"
     },
@@ -367,7 +367,7 @@
         "severity": "Medium",
         "severityArabic": "متوسطة",
         "severityColor": "severity-yellow",
-        "image": "epc.svg",
+        "image": "images/symbols/epc.png",
         "description": "Electronic Power Control - نظام التحكم الإلكتروني بالطاقة. يظهر في سيارات فولكس فاجن ومجموعتها.",
         "causes": [
             "عطل في حساس دواسة البنزين",
@@ -397,7 +397,7 @@
         "severity": "Medium",
         "severityArabic": "متوسطة",
         "severityColor": "severity-yellow",
-        "image": "glow-plug.svg",
+        "image": "images/symbols/Glow-Plug.png",
         "description": "شمعة التسخين (Bougie de préchauffage). تظهر في السيارات الديزل. تساعد في تشغيل المحرك في البرد.",
         "causes": [
             "تلف في شمعة التسخين",
@@ -411,7 +411,7 @@
         "solution": "فحص شمعات التسخين وتغييرها إذا لزم الأمر. السيارة قد تصعب تشغيلها في الصباح البارد.",
         "cost": "1500 - 5000 دج",
         "keywords": ["glow plug", "bougie", "chauffe", "شمعة تسخين", "diesel", "gazole"],
-        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel", "Nissan"],
+        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel",  "Suzuki", "Nissan"],
         "views": 580,
         "addedDate": "2024-01-15"
     },
@@ -426,7 +426,7 @@
         "severity": "Low",
         "severityArabic": "منخفضة",
         "severityColor": "severity-green",
-        "image": "high-beam.svg",
+        "image": "images/symbols/High-Beam.webp",
         "description": "الضوء العالي (Phare). إشارة معلوماتية فقط تشير إلى أن الضوء العالي مُفعل.",
         "causes": [
             "تم تفعيل الضوء العالي"
@@ -437,7 +437,7 @@
         "solution": "إشارة معلوماتية فقط. استخدم الضوء العالي في الطرق المظلمة خارج المدينة. أنقص الضوء عند رؤية سيارة قادمة.",
         "cost": "0 دج",
         "keywords": ["high beam", "phare", "ضوء عالي", "feux", "lumière"],
-        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel", "Nissan"],
+        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel",  "Suzuki", "Nissan"],
         "views": 420,
         "addedDate": "2024-01-15"
     },
@@ -452,7 +452,7 @@
         "severity": "Low",
         "severityArabic": "منخفضة",
         "severityColor": "severity-green",
-        "image": "cruise-control.svg",
+        "image": "images/symbols/Cruise-Control.webp",
         "description": "مثبت السرعة (Régulateur de vitesse). نظام مساعدة للحفاظ على سرعة ثابتة.",
         "causes": [
             "تم تفعيل مثبت السرعة",
@@ -464,7 +464,7 @@
         "solution": "إشارة معلوماتية. إذا استمر الضوء عند إيقاف النظام، قد يكون هناك عطل بسيط.",
         "cost": "0 - 5000 دج",
         "keywords": ["cruise", "control", "régulateur", "مثبت سرعة", "vitesse"],
-        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel", "Nissan"],
+        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel",  "Suzuki", "Nissan"],
         "views": 380,
         "addedDate": "2024-01-15"
     },
@@ -479,7 +479,7 @@
         "severity": "Low",
         "severityArabic": "منخفضة",
         "severityColor": "severity-green",
-        "image": "lane-assist.svg",
+        "image": "images/symbols/Lane-Assist.webp",
         "description": "نظام مساعدة الحفاظ على الحارة (Lane Keeping Assist). يحذر عند خروج السيارة من الحارة.",
         "causes": [
             "تم تفعيل النظام",
@@ -507,7 +507,7 @@
         "severity": "Low",
         "severityArabic": "منخفضة",
         "severityColor": "severity-green",
-        "image": "blind-spot.svg",
+        "image": "images/symbols/blind-spot.webp",
         "description": "نظام تحذير النقطة العمياء (Blind Spot Monitoring). يحذر عند وجود سيارة في النقطة العمياء.",
         "causes": [
             "وجود سيارة في النقطة العمياء",
@@ -535,7 +535,7 @@
         "severity": "Low",
         "severityArabic": "منخفضة",
         "severityColor": "severity-green",
-        "image": "fog-light.svg",
+        "image": "images/symbols/Fog Light.png",
         "description": "ضوء الضباب (Anti-brouillard). إشارة معلوماتية تشير إلى أن أضواء الضباب مُفعلة.",
         "causes": [
             "تم تفعيل ضوء الضباب الأمامي أو الخلفي"
@@ -546,7 +546,7 @@
         "solution": "إشارة معلوماتية. استخدم أضواء الضباب في حالة الضباب الكثيف أو الأمطار الغزيرة.",
         "cost": "0 دج",
         "keywords": ["fog", "light", "brouillard", "ضباب", "anti-brouillard"],
-        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel", "Nissan"],
+        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel",  "Suzuki", "Nissan"],
         "views": 290,
         "addedDate": "2024-01-15"
     },
@@ -561,7 +561,7 @@
         "severity": "Low",
         "severityArabic": "منخفضة",
         "severityColor": "severity-green",
-        "image": "parking-light.svg",
+        "image": "images/symbols/Parking Light.png",
         "description": "ضوء الوقوف (Position). إشارة معلوماتية تشير إلى أن أضواء الوقوف مُفعلة.",
         "causes": [
             "تم تفعيل أضواء الوقوف"
@@ -572,7 +572,7 @@
         "solution": "إشارة معلوماتية. أضواء الوقوف تُستخدم في حالة توقف السيارة على جانب الطريق.",
         "cost": "0 دج",
         "keywords": ["parking", "light", "position", "وقوف", "position", "feux"],
-        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel", "Nissan"],
+        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel",  "Suzuki", "Nissan"],
         "views": 270,
         "addedDate": "2024-01-15"
     },
@@ -587,7 +587,7 @@
         "severity": "Medium",
         "severityArabic": "متوسطة",
         "severityColor": "severity-yellow",
-        "image": "brake-pad.svg",
+        "image": "images/symbols/Brake Pad.png",
         "description": "تشير إلى تآكل حسابات الفرامل (Plaquettes de frein). يجب تغييرها قبل تلف أسطوانات الفرامل.",
         "causes": [
             "تآكل حسابات الفرامل الأمامية أو الخلفية",
@@ -600,7 +600,7 @@
         "solution": "اذهب لأقرب ورشة لتغيير حسابات الفرامل. لا تنتظر حتى تصل للمعدن لأن ذلك يضر بأسطوانات الفرامل.",
         "cost": "3000 - 8000 دج",
         "keywords": ["brake pad", "plaquette", "فرامل", "frein", "wear"],
-        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel", "Nissan"],
+        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel",  "Suzuki", "Nissan"],
         "views": 640,
         "addedDate": "2024-01-15"
     },
@@ -615,7 +615,7 @@
         "severity": "High",
         "severityArabic": "عالية",
         "severityColor": "severity-red",
-        "image": "alternator.svg",
+        "image": "images/symbols/battery.webp",
         "description": "عطل في الدينامو (Alternateur). لا يشحن البطارية أثناء القيادة. قد تتوقف السيارة فجأة.",
         "causes": [
             "تلف في الدينامو",
@@ -630,7 +630,7 @@
         "solution": "أوقف السيارة في مكان آمن. افحص سير الدينامو. إذا كان مقطوعاً لا تحاول القيادة. اتصل بورشة الإنقاذ.",
         "cost": "8000 - 25000 دج",
         "keywords": ["alternator", "alternateur", "دينامو", "charge", "شحن"],
-        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel", "Nissan"],
+        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel",  "Suzuki", "Nissan"],
         "views": 710,
         "addedDate": "2024-01-15"
     },
@@ -645,7 +645,7 @@
         "severity": "Medium",
         "severityArabic": "متوسطة",
         "severityColor": "severity-yellow",
-        "image": "oil-level.svg",
+        "image": "images/symbols/oil.png",
         "description": "انخفاض مستوى زيت المحرك. يجب إضافة زيت أو تغييره.",
         "causes": [
             "انخفاض مستوى الزيت بسبب الاستهلاك",
@@ -659,7 +659,7 @@
         "solution": "افحص مستوى الزيت بعصا الزيت. أضف زيت من النوع والدرجة المناسبة. إذا استمر الانخفاض، ابحث عن تسرب.",
         "cost": "500 - 3000 دج",
         "keywords": ["oil", "level", "niveau", "زيت", "moteur", "huile"],
-        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel", "Nissan"],
+        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel",  "Suzuki", "Nissan"],
         "views": 590,
         "addedDate": "2024-01-15"
     },
@@ -674,7 +674,7 @@
         "severity": "High",
         "severityArabic": "عالية",
         "severityColor": "severity-red",
-        "image": "radiator.svg",
+        "image": "images/symbols/Temperature.webp",
         "description": "عطل في نظام التبريد أو المشع (Radiateur). قد يسبب ارتفاع حرارة المحرك.",
         "causes": [
             "تسرب ماء التبريد من المشع",
@@ -689,7 +689,7 @@
         "solution": "أوقف السيارة واطفئ المحرك. انتظر حتى يبرد. افحص مستوى ماء التبريد. لا تفتح الردياتير وهو ساخن.",
         "cost": "3000 - 20000 دج",
         "keywords": ["radiator", "radiateur", "مشع", "تبريد", "refroidissement"],
-        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel", "Nissan"],
+        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel",  "Suzuki", "Nissan"],
         "views": 540,
         "addedDate": "2024-01-15"
     },
@@ -704,7 +704,7 @@
         "severity": "Medium",
         "severityArabic": "متوسطة",
         "severityColor": "severity-yellow",
-        "image": "fuel-filter.svg",
+        "image": "images/symbols/Fuel Filter.webp",
         "description": "انسداد فلتر الوقود (Filtre à carburant). يؤثر على تدفق الوقود للمحرك.",
         "causes": [
             "انسداد فلتر الوقود بسبب الشوائب",
@@ -718,7 +718,7 @@
         "solution": "غيّر فلتر الوقود. استخدم وقود نظيف من محطات موثوقة. فلتر الوقود يُغيّر عادة كل 20000-30000 كم.",
         "cost": "1000 - 4000 دج",
         "keywords": ["fuel filter", "filtre carburant", "فلتر وقود", "essence", "gasoil"],
-        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel", "Nissan"],
+        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel",  "Suzuki", "Nissan"],
         "views": 480,
         "addedDate": "2024-01-15"
     },
@@ -733,7 +733,7 @@
         "severity": "Medium",
         "severityArabic": "متوسطة",
         "severityColor": "severity-yellow",
-        "image": "tire-pressure.svg",
+        "image": "images/symbols/tpms.webp",
         "description": "انخفاض ضغط الهواء في أحد الإطارات. قد يؤدي إلى تلف الإطار أو زيادة استهلاك الوقود.",
         "causes": [
             "ثقب في الإطار",
@@ -747,7 +747,7 @@
         "solution": "افحص الإطارات بمقياس ضغط. أضف هواء حتى الضغط الموصى به. إذا استمر التحذير، قد يكون هناك ثقب.",
         "cost": "200 - 5000 دج",
         "keywords": ["tire pressure", "pneu", "pression", "إطار", "ضغط", "pneumatique"],
-        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel", "Nissan"],
+        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel",  "Suzuki", "Nissan"],
         "views": 510,
         "addedDate": "2024-01-15"
     },
@@ -762,7 +762,7 @@
         "severity": "Low",
         "severityArabic": "منخفضة",
         "severityColor": "severity-green",
-        "image": "traction-control.svg",
+        "image": "images/symbols/Stability.webp",
         "description": "نظام التحكم بالانزلاق (Traction Control). يمنع انزلاق الإطارات عند الانطلاق.",
         "causes": [
             "تم إيقاف النظام يدوياً",
@@ -776,7 +776,7 @@
         "solution": "إذا كان الضوء يومض، النظام يعمل. إذا كان ثابتاً، قد يكون هناك عطل أو تم إيقافه يدوياً.",
         "cost": "0 - 10000 دج",
         "keywords": ["traction", "control", "antipatinage", "انزلاق", "traction", "grip"],
-        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel", "Nissan"],
+        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel",  "Suzuki", "Nissan"],
         "views": 440,
         "addedDate": "2024-01-15"
     },
@@ -791,7 +791,7 @@
         "severity": "High",
         "severityArabic": "عالية",
         "severityColor": "severity-red",
-        "image": "gearbox.svg",
+        "image": "images/symbols/Gearbox.png",
         "description": "عطل خطير في علبة السرعات (Boîte de vitesses). قد يسبب تلفاً كبيراً إذا استمرت القيادة.",
         "causes": [
             "انخفاض مستوى زيت الجيربوكس",
@@ -806,7 +806,7 @@
         "solution": "لا تحاول القيادة. استخدم سطحة لنقل السيارة. عطل الجيربوكس يتطلب ورشة متخصصة.",
         "cost": "10000 - 100000 دج",
         "keywords": ["gearbox", "boite", "vitesse", "جيربوكس", "علبة سرعات", "transmission"],
-        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel", "Nissan"],
+        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel",  "Suzuki", "Nissan"],
         "views": 560,
         "addedDate": "2024-01-15"
     },
@@ -821,7 +821,7 @@
         "severity": "Medium",
         "severityArabic": "متوسطة",
         "severityColor": "severity-yellow",
-        "image": "fuse.svg",
+        "image": "images/symbols/check-engine.png",
         "description": "عطل في نظام الكهرباء أو انقطاع في الفيوزات (Fusibles). قد يؤثر على أحد الأنظمة.",
         "causes": [
             "انقطاع في فيوز كهربائي",
@@ -835,7 +835,7 @@
         "solution": "افحص صندوق الفيوزات. استبدل الفيوز التالف بنفس القيمة. إذا انقطع مرة أخرى، قد يكون هناك عطل في الدائرة.",
         "cost": "100 - 2000 دج",
         "keywords": ["fuse", "fusible", "فيوز", "كهرباء", "électrique", "circuit"],
-        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel", "Nissan"],
+        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel",  "Suzuki", "Nissan"],
         "views": 470,
         "addedDate": "2024-01-15"
     },
@@ -850,7 +850,7 @@
         "severity": "High",
         "severityArabic": "عالية",
         "severityColor": "severity-red",
-        "image": "charging-system.svg",
+        "image": "images/symbols/battery.webp",
         "description": "عطل في نظام الشحن الكهربائي. البطارية لا تشحن أثناء القيادة.",
         "causes": [
             "تلف في الدينامو",
@@ -865,7 +865,7 @@
         "solution": "أوقف السيارة في مكان آمن. افحص سير الدينامو. اتصل بورشة الإنقاذ.",
         "cost": "5000 - 20000 دج",
         "keywords": ["charging", "charge", "شحن", "alternateur", "dynamo", "بطارية"],
-        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel", "Nissan"],
+        "brands": ["Toyota", "Hyundai", "Kia", "Peugeot", "Renault", "Volkswagen", "Mercedes", "BMW", "Audi", "Fiat", "Opel",  "Suzuki", "Nissan"],
         "views": 530,
         "addedDate": "2024-01-15"
     }

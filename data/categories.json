@@ -2,7 +2,7 @@
     {
         "id": "Engine",
         "name": "المحرك",
-        "icon": "fa-engine",
+        "image": "images/categories/check-engine.png",
         "color": "#ef4444",
         "description": "رموز المحرك ونظام إدارة المحرك",
         "count": 4
@@ -10,7 +10,7 @@
     {
         "id": "Brakes",
         "name": "الفرامل",
-        "icon": "fa-circle-stop",
+        "image": "images/categories/brakes.png",
         "color": "#dc2626",
         "description": "رموز نظام الفرامل و ABS",
         "count": 3
@@ -18,7 +18,7 @@
     {
         "id": "Battery",
         "name": "البطارية",
-        "icon": "fa-battery-half",
+        "image": "images/categories/battery.webp",
         "color": "#eab308",
         "description": "رموز البطارية ونظام الشحن",
         "count": 2
@@ -26,7 +26,7 @@
     {
         "id": "Oil",
         "name": "الزيت",
-        "icon": "fa-droplet",
+        "image": "images/categories/oil.png",
         "color": "#f97316",
         "description": "رموز زيت المحرك وضغط الزيت",
         "count": 2
@@ -34,7 +34,7 @@
     {
         "id": "Temperature",
         "name": "الحرارة",
-        "icon": "fa-temperature-high",
+        "image": "images/categories/temperature.webp",
         "color": "#dc2626",
         "description": "رموز حرارة المحرك والتبريد",
         "count": 2
@@ -42,7 +42,7 @@
     {
         "id": "Fuel",
         "name": "الوقود",
-        "icon": "fa-gas-pump",
+        "image": "images/categories/Fuel.png",
         "color": "#f59e0b",
         "description": "رموز الوقود وفلتر الوقود",
         "count": 2
@@ -50,7 +50,7 @@
     {
         "id": "Tires",
         "name": "الإطارات",
-        "icon": "fa-circle-notch",
+        "image": "images/categories/Tires.webp",
         "color": "#f97316",
         "description": "رموز الإطارات ونظام TPMS",
         "count": 2
@@ -59,6 +59,7 @@
         "id": "Airbag",
         "name": "الوسائد الهوائية",
         "icon": "fa-person-seat",
+        "image": "images/categories/Airbag.webp",
         "color": "#dc2626",
         "description": "رموز الوسائد الهوائية وأحزمة الأمان",
         "count": 2
@@ -66,6 +67,7 @@
     {
         "id": "Stability",
         "name": "نظام الثبات",
+        "image": "images/categories/Stability.webp",
         "icon": "fa-car-side",
         "color": "#f59e0b",
         "description": "رموز ESP ونظام التحكم بالانزلاق",
@@ -74,7 +76,7 @@
     {
         "id": "Transmission",
         "name": "ناقل الحركة",
-        "icon": "fa-gears",
+        "image": "images/categories/Transmission.webp",
         "color": "#dc2626",
         "description": "رموز الجيربوكس وناقل الحركة",
         "count": 2
@@ -82,7 +84,7 @@
     {
         "id": "Electrical",
         "name": "الكهرباء",
-        "icon": "fa-bolt",
+        "image": "images/categories/Electrical.webp",
         "color": "#eab308",
         "description": "رموز النظام الكهربائي والفيوزات",
         "count": 2
@@ -90,7 +92,7 @@
     {
         "id": "Lights",
         "name": "الإضاءة",
-        "icon": "fa-lightbulb",
+        "image": "images/categories/Lights.png",
         "color": "#3b82f6",
         "description": "رموز الإضاءة والأضواء",
         "count": 3
@@ -98,7 +100,7 @@
     {
         "id": "Assistance",
         "name": "أنظمة المساعدة",
-        "icon": "fa-hand-holding-hand",
+        "image": "images/categories/Assistance.webp",
         "color": "#10b981",
         "description": "رموز أنظمة مساعدة السائق",
         "count": 3
