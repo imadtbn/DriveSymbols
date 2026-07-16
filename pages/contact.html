@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl" data-theme="light">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +8,23 @@
   <meta name="description" content="تواصل مع فريق DriveSymbols DZ.">
   <link rel="../manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#2563eb">
-  <link rel="stylesheet" href="../assets/css/variables.css">
-  <link rel="stylesheet" href="../assets/css/main.css">
-  <link rel="stylesheet" href="../assets/css/animations.css">
-  <link rel="stylesheet" href="../assets/css/responsive.css">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/responsive.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Google Fonts Arabic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap"
+    rel="stylesheet">
+
+
 </head>
+
 <body>
   <header class="header">
     <div class="container">
@@ -22,10 +34,11 @@
       </a>
       <nav class="nav" id="mainNav">
         <a href="../index.html" class="nav-link">الرئيسية</a>
-        <a href="search.html" class="nav-link">البحث</a>
-        <a href="categories.html" class="nav-link">التصنيفات</a>
+        <a href="../search.html" class="nav-link">البحث</a>
+        <a href="../categories.html" class="nav-link">التصنيفات</a>
+        <a href="../brands.html" class="nav-link">علامات السيارات</a>
         <a href="about.html" class="nav-link">عن الموقع</a>
-        <a href="contact.html" class="nav-link active">اتصل بنا</a>
+        <a href="contact.html" class="nav-link">اتصل بنا</a>
       </nav>
       <div class="header-actions">
         <button class="btn-icon tooltip" data-tooltip="المفضلة" onclick="window.location.href='favorites.html'">
@@ -43,6 +56,12 @@
 
   <div class="page-header">
     <div class="container">
+      <div
+        style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-xs); font-size: var(--font-size-sm); color: var(--text-muted);">
+        <a href="../index.html" style="color: var(--text-muted);">الرئيسية</a>
+        <span>/</span>
+        <span>اتصل بنا</span>
+      </div>
       <h1><i class="fas fa-envelope"></i> اتصل بنا</h1>
       <p>نحن هنا لمساعدتك. تواصل معنا لأي استفسار أو اقتراح</p>
     </div>
@@ -53,10 +72,11 @@
       <div class="grid grid-2" style="gap: var(--space-2xl);">
         <div class="reveal">
           <h2 style="font-size: var(--font-size-xl); margin-bottom: var(--space-lg);">معلومات التواصل</h2>
-          
+
           <div style="display: flex; flex-direction: column; gap: var(--space-lg);">
             <div style="display: flex; align-items: center; gap: var(--space-md);">
-              <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--primary-color); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
+              <div
+                style="width: 50px; height: 50px; border-radius: 50%; background: var(--primary-color); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
                 <i class="fas fa-envelope"></i>
               </div>
               <div>
@@ -64,9 +84,10 @@
                 <p style="color: var(--text-muted);">contact@drivesymbols.dz</p>
               </div>
             </div>
-            
+
             <div style="display: flex; align-items: center; gap: var(--space-md);">
-              <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--severity-green); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
+              <div
+                style="width: 50px; height: 50px; border-radius: 50%; background: var(--severity-green); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
                 <i class="fab fa-whatsapp"></i>
               </div>
               <div>
@@ -74,9 +95,10 @@
                 <p style="color: var(--text-muted);">+213 555 123 456</p>
               </div>
             </div>
-            
+
             <div style="display: flex; align-items: center; gap: var(--space-md);">
-              <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--severity-yellow); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
+              <div
+                style="width: 50px; height: 50px; border-radius: 50%; background: var(--severity-yellow); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
                 <i class="fab fa-telegram"></i>
               </div>
               <div>
@@ -84,9 +106,10 @@
                 <p style="color: var(--text-muted);">@DriveSymbolsDZ</p>
               </div>
             </div>
-            
+
             <div style="display: flex; align-items: center; gap: var(--space-md);">
-              <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--severity-orange); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
+              <div
+                style="width: 50px; height: 50px; border-radius: 50%; background: var(--severity-orange); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
                 <i class="fab fa-facebook"></i>
               </div>
               <div>
@@ -96,22 +119,27 @@
             </div>
           </div>
         </div>
-        
+
         <div class="reveal">
           <h2 style="font-size: var(--font-size-xl); margin-bottom: var(--space-lg);">أرسل رسالة</h2>
-          
+
           <form id="contactForm" style="display: flex; flex-direction: column; gap: var(--space-md);">
             <div>
               <label style="display: block; margin-bottom: var(--space-xs); font-weight: 600;">الاسم الكامل</label>
-              <input type="text" class="search-input" style="padding: var(--space-sm) var(--space-md); font-size: var(--font-size-md);" placeholder="أدخل اسمك" required>
+              <input type="text" class="search-input"
+                style="padding: var(--space-sm) var(--space-md); font-size: var(--font-size-md);"
+                placeholder="أدخل اسمك" required>
             </div>
             <div>
               <label style="display: block; margin-bottom: var(--space-xs); font-weight: 600;">البريد الإلكتروني</label>
-              <input type="email" class="search-input" style="padding: var(--space-sm) var(--space-md); font-size: var(--font-size-md);" placeholder="أدخل بريدك الإلكتروني" required>
+              <input type="email" class="search-input"
+                style="padding: var(--space-sm) var(--space-md); font-size: var(--font-size-md);"
+                placeholder="أدخل بريدك الإلكتروني" required>
             </div>
             <div>
               <label style="display: block; margin-bottom: var(--space-xs); font-weight: 600;">الموضوع</label>
-              <select class="search-input" style="padding: var(--space-sm) var(--space-md); font-size: var(--font-size-md);">
+              <select class="search-input"
+                style="padding: var(--space-sm) var(--space-md); font-size: var(--font-size-md);">
                 <option value="">اختر الموضوع</option>
                 <option value="suggestion">اقتراح</option>
                 <option value="error">إبلاغ عن خطأ</option>
@@ -121,7 +149,9 @@
             </div>
             <div>
               <label style="display: block; margin-bottom: var(--space-xs); font-weight: 600;">الرسالة</label>
-              <textarea class="search-input" style="padding: var(--space-sm) var(--space-md); font-size: var(--font-size-md); min-height: 150px; resize: vertical;" placeholder="اكتب رسالتك هنا..." required></textarea>
+              <textarea class="search-input"
+                style="padding: var(--space-sm) var(--space-md); font-size: var(--font-size-md); min-height: 150px; resize: vertical;"
+                placeholder="اكتب رسالتك هنا..." required></textarea>
             </div>
             <button type="submit" class="btn btn-primary btn-lg" style="margin-top: var(--space-sm);">
               <i class="fas fa-paper-plane"></i>
@@ -145,9 +175,9 @@
           <h4>روابط سريعة</h4>
           <ul>
             <li><a href="../index.html">الرئيسية</a></li>
-            <li><a href="search.html">البحث</a></li>
-            <li><a href="categories.html">التصنيفات</a></li>
-            <li><a href="favorites.html">المفضلة</a></li>
+            <li><a href="../search.html">البحث</a></li>
+            <li><a href="../categories.html">التصنيفات</a></li>
+            <li><a href="../favorites.html">المفضلة</a></li>
           </ul>
         </div>
         <div class="footer-links">
@@ -170,7 +200,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2024 DriveSymbols DZ. جميع الحقوق محفوظة.</p>
+        <p>© 2026 DriveSymbols DZ. جميع الحقوق محفوظة.</p>
       </div>
     </div>
   </footer>
@@ -179,17 +209,17 @@
     <i class="fas fa-arrow-up"></i>
   </button>
 
-  <script src="../assets/js/app.js"></script>
-  <script src="../assets/js/ui.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/ui.js"></script>
 
   <script>
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
       e.preventDefault();
       alert('شكراً على تواصلك معنا! سنرد عليك في أقرب وقت.');
       this.reset();
     });
   </script>
-  
-</body>
-</html>
 
+</body>
+
+</html>
