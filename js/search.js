@@ -6,14 +6,14 @@ async function initSearch() {
   try {
     const res = await fetch('data/symbols.json');
     allSymbols = await res.json();
-    
+
     // Parse URL params
     const params = new URLSearchParams(window.location.search);
     const query = params.get('q');
     const category = params.get('category');
     const brand = params.get('brand');
     const severity = params.get('severity');
-    
+
     if (query) {
       document.getElementById('searchInput').value = query;
       performSearch();
@@ -30,7 +30,7 @@ async function initSearch() {
     } else {
       displayResults(allSymbols, 'جميع الرموز');
     }
-    
+
     setupFilters();
     setupSearchInput();
   } catch (e) {
@@ -55,7 +55,7 @@ function setupFilters() {
     btn.addEventListener('click', () => {
       const filter = btn.dataset.filter;
       const value = btn.dataset.value;
-      
+
       if (btn.classList.contains('active') && value !== 'all') {
         btn.classList.remove('active');
         currentFilters[filter] = null;
@@ -64,7 +64,7 @@ function setupFilters() {
         btn.classList.add('active');
         currentFilters[filter] = value === 'all' ? null : (value === 'true' ? true : value === 'false' ? false : value);
       }
-      
+
       performSearch();
     });
   });
@@ -82,77 +82,103 @@ function updateFilterButtons() {
 
 function performSearch() {
   const query = document.getElementById('searchInput').value.toLowerCase().trim();
-  
+
   let results = allSymbols.filter(symbol => {
-    const matchesQuery = !query || 
+    const matchesQuery = !query ||
       symbol.name.toLowerCase().includes(query) ||
       symbol.arabicName.includes(query) ||
       symbol.categoryArabic.includes(query) ||
       symbol.keywords.some(k => k.toLowerCase().includes(query));
-    
+
     const matchesSeverity = !currentFilters.severity || symbol.severity === currentFilters.severity;
     const matchesDrive = currentFilters.canDrive === null || symbol.canDrive === currentFilters.canDrive;
     const matchesCategory = !currentFilters.category || symbol.category === currentFilters.category;
     const matchesBrand = !currentFilters.brand || symbol.brands.includes(currentFilters.brand);
-    
+
     return matchesQuery && matchesSeverity && matchesDrive && matchesCategory && matchesBrand;
   });
-  
-  const title = query ? `نتائج البحث: "${query}"` : 
+
+  const title = query ? `نتائج البحث: "${query}"` :
     currentFilters.category ? `تصنيف: ${results[0]?.categoryArabic || ''}` :
-    currentFilters.brand ? `علامة: ${results[0]?.brands.find(b => b === currentFilters.brand) || ''}` :
-    'جميع الرموز';
-  
+      currentFilters.brand ? `علامة: ${results[0]?.brands.find(b => b === currentFilters.brand) || ''}` :
+        'جميع الرموز';
+
   displayResults(results, title);
 }
 
 function displayResults(results, title) {
-  const container = document.getElementById('searchResults');
-  const titleEl = document.getElementById('resultsTitle');
-  const countEl = document.getElementById('resultsCount');
-  
+
+  const container = document.getElementById("searchResults");
+  const titleEl = document.getElementById("resultsTitle");
+  const countEl = document.getElementById("resultsCount");
+
   titleEl.textContent = title;
   countEl.textContent = `${results.length} نتيجة`;
-  
-  if (results.length === 0) {
-    container.innerHTML = `
-      <div class="no-results" style="grid-column: 1 / -1;">
-        <i class="fas fa-search"></i>
-        <h3>لا توجد نتائج</h3>
-        <p>جرب بحثاً مختلفاً أو راجع الفلاتر</p>
-      </div>
-    `;
-    return;
-  }
-  
-  container.innerHTML = results.map(symbol => `
-    <a href="symbol.html?id=${symbol.id}" class="symbol-card">
-      <div class="symbol-card-image" style="display: flex; align-items: center; justify-content: center; font-size: 4rem; color: var(--primary-color);">
-        <i class="fas fa-${getSearchIcon(symbol.category)}"></i>
-      </div>
-      <div class="symbol-card-body">
-        <div class="symbol-card-title">${symbol.arabicName}</div>
-        <div class="symbol-card-meta">
-          <span class="severity-badge ${symbol.severityColor}">
-            <i class="fas fa-circle" style="font-size: 0.4rem;"></i>
-            ${symbol.severityArabic}
-          </span>
-          <span>${symbol.categoryArabic}</span>
-        </div>
-      </div>
-    </a>
-  `).join('');
-}
 
-function getSearchIcon(category) {
-  const icons = {
-    'Engine': 'engine', 'Brakes': 'circle-stop', 'Battery': 'battery-half',
-    'Oil': 'droplet', 'Temperature': 'temperature-high', 'Fuel': 'gas-pump',
-    'Tires': 'circle-notch', 'Airbag': 'user-shield', 'Stability': 'car-side',
-    'Transmission': 'gears', 'Electrical': 'bolt', 'Lights': 'lightbulb',
-    'Assistance': 'hand-holding-hand'
-  };
-  return icons[category] || 'circle-question';
+  if (!results.length) {
+
+    container.innerHTML = `
+
+            <div class="no-results" style="grid-column:1/-1;">
+
+                <i class="fas fa-search"></i>
+
+                <h3>لا توجد نتائج</h3>
+
+                <p>جرب كلمات بحث مختلفة.</p>
+
+            </div>
+
+        `;
+
+    return;
+
+  }
+
+  container.innerHTML = results.map(symbol => `
+
+        <a href="symbol.html?id=${symbol.id}" class="symbol-card">
+
+            <div class="symbol-card-image">
+
+                <img
+                    src="${symbol.image}"
+                    alt="${symbol.arabicName}"
+                    loading="lazy"
+                    onerror="this.src='images/symbols/default.webp'">
+
+            </div>
+
+            <div class="symbol-card-body">
+
+                <div class="symbol-card-title">
+
+                    ${symbol.arabicName}
+
+                </div>
+
+                <div class="symbol-card-meta">
+
+                    <span class="severity-badge ${symbol.severityColor}">
+
+                        ${symbol.severityArabic}
+
+                    </span>
+
+                    <span>
+
+                        ${symbol.categoryArabic}
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </a>
+
+    `).join("");
+
 }
 
 document.addEventListener('DOMContentLoaded', initSearch);
