@@ -34,7 +34,7 @@
     {
         "id": "Temperature",
         "name": "الحرارة",
-        "image": "images/categories/temperature.webp",
+        "image": "images/categories/Temperature.webp",
         "color": "#dc2626",
         "description": "رموز حرارة المحرك والتبريد",
         "count": 2
