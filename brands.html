@@ -14,23 +14,31 @@
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+
+    <!-- Google Fonts Arabic -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
+
     <header class="header">
         <div class="container">
             <a href="index.html" class="logo">
                 <i class="fas fa-tachometer-alt"></i>
                 <span>DriveSymbols DZ</span>
             </a>
-            <nav class="nav" id="mainNav">
-                <a href="index.html" class="nav-link">الرئيسية</a>
-                <a href="search.html" class="nav-link">البحث</a>
-                <a href="categories.html" class="nav-link">التصنيفات</a>
-                <a href="about.html" class="nav-link">عن الموقع</a>
-                <a href="contact.html" class="nav-link">اتصل بنا</a>
-            </nav>
+      <nav class="nav" id="mainNav">
+        <a href="index.html" class="nav-link active">الرئيسية</a>
+        <a href="search.html" class="nav-link">البحث</a>
+        <a href="categories.html" class="nav-link">التصنيفات</a>
+        <a href="brands.html" class="nav-link">علامات السيارات</a>
+        <a href="pages/about.html" class="nav-link">عن الموقع</a>
+        <a href="pages/contact.html" class="nav-link">اتصل بنا</a>
+      </nav>
             <div class="header-actions">
                 <button class="btn-icon tooltip" data-tooltip="المفضلة" onclick="window.location.href='favorites.html'">
                     <i class="fas fa-heart"></i>
@@ -71,9 +79,8 @@
             <div id="brandDetail" style="display: none;">
                 <div class="section-header" style="margin-bottom: var(--space-xl);">
                     <div style="display: flex; align-items: center; gap: var(--space-md);">
-                        <div id="brandDetailIcon"
-                            style="width: 60px; height: 60px; border-radius: 50%; background: var(--bg-secondary); display: flex; align-items: center; justify-content: center; font-size: 1.75rem; color: var(--primary-color);">
-                            <i class="fas fa-car"></i>
+                        <div id="brandDetailIcon" class="brand-logo">
+                            <img id="brandDetailImage" src="" alt="" onerror="this.src='images/brands/default.svg'">
                         </div>
                         <div>
                             <h2 id="brandDetailName" style="font-size: var(--font-size-2xl); font-weight: 800;"></h2>
@@ -100,45 +107,47 @@
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <h3><i class="fas fa-tachometer-alt"></i> DriveSymbols DZ</h3>
-                    <p>دليل شامل لرموز لوحة القيادة وعلامات الأعطال في السيارات.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>روابط سريعة</h4>
-                    <ul>
-                        <li><a href="index.html">الرئيسية</a></li>
-                        <li><a href="search.html">البحث</a></li>
-                        <li><a href="categories.html">التصنيفات</a></li>
-                        <li><a href="favorites.html">المفضلة</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>المعلومات</h4>
-                    <ul>
-                        <li><a href="about.html">عن الموقع</a></li>
-                        <li><a href="contact.html">اتصل بنا</a></li>
-                        <li><a href="privacy.html">سياسة الخصوصية</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>تواصل معنا</h4>
-                    <ul>
-                        <li><a href="#"><i class="fab fa-facebook"></i> فيسبوك</a></li>
-                        <li><a href="#"><i class="fab fa-telegram"></i> تيليجرام</a></li>
-                        <li><a href="mailto:contact@drivesymbols.dz"><i class="fas fa-envelope"></i> البريد</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2024 DriveSymbols DZ. جميع الحقوق محفوظة.</p>
-            </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3><i class="fas fa-tachometer-alt"></i> DriveSymbols DZ</h3>
+          <p>دليل شامل لرموز لوحة القيادة وعلامات الأعطال في السيارات. نساعدك على فهم معنى كل رمز والتصرف الصحيح.</p>
         </div>
-    </footer>
-
+        <div class="footer-links">
+          <h4>روابط سريعة</h4>
+          <ul>
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="search.html">البحث</a></li>
+            <li><a href="categories.html">التصنيفات</a></li>
+            <li><a href="favorites.html">المفضلة</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>المعلومات</h4>
+          <ul>
+            <li><a href="pages/about.html">عن الموقع</a></li>
+            <li><a href="pages/contact.html">اتصل بنا</a></li>
+            <li><a href="pages/privacy.html">سياسة الخصوصية</a></li>
+            <li><a href="pages/terms.html">شروط الاستخدام</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>تواصل معنا</h4>
+          <ul>
+            <li><a href="#"><i class="fab fa-facebook"></i> فيسبوك</a></li>
+            <li><a href="#"><i class="fab fa-telegram"></i> تيليجرام</a></li>
+            <li><a href="#"><i class="fab fa-whatsapp"></i> واتساب</a></li>
+            <li><a href="mailto:contact@drivesymbols.dz"><i class="fas fa-envelope"></i> البريد الإلكتروني</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 DriveSymbols DZ. جميع الحقوق محفوظة.</p>
+      </div>
+    </div>
+  </footer>
     <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
         <i class="fas fa-arrow-up"></i>
     </button>
@@ -167,6 +176,8 @@
                 const brandId = params.get('brand');
                 if (brandId) {
                     showBrandDetail(brandId);
+                    document.getElementById('brandDetailImage').src = brand.image;
+                    document.getElementById('brandDetailImage').alt = brand.name;
                 }
             } catch (error) {
                 console.error('Error loading data:', error);
@@ -188,9 +199,13 @@
 
                 return `
           <div class="brand-card reveal" style="cursor: pointer; animation-delay: ${index * 0.05}s" onclick="showBrandDetail('${brand.id}')">
-            <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%); color: white; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-md); font-size: 2rem; box-shadow: var(--shadow-md);">
-              <i class="fas fa-car-side"></i>
-            </div>
+<div class="brand-logo">
+    <img
+        src="${brand.image}"
+        alt="${brand.name}"
+        loading="lazy"
+        onerror="this.src='images/brands/default.svg'">
+</div>
             <h4 style="font-size: var(--font-size-lg); font-weight: 700; margin-bottom: var(--space-xs);">${brand.name}</h4>
             <p style="font-size: var(--font-size-sm); color: var(--text-muted); margin-bottom: var(--space-sm);">${brand.country}</p>
             <div style="display: flex; align-items: center; justify-content: center; gap: var(--space-sm); flex-wrap: wrap;">
