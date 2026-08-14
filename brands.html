@@ -188,14 +188,28 @@
             }
         }
 
+                function getBrandStats(brandId) {
+            const brandSymbols = allSymbols.filter(symbol =>
+                (symbol.brands || []).includes(brandId)
+            );
+            return brandSymbols.reduce((stats, symbol) => {
+                stats.total += 1;
+                if (symbol.severity === 'High') stats.high += 1;
+                if (symbol.severity === 'Medium') stats.medium += 1;
+                if (symbol.severity === 'Low') stats.low += 1;
+                return stats;
+            }, { total: 0, high: 0, medium: 0, low: 0 });
+        }
+
         function renderBrands() {
+
             const container = document.getElementById('brandsGrid');
             container.innerHTML = allBrands.map((brand, index) => {
                 const brandSymbols = allSymbols.filter(symbol =>
                     (symbol.brands || []).includes(brand.id)
                 );
 
-                const highSeverity = brandSymbols.filter(s => s.severity === 'High').length;
+                const brandStats = getBrandStats(brand.id);
                 return `
           <div class="brand-card reveal" style="cursor: pointer; animation-delay: ${index * 0.05}s" onclick="showBrandDetail('${brand.id}')">
 <div class="brand-logo">
@@ -208,16 +222,7 @@
             <h4 style="font-size: var(--font-size-lg); font-weight: 700; margin-bottom: var(--space-xs);">${brand.name}</h4>
             <p style="font-size: var(--font-size-sm); color: var(--text-muted); margin-bottom: var(--space-sm);">${brand.country}</p>
             <div style="display: flex; align-items: center; justify-content: center; gap: var(--space-sm); flex-wrap: wrap;">
-              <span class="badge" style="background: var(--bg-secondary); color: var(--text-secondary); padding: 2px 10px; border-radius: 20px; font-size: var(--font-size-xs); font-weight: 600;">
-                <i class="fas fa-list" style="margin-left: 4px;"></i>
-                ${brandSymbols.length} رمز
-              </span>
-              ${highSeverity > 0 ? `
-                <span class="badge" style="background: rgba(239, 68, 68, 0.1); color: var(--severity-red); padding: 2px 10px; border-radius: 20px; font-size: var(--font-size-xs); font-weight: 600;">
-                  <i class="fas fa-triangle-exclamation" style="margin-left: 4px;"></i>
-                  ${highSeverity} خطير
-                </span>
-              ` : ''}
+              ${App.renderBrandStats(brandStats)}
             </div>
           </div>
         `;

@@ -27,6 +27,7 @@ const App = {
 
       // Render homepage sections if on index
       if (document.getElementById('dangerSymbolsGrid')) {
+        this.renderGlobalStats();
         this.renderDangerSymbols();
         this.renderCategories();
         this.renderPopularSymbols();
@@ -38,7 +39,66 @@ const App = {
     }
   },
 
+  renderGlobalStats() {
+    const stats = {
+      symbols: this.symbols.length,
+      categories: this.categories.length,
+      brands: this.brands.length,
+      severity: new Set(this.symbols.map(symbol => symbol.severity).filter(Boolean)).size
+    };
+
+    const values = {
+      statSymbols: stats.symbols,
+      statCategories: stats.categories,
+      statBrands: stats.brands,
+      statSeverity: stats.severity
+    };
+
+    Object.entries(values).forEach(([id, value]) => {
+      const element = document.getElementById(id);
+      if (element) element.textContent = value;
+    });
+  },
+
+  getBrandStats(brandId) {
+    const brandSymbols = this.symbols.filter(symbol =>
+      (symbol.brands || []).includes(brandId)
+    );
+    const severity = brandSymbols.reduce((counts, symbol) => {
+      if (symbol.severity === 'High') counts.high += 1;
+      if (symbol.severity === 'Medium') counts.medium += 1;
+      if (symbol.severity === 'Low') counts.low += 1;
+      return counts;
+    }, { high: 0, medium: 0, low: 0 });
+
+    return { total: brandSymbols.length, ...severity };
+  },
+
+  renderBrandStats(stats) {
+    return `
+      <div class="brand-card-stats" aria-label="إحصائيات الرموز حسب درجة الخطورة">
+        <span class="brand-stat brand-stat-total">
+          <i class="fas fa-list" aria-hidden="true"></i>
+          <strong>${stats.total}</strong> رمز
+        </span>
+        <span class="brand-stat brand-stat-high" title="${stats.high} رموز عالية الخطورة">
+          <i class="fas fa-triangle-exclamation" aria-hidden="true"></i>
+          <strong>${stats.high}</strong> عالي
+        </span>
+        <span class="brand-stat brand-stat-medium" title="${stats.medium} رموز متوسطة الخطورة">
+          <i class="fas fa-circle-exclamation" aria-hidden="true"></i>
+          <strong>${stats.medium}</strong> متوسط
+        </span>
+        <span class="brand-stat brand-stat-low" title="${stats.low} رموز منخفضة الخطورة">
+          <i class="fas fa-circle-check" aria-hidden="true"></i>
+          <strong>${stats.low}</strong> منخفض
+        </span>
+      </div>
+    `;
+  },
+
   renderDangerSymbols() {
+
     const danger = this.symbols.filter(s => s.severity === 'High').slice(0, 4);
     const container = document.getElementById('dangerSymbolsGrid');
     if (container) container.innerHTML = this.renderSymbolCards(danger);
@@ -125,10 +185,7 @@ const App = {
     const brands = this.brands.slice(0, 6);
 
     container.innerHTML = brands.map(brand => {
-
-      const symbolsCount = this.symbols.filter(symbol =>
-        (symbol.brands || []).includes(brand.id)
-      ).length;
+      const brandStats = this.getBrandStats(brand.id);
 
       return `
 
@@ -155,11 +212,7 @@ const App = {
 
                     </p>
 
-                    <span class="brand-count">
-
-                        ${symbolsCount} رمز
-
-                    </span>
+                    ${this.renderBrandStats(brandStats)}
 
                 </div>
 

@@ -1460,7 +1460,63 @@ transform:translateX(-5px);
 
 }
 
+.brand-card-stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    width: 100%;
+    margin-top: 10px;
+}
 
+.brand-stat {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: .73rem;
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.brand-stat i {
+    font-size: .68rem;
+}
+
+.brand-stat strong {
+    font-weight: 800;
+}
+
+.brand-stat-total {
+    color: var(--primary-color);
+    background: rgba(37, 99, 235, .08);
+}
+
+.brand-stat-high {
+    color: var(--severity-red);
+    background: rgba(239, 68, 68, .1);
+}
+
+.brand-stat-medium {
+    color: #b7791f;
+    background: rgba(245, 158, 11, .14);
+}
+
+.brand-stat-low {
+    color: #15803d;
+    background: rgba(34, 197, 94, .12);
+}
+
+[data-theme="dark"] .brand-stat-medium {
+    color: #fbbf24;
+}
+
+[data-theme="dark"] .brand-stat-low {
+    color: #86efac;
+}
 
 .category-card{
 
