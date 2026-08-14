@@ -1,55 +1,93 @@
 {
+  "id": "/DriveSymbols/",
   "name": "DriveSymbols DZ - دليل رموز لوحة القيادة",
   "short_name": "DriveSymbols",
   "description": "دليل شامل لرموز لوحة القيادة وعلامات الأعطال في السيارات",
-  "start_url": "/",
+  "start_url": "/DriveSymbols/",
+  "scope": "/DriveSymbols/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#2563eb",
   "orientation": "portrait-primary",
-  "scope": "/",
   "lang": "ar",
   "dir": "rtl",
+  "prefer_related_applications": false,
   "icons": [
     {
-      "src": "images/icons/icon-72x72.svg",
+      "src": "/DriveSymbols/images/icons/icon-72x72.svg",
       "sizes": "72x72",
-      "type": "image/svg"
+      "type": "image/svg+xml",
+      "purpose": "any"
     },
     {
-      "src": "images/icons/icon-96x96.svg",
+      "src": "/DriveSymbols/images/icons/icon-96x96.svg",
       "sizes": "96x96",
-      "type": "image/svg"
+      "type": "image/svg+xml",
+      "purpose": "any"
     },
     {
-      "src": "images/icons/icon-128x128.svg",
+      "src": "/DriveSymbols/images/icons/icon-128x128.svg",
       "sizes": "128x128",
-      "type": "image/svg"
+      "type": "image/svg+xml",
+      "purpose": "any"
     },
     {
-      "src": "images/icons/icon-144x144.svg",
+      "src": "/DriveSymbols/images/icons/icon-144x144.svg",
       "sizes": "144x144",
-      "type": "image/svg"
+      "type": "image/svg+xml",
+      "purpose": "any"
     },
     {
-      "src": "images/icons/icon-152x152.svg",
+      "src": "/DriveSymbols/images/icons/icon-152x152.svg",
       "sizes": "152x152",
-      "type": "image/svg"
+      "type": "image/svg+xml",
+      "purpose": "any"
     },
     {
-      "src": "images/icons/icon-192x192.svg",
+      "src": "/DriveSymbols/images/icons/icon-192x192.svg",
       "sizes": "192x192",
-      "type": "image/svg"
+      "type": "image/svg+xml",
+      "purpose": "any"
     },
     {
-      "src": "images/icons/icon-384x384.svg",
+      "src": "/DriveSymbols/images/icons/icon-384x384.svg",
       "sizes": "384x384",
-      "type": "image/svg"
+      "type": "image/svg+xml",
+      "purpose": "any"
     },
     {
-      "src": "images/icons/icon-512x512.svg",
+      "src": "/DriveSymbols/images/icons/icon-512x512.svg",
       "sizes": "512x512",
-      "type": "image/svg"
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "البحث عن رمز",
+      "short_name": "البحث",
+      "description": "ابحث عن رمز من رموز لوحة القيادة",
+      "url": "/DriveSymbols/search.html",
+      "icons": [
+        {
+          "src": "/DriveSymbols/images/icons/icon-192x192.svg",
+          "sizes": "192x192",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "علامات السيارات",
+      "short_name": "العلامات",
+      "description": "تصفح الرموز حسب علامة السيارة",
+      "url": "/DriveSymbols/brands.html",
+      "icons": [
+        {
+          "src": "/DriveSymbols/images/icons/icon-192x192.svg",
+          "sizes": "192x192",
+          "type": "image/svg+xml"
+        }
+      ]
     }
   ]
 }

@@ -325,7 +325,7 @@ const App = {
 
   initServiceWorker() {
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js')
+      navigator.serviceWorker.register('/DriveSymbols/service-worker.js', { scope: '/DriveSymbols/' })
         .then(reg => console.log('SW registered:', reg.scope))
         .catch(err => console.log('SW registration failed:', err));
     }
