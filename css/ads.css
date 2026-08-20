@@ -1,0 +1,113 @@
+/* وحدات الإعلانات: مساحة هادئة ومتجاوبة مع منع تغيّر التخطيط */
+.ad-slot {
+  --ad-min-height: 132px;
+  position: relative;
+  display: block;
+  width: min(100%, 980px);
+  min-height: var(--ad-min-height);
+  margin: clamp(1.5rem, 4vw, 3rem) auto;
+  padding: .75rem;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--border-color) 78%, transparent);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--bg-secondary) 86%, transparent);
+  text-align: center;
+  contain: layout paint;
+  content-visibility: auto;
+  contain-intrinsic-size: auto var(--ad-min-height);
+}
+
+.ad-slot::before {
+  position: absolute;
+  top: .42rem;
+  left: 50%;
+  z-index: 1;
+  padding: .12rem .48rem;
+  content: 'إعلان';
+  color: var(--text-muted);
+  background: var(--bg-secondary);
+  font-family: 'Cairo', sans-serif;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  line-height: 1.4;
+  transform: translateX(-50%);
+}
+
+.ad-slot .adsbygoogle {
+  display: block;
+  width: 100%;
+  min-height: calc(var(--ad-min-height) - 1.5rem);
+  margin-top: .65rem;
+}
+
+.ad-slot--feed {
+  --ad-min-height: 150px;
+}
+
+.ad-slot--display {
+  --ad-min-height: 112px;
+  max-width: 970px;
+}
+
+.ad-slot--article {
+  --ad-min-height: 148px;
+  width: 100%;
+  max-width: 760px;
+}
+
+.ad-slot--recommendations {
+  --ad-min-height: 190px;
+  max-width: 980px;
+}
+
+.ad-slot--loading {
+  background-image: linear-gradient(90deg,
+      color-mix(in srgb, var(--bg-secondary) 90%, transparent) 0%,
+      color-mix(in srgb, var(--bg-card) 82%, transparent) 50%,
+      color-mix(in srgb, var(--bg-secondary) 90%, transparent) 100%);
+  background-size: 220% 100%;
+}
+
+.ad-slot--requested {
+  background-image: none;
+}
+
+@media (max-width: 640px) {
+  .ad-slot {
+    --ad-min-height: 118px;
+    width: 100%;
+    margin: 1.25rem auto;
+    padding: .5rem;
+    border-radius: var(--radius-md);
+  }
+
+  .ad-slot--feed,
+  .ad-slot--article {
+    --ad-min-height: 130px;
+  }
+
+  .ad-slot--recommendations {
+    --ad-min-height: 160px;
+  }
+
+  .ad-slot .adsbygoogle {
+    min-height: calc(var(--ad-min-height) - 1rem);
+    margin-top: .6rem;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ad-slot--loading {
+    animation: ad-slot-shimmer 1.8s ease-in-out infinite;
+  }
+}
+
+@keyframes ad-slot-shimmer {
+  0%, 100% { background-position: 100% 0; }
+  50% { background-position: 0 0; }
+}
+
+@media print {
+  .ad-slot { display: none !important; }
+}
