@@ -1,4 +1,4 @@
-const CACHE_NAME = 'drivesymbols-v3';
+const CACHE_NAME = 'drivesymbols-v4';
 const BASE_PATH = new URL('./', self.location.href).pathname.replace(/\/$/, '');
 
 const asset = path => `${BASE_PATH}${path}`;
@@ -89,8 +89,10 @@ const cacheFirst = request => caches.match(request)
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET' || !isAppRequest(event.request)) return;
 
+  const pathname = new URL(event.request.url).pathname;
+  const isDataOrCode = /\.(?:js|json|css)$/.test(pathname);
   event.respondWith(
-    event.request.mode === 'navigate'
+    event.request.mode === 'navigate' || isDataOrCode
       ? networkFirst(event.request)
       : cacheFirst(event.request)
   );
