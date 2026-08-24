@@ -28,7 +28,7 @@ async function initSearch() {
       updateFilterButtons();
       performSearch();
     } else {
-      displayResults(allSymbols, 'جميع الرموز');
+      displayResults(allSymbols, window.DriveI18n?.getLanguage() === 'en' ? 'All symbols' : 'جميع الرموز');
     }
 
     setupFilters();
@@ -84,11 +84,16 @@ function performSearch() {
   const query = document.getElementById('searchInput').value.toLowerCase().trim();
 
   let results = allSymbols.filter(symbol => {
-    const matchesQuery = !query ||
-      symbol.name.toLowerCase().includes(query) ||
-      symbol.arabicName.includes(query) ||
-      symbol.categoryArabic.includes(query) ||
-      symbol.keywords.some(k => k.toLowerCase().includes(query));
+    const searchable = [
+      symbol.name,
+      symbol.nameEn,
+      symbol.arabicName,
+      symbol.categoryArabic,
+      symbol.categoryEn,
+      ...(symbol.keywords || []),
+      ...(symbol.keywordsEn || [])
+    ].filter(Boolean).join(' ').toLowerCase();
+    const matchesQuery = !query || searchable.includes(query);
 
     const matchesSeverity = !currentFilters.severity || symbol.severity === currentFilters.severity;
     const matchesDrive = currentFilters.canDrive === null || symbol.canDrive === currentFilters.canDrive;
@@ -98,22 +103,24 @@ function performSearch() {
     return matchesQuery && matchesSeverity && matchesDrive && matchesCategory && matchesBrand;
   });
 
-  const title = query ? `نتائج البحث: "${query}"` :
-    currentFilters.category ? `تصنيف: ${results[0]?.categoryArabic || ''}` :
-      currentFilters.brand ? `علامة: ${results[0]?.brands.find(b => b === currentFilters.brand) || ''}` :
-        'جميع الرموز';
+  const isEnglish = window.DriveI18n?.getLanguage() === 'en';
+  const title = query ? `${isEnglish ? 'Search results' : 'نتائج البحث'}: "${query}"` :
+    currentFilters.category ? `${isEnglish ? 'Category' : 'تصنيف'}: ${isEnglish ? (results[0]?.categoryEn || '') : (results[0]?.categoryArabic || '')}` :
+      currentFilters.brand ? `${isEnglish ? 'Brand' : 'علامة'}: ${results[0]?.brands.find(b => b === currentFilters.brand) || ''}` :
+        (isEnglish ? 'All symbols' : 'جميع الرموز');
 
   displayResults(results, title);
 }
 
 function displayResults(results, title) {
 
+  const isEnglish = window.DriveI18n?.getLanguage() === 'en';
   const container = document.getElementById("searchResults");
   const titleEl = document.getElementById("resultsTitle");
   const countEl = document.getElementById("resultsCount");
 
   titleEl.textContent = title;
-  countEl.textContent = `${results.length} نتيجة`;
+  countEl.textContent = `${results.length} ${isEnglish ? 'results' : 'نتيجة'}`;
 
   if (!results.length) {
 
@@ -123,9 +130,9 @@ function displayResults(results, title) {
 
                 <i class="fas fa-search"></i>
 
-                <h3>لا توجد نتائج</h3>
+                <h3>${isEnglish ? 'No results' : 'لا توجد نتائج'}</h3>
 
-                <p>جرب كلمات بحث مختلفة.</p>
+                <p>${isEnglish ? 'Try different search terms.' : 'جرب كلمات بحث مختلفة.'}</p>
 
             </div>
 
@@ -143,7 +150,7 @@ function displayResults(results, title) {
 
                 <img
                     src="${symbol.image}"
-                    alt="${symbol.arabicName}"
+                    alt="${isEnglish ? symbol.nameEn : symbol.arabicName}"
                     loading="lazy"
                     onerror="this.src='images/symbols/default.webp'">
 
@@ -153,7 +160,7 @@ function displayResults(results, title) {
 
                 <div class="symbol-card-title">
 
-                    ${symbol.arabicName}
+                        ${isEnglish ? symbol.nameEn : symbol.arabicName}
 
                 </div>
 
@@ -161,13 +168,13 @@ function displayResults(results, title) {
 
                     <span class="severity-badge ${symbol.severityColor}">
 
-                        ${symbol.severityArabic}
+                        ${isEnglish ? symbol.severity : symbol.severityArabic}
 
                     </span>
 
                     <span>
 
-                        ${symbol.categoryArabic}
+                        ${isEnglish ? symbol.categoryEn : symbol.categoryArabic}
 
                     </span>
 

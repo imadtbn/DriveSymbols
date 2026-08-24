@@ -3,6 +3,7 @@ const App = {
   symbols: [],
   categories: [],
   brands: [],
+  articles: [],
 
   async init() {
     await this.loadData();
@@ -15,15 +16,17 @@ const App = {
 
   async loadData() {
     try {
-      const [symbolsRes, categoriesRes, brandsRes] = await Promise.all([
+      const [symbolsRes, categoriesRes, brandsRes, articlesRes] = await Promise.all([
         fetch('data/symbols.json'),
         fetch('data/categories.json'),
-        fetch('data/brands.json')
+        fetch('data/brands.json'),
+        fetch('data/articles.json')
       ]);
 
       this.symbols = await symbolsRes.json();
       this.categories = await categoriesRes.json();
       this.brands = await brandsRes.json();
+      this.articles = await articlesRes.json();
 
       // Render homepage sections if on index
       if (document.getElementById('dangerSymbolsGrid')) {
@@ -33,6 +36,8 @@ const App = {
         this.renderPopularSymbols();
         this.renderLatestSymbols();
         this.renderBrands();
+        this.renderArticles();
+        if (window.DriveI18n) window.DriveI18n.apply();
       }
     } catch (error) {
       console.error('Error loading data:', error);
@@ -75,24 +80,13 @@ const App = {
   },
 
   renderBrandStats(stats) {
+    const isEnglish = window.DriveI18n?.getLanguage() === 'en';
     return `
-      <div class="brand-card-stats" aria-label="إحصائيات الرموز حسب درجة الخطورة">
-        <span class="brand-stat brand-stat-total">
-          <i class="fas fa-list" aria-hidden="true"></i>
-          <strong>${stats.total}</strong> رمز
-        </span>
-        <span class="brand-stat brand-stat-high" title="${stats.high} رموز عالية الخطورة">
-          <i class="fas fa-triangle-exclamation" aria-hidden="true"></i>
-          <strong>${stats.high}</strong> عالي
-        </span>
-        <span class="brand-stat brand-stat-medium" title="${stats.medium} رموز متوسطة الخطورة">
-          <i class="fas fa-circle-exclamation" aria-hidden="true"></i>
-          <strong>${stats.medium}</strong> متوسط
-        </span>
-        <span class="brand-stat brand-stat-low" title="${stats.low} رموز منخفضة الخطورة">
-          <i class="fas fa-circle-check" aria-hidden="true"></i>
-          <strong>${stats.low}</strong> منخفض
-        </span>
+      <div class="brand-card-stats" aria-label="${isEnglish ? 'Symbol statistics by severity' : 'إحصائيات الرموز حسب درجة الخطورة'}">
+        <span class="brand-stat brand-stat-total"><i class="fas fa-list" aria-hidden="true"></i><strong>${stats.total}</strong> ${isEnglish ? 'symbols' : 'رمز'}</span>
+        <span class="brand-stat brand-stat-high" title="${stats.high} ${isEnglish ? 'high-severity symbols' : 'رموز عالية الخطورة'}"><i class="fas fa-triangle-exclamation" aria-hidden="true"></i><strong>${stats.high}</strong> ${isEnglish ? 'high' : 'عالي'}</span>
+        <span class="brand-stat brand-stat-medium" title="${stats.medium} ${isEnglish ? 'medium-severity symbols' : 'رموز متوسطة الخطورة'}"><i class="fas fa-circle-exclamation" aria-hidden="true"></i><strong>${stats.medium}</strong> ${isEnglish ? 'medium' : 'متوسط'}</span>
+        <span class="brand-stat brand-stat-low" title="${stats.low} ${isEnglish ? 'low-severity symbols' : 'رموز منخفضة الخطورة'}"><i class="fas fa-circle-check" aria-hidden="true"></i><strong>${stats.low}</strong> ${isEnglish ? 'low' : 'منخفض'}</span>
       </div>
     `;
   },
@@ -106,6 +100,7 @@ const App = {
 
   renderCategories() {
 
+    const language = window.DriveI18n?.getLanguage() || 'ar';
     const container = document.getElementById("categoriesGrid");
 
     if (!container) return;
@@ -128,7 +123,7 @@ const App = {
 
                     <img
                         src="${cat.image}"
-                        alt="${cat.name}"
+                        alt="${language === 'en' ? cat.nameEn : cat.name}"
                         loading="lazy"
                         onerror="this.src='images/categories/default.webp'">
 
@@ -136,17 +131,17 @@ const App = {
 
                 <div class="category-info">
 
-                    <h3>${cat.name}</h3>
+                    <h3>${language === 'en' ? cat.nameEn : cat.name}</h3>
 
                     <p class="category-description">
 
-                        ${cat.description}
+                        ${language === 'en' ? cat.descriptionEn : cat.description}
 
                     </p>
 
                     <span class="category-count">
 
-                        ${symbolsCount} رمز
+                        ${symbolsCount} ${language === 'en' ? 'symbols' : 'رمز'}
 
                     </span>
 
@@ -178,6 +173,7 @@ const App = {
 
   renderBrands() {
 
+    const language = window.DriveI18n?.getLanguage() || 'ar';
     const container = document.getElementById("brandsGrid");
 
     if (!container) return;
@@ -204,11 +200,11 @@ const App = {
 
                 <div class="brand-info">
 
-                    <h3>${brand.name}</h3>
+                    <h3>${language === 'en' ? (brand.nameEn || brand.name) : brand.name}</h3>
 
                     <p class="brand-country">
 
-                        ${brand.country}
+                        ${language === 'en' ? (brand.countryEn || brand.country) : brand.country}
 
                     </p>
 
@@ -228,15 +224,36 @@ const App = {
 
   },
 
-  renderSymbolCards(symbols) {
+    renderArticles() {
+    const container = document.getElementById('articlesGrid');
+    if (!container) return;
+    const language = window.DriveI18n?.getLanguage() || 'ar';
+    container.innerHTML = this.articles.map((article, index) => `
+      <a class="article-card reveal" href="article.html?slug=${encodeURIComponent(article.slug)}" style="animation-delay:${index * 0.06}s">
+        <div class="article-card-media">
+          <img src="${article.image}" alt="${language === 'en' ? article.altEn : article.altAr}" loading="lazy" width="1280" height="720" onerror="this.src='images/symbols/default.webp'">
+          <span class="article-card-category">${language === 'en' ? article.category : (article.categoryAr || article.category)}</span>
+        </div>
+        <div class="article-card-body">
+          <span class="article-card-meta"><i class="fas fa-clock" aria-hidden="true"></i> ${article.readTime} ${language === 'en' ? 'min read' : 'دقائق'}</span>
+          <h3>${language === 'en' ? article.titleEn : article.titleAr}</h3>
+          <p>${language === 'en' ? article.excerptEn : article.excerptAr}</p>
+          <span class="article-card-link">${language === 'en' ? 'Read article' : 'اقرأ المقال'} <i class="fas fa-arrow-left" aria-hidden="true"></i></span>
+        </div>
+      </a>
+    `).join('');
+    if (typeof initScrollReveal === 'function') initScrollReveal();
+  },
 
+  renderSymbolCards(symbols) {
+    const language = window.DriveI18n?.getLanguage() || 'ar';
     return symbols.map(symbol => `
 
 <a href="symbol.html?id=${symbol.id}" class="symbol-card reveal">
 
   <div class="symbol-card-image">
 
-    <img src="${symbol.image}" alt="${symbol.arabicName}" loading="lazy"
+    <img src="${symbol.image}" alt="${language === 'en' ? symbol.nameEn : symbol.arabicName}" loading="lazy"
       onerror="this.src='images/symbols/default.webp'">
 
   </div>
@@ -245,17 +262,17 @@ const App = {
 
     <h3 class="symbol-card-title">
 
-      ${symbol.arabicName}
+      ${language === 'en' ? symbol.nameEn : symbol.arabicName}
 
     </h3>
 
     <div class="symbol-card-meta">
 
       <span class="severity-badge ${symbol.severityColor}">
-        ${symbol.severityArabic}
+        ${language === 'en' ? symbol.severity : symbol.severityArabic}
       </span>
 
-      <span>${symbol.categoryArabic}</span>
+      <span>${language === 'en' ? symbol.categoryEn : symbol.categoryArabic}</span>
 
     </div>
 

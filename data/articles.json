@@ -1,0 +1,194 @@
+[
+  {
+    "slug": "check-engine-warning-light",
+    "titleAr": "ماذا يعني ضوء فحص المحرك؟",
+    "titleEn": "What Does the Check Engine Light Mean?",
+    "excerptAr": "افهم أشهر أسباب ظهور ضوء المحرك، والفرق بين الإضاءة الثابتة والوميض، ومتى تحتاج إلى فحص OBD2.",
+    "excerptEn": "Understand common causes of the check engine light, the difference between a steady and flashing light, and when to scan with OBD2.",
+    "image": "images/articles/engine-warning-cover.jpg",
+    "altAr": "لوحة قيادة يظهر فيها رمز فحص المحرك باللون الكهرماني",
+    "altEn": "Car dashboard with an amber check engine warning symbol",
+    "category": "Engine",
+    "readTime": 5,
+    "publishedAt": "2026-08-24",
+    "updatedAt": "2026-08-24",
+    "keywordsAr": ["ضوء فحص المحرك", "Check Engine", "OBD2", "أعطال المحرك"],
+    "keywordsEn": ["check engine light", "OBD2 scan", "engine warning", "dashboard symbols"],
+    "relatedSymbolIds": [1, 13, 14, 30],
+    "sources": [
+      {"label": "Ford Support: dashboard warning and indicator lights", "url": "https://www.ford.com/support/how-tos/more-vehicle-topics/lights-and-bulbs/what-do-the-lights-on-my-dashboard-mean"}
+    ],
+    "sections": {
+      "ar": [
+        {"heading": "الإضاءة الثابتة أم الوميض؟", "body": "الإضاءة الثابتة تعني وجود خلل يحتاج إلى فحص، لكنها لا تحدد القطعة المعطلة وحدها. أما الوميض فيستدعي تقليل القيادة وطلب المساعدة بسرعة أكبر، خصوصًا إذا صاحبه اهتزاز أو فقدان واضح في القوة."},
+        {"heading": "أسباب شائعة", "body": "قد يرتبط الرمز بحساس الأكسجين، نظام الإشعال، البخاخات، تسرب هواء، أو خلل في نظام الانبعاثات. لا تستبدل القطع بالتخمين؛ سجّل كود OBD2 ثم قارنه بدليل السيارة."},
+        {"heading": "التصرف الصحيح", "body": "تحقق من غطاء خزان الوقود، راقب حرارة المحرك وأي أصوات أو روائح غير طبيعية، ثم افحص السيارة بجهاز OBD2. إذا ظهر دخان أو ارتفعت الحرارة أو أصبح الضوء يومض، توقف في مكان آمن ولا تواصل القيادة."}
+      ],
+      "en": [
+        {"heading": "Steady or flashing?", "body": "A steady light indicates a fault that needs inspection, but it does not identify the failed part by itself. A flashing light calls for less driving and faster assistance, especially with shaking or a clear loss of power."},
+        {"heading": "Common causes", "body": "The symbol can be related to an oxygen sensor, ignition system, fuel injectors, an air leak, or an emissions fault. Do not replace parts by guesswork; record the OBD2 code and compare it with the vehicle manual."},
+        {"heading": "What to do", "body": "Check the fuel cap, watch for overheating or unusual sounds and smells, then scan the vehicle with an OBD2 tool. If there is smoke, overheating, or a flashing light, stop safely and do not continue driving."}
+      ]
+    }
+  },
+  {
+    "slug": "low-oil-pressure-warning",
+    "titleAr": "تحذير ضغط الزيت: لماذا يجب التوقف فورًا؟",
+    "titleEn": "Low Oil Pressure Warning: Why You Should Stop",
+    "excerptAr": "رمز الزيت الأحمر ليس تذكيرًا عاديًا بالصيانة. تعرّف على خطوات التوقف والفحص الآمن دون إتلاف المحرك.",
+    "excerptEn": "A red oil warning is not an ordinary service reminder. Learn how to stop and check safely without damaging the engine.",
+    "image": "images/articles/oil-pressure-cover.jpg",
+    "altAr": "رمز ضغط الزيت الأحمر على لوحة قيادة سيارة",
+    "altEn": "Red oil pressure warning symbol on a car dashboard",
+    "category": "Oil",
+    "readTime": 4,
+    "publishedAt": "2026-08-24",
+    "updatedAt": "2026-08-24",
+    "keywordsAr": ["ضغط الزيت", "لمبة الزيت", "زيت المحرك", "أعطال المحرك"],
+    "keywordsEn": ["oil pressure warning", "oil light", "engine oil", "engine damage"],
+    "relatedSymbolIds": [2, 23, 24],
+    "sources": [
+      {"label": "Toyota Owners: warning lights", "url": "https://www.toyota.com/owners/warning-lights"}
+    ],
+    "sections": {
+      "ar": [
+        {"heading": "ماذا يعني الرمز الأحمر؟", "body": "يشير رمز علبة الزيت الأحمر عادةً إلى انخفاض ضغط الزيت، وليس فقط انخفاض مستوى الزيت. استمرار تشغيل المحرك مع ضغط غير كافٍ قد يسبب احتكاكًا وتلفًا داخليًا."},
+        {"heading": "خطوات آمنة", "body": "خفف السرعة وتوقف في مكان آمن ثم أوقف المحرك. بعد أن تصبح السيارة في وضع آمن، افحص مستوى الزيت بالطريقة المذكورة في دليل المالك. لا تفتح أي جزء ساخن ولا تواصل القيادة إذا بقي التحذير."},
+        {"heading": "متى تحتاج إلى سحب السيارة؟", "body": "إذا كان المستوى صحيحًا وبقي الضوء، أو ظهرت أصوات طرق أو تسرب زيت، فالأفضل نقل السيارة إلى ورشة مؤهلة بدل تجربة مضخة أو حساس جديد دون تشخيص."}
+      ],
+      "en": [
+        {"heading": "What does the red symbol mean?", "body": "A red oil-can symbol usually indicates low oil pressure, not merely a low oil level. Continuing to run the engine with insufficient pressure can cause internal friction and damage."},
+        {"heading": "Safe steps", "body": "Reduce speed and stop safely, then switch off the engine. Once the vehicle is secure, check the oil level using the procedure in the owner’s manual. Do not open hot components or drive on if the warning remains."},
+        {"heading": "When should you tow?", "body": "If the level is correct but the light stays on, or if you hear knocking or see an oil leak, have the vehicle transported to a qualified workshop instead of replacing a pump or sensor without diagnosis."}
+      ]
+    }
+  },
+  {
+    "slug": "brake-abs-warning-lights",
+    "titleAr": "رموز الفرامل وABS: الفرق والتصرف الآمن",
+    "titleEn": "Brake and ABS Warning Lights: The Difference and Safe Response",
+    "excerptAr": "تعرف على الفرق بين تحذير الفرامل وABS، ولماذا قد تعمل الفرامل العادية مع فقدان وظيفة مانع الانغلاق.",
+    "excerptEn": "Learn the difference between the brake and ABS warnings, and why normal braking may remain while anti-lock braking is unavailable.",
+    "image": "images/articles/brakes-abs-cover.jpg",
+    "altAr": "رمزا الفرامل وABS مضاءان على لوحة قيادة",
+    "altEn": "Brake and ABS symbols illuminated on a car dashboard",
+    "category": "Brakes",
+    "readTime": 5,
+    "publishedAt": "2026-08-24",
+    "updatedAt": "2026-08-24",
+    "keywordsAr": ["رمز ABS", "تحذير الفرامل", "سائل الفرامل", "سلامة القيادة"],
+    "keywordsEn": ["ABS warning light", "brake warning", "brake fluid", "driving safety"],
+    "relatedSymbolIds": [4, 5, 21],
+    "sources": [
+      {"label": "Hyundai Owner’s Manual: warning indicator lights", "url": "https://ownersmanual.hyundai.com/full_webhelp/NX4/2025/en_GN/warning_indicator_lights.html"}
+    ],
+    "sections": {
+      "ar": [
+        {"heading": "تحذير الفرامل الأحمر", "body": "قد يرتبط بفرامل الوقوف، انخفاض سائل الفرامل، أو خلل في الدائرة الهيدروليكية. إذا بقي الضوء بعد تحرير فرامل الوقوف أو شعرت بضعف في الدواسة، توقف ولا تقُد السيارة."},
+        {"heading": "ماذا يعني ABS؟", "body": "يشير ضوء ABS إلى أن وظيفة منع انغلاق العجلات قد تكون غير متاحة. في بعض السيارات تبقى الفرامل التقليدية عاملة، لكن ذلك لا يعني أن القيادة في ظروف صعبة آمنة."},
+        {"heading": "الفحص والإصلاح", "body": "افحص بصريًا وجود تسرب فقط إذا كان ذلك آمنًا، ثم اطلب فحص الحساسات ووحدة ABS ومستوى السائل لدى فني مؤهل. لا تعتمد على إطفاء الرمز بمسح الكود فقط."}
+      ],
+      "en": [
+        {"heading": "The red brake warning", "body": "It can be related to the parking brake, low brake fluid, or a hydraulic fault. If it stays on after releasing the parking brake or the pedal feels weak, stop and do not drive."},
+        {"heading": "What does ABS mean?", "body": "The ABS light means anti-lock braking may be unavailable. On some vehicles conventional braking remains, but that does not make difficult driving conditions safe."},
+        {"heading": "Inspection and repair", "body": "Only check for an obvious leak if it is safe, then have the sensors, ABS unit, and fluid level inspected by a qualified technician. Do not rely on clearing the code alone."}
+      ]
+    }
+  },
+  {
+    "slug": "tire-pressure-tpms-guide",
+    "titleAr": "دليل ضغط الإطارات وTPMS: متى تتوقف؟",
+    "titleEn": "Tire Pressure and TPMS: When Should You Stop?",
+    "excerptAr": "افهم الفرق بين انخفاض الضغط وخلل نظام TPMS، وكيف تفحص الإطار قبل مواصلة القيادة.",
+    "excerptEn": "Understand the difference between low pressure and a TPMS fault, and how to inspect a tire before driving on.",
+    "image": "images/articles/tire-pressure-cover.jpg",
+    "altAr": "رمز ضغط الإطارات مع مقياس ضغط في ورشة سيارات",
+    "altEn": "Tire pressure warning symbol with a pressure gauge in an auto workshop",
+    "category": "Tires",
+    "readTime": 4,
+    "publishedAt": "2026-08-24",
+    "updatedAt": "2026-08-24",
+    "keywordsAr": ["ضغط الإطارات", "TPMS", "فحص الإطار", "سلامة الإطارات"],
+    "keywordsEn": ["tire pressure", "TPMS", "tire inspection", "tire safety"],
+    "relatedSymbolIds": [9, 26],
+    "sources": [
+      {"label": "NHTSA TireWise: tire safety", "url": "https://www.nhtsa.gov/vehicle-safety/tires"}
+    ],
+    "sections": {
+      "ar": [
+        {"heading": "إضاءة الرمز", "body": "قد يدل الرمز على انخفاض ضغط إطار أو أكثر. إذا بدأ بالوميض ثم بقي مضاءً، فقد يكون هناك خلل في نظام المراقبة نفسه حسب الطراز."},
+        {"heading": "افحص قبل القيادة", "body": "خفف السرعة وتوقف في مكان آمن. افحص الإطار بصريًا بحثًا عن ثقب أو انتفاخ، وقِس الضغط واضبطه حسب ملصق السيارة لا حسب الرقم المكتوب على جانب الإطار."},
+        {"heading": "بعد ضبط الضغط", "body": "قد تحتاج بعض السيارات إلى إعادة ضبط TPMS من القائمة أو القيادة لمسافة قصيرة. إذا استمر الرمز أو عاد سريعًا، افحص الإطار والصمام والحساس لدى فني."}
+      ],
+      "en": [
+        {"heading": "What the light indicates", "body": "The symbol may indicate low pressure in one or more tires. If it flashes and then stays on, the monitoring system itself may have a fault depending on the vehicle."},
+        {"heading": "Inspect before driving", "body": "Slow down and stop safely. Look for a puncture or bulge, then measure and set pressure using the vehicle label rather than the number molded into the tire sidewall."},
+        {"heading": "After setting pressure", "body": "Some vehicles require a TPMS reset from the menu or a short drive. If the light remains or returns quickly, have the tire, valve, and sensor inspected."}
+      ]
+    }
+  },
+  {
+    "slug": "car-battery-charging-warning",
+    "titleAr": "رمز البطارية: هل المشكلة في البطارية أم الدينامو؟",
+    "titleEn": "Battery Warning Light: Is It the Battery or Alternator?",
+    "excerptAr": "تعرف على معنى رمز الشحن، ولماذا قد تتوقف السيارة حتى لو بدت البطارية سليمة.",
+    "excerptEn": "Learn what the charging symbol means and why a vehicle can stop even when the battery appears healthy.",
+    "image": "images/articles/battery-cover.jpg",
+    "altAr": "رمز البطارية الأحمر مع دوائر كهربائية في الخلفية",
+    "altEn": "Red battery warning symbol with electrical circuits in the background",
+    "category": "Battery",
+    "readTime": 4,
+    "publishedAt": "2026-08-24",
+    "updatedAt": "2026-08-24",
+    "keywordsAr": ["رمز البطارية", "الدينامو", "نظام الشحن", "بطارية السيارة"],
+    "keywordsEn": ["battery warning light", "alternator", "charging system", "car battery"],
+    "relatedSymbolIds": [3, 22, 30],
+    "sources": [
+      {"label": "Toyota Owners: warning lights", "url": "https://www.toyota.com/owners/warning-lights"}
+    ],
+    "sections": {
+      "ar": [
+        {"heading": "رمز البطارية هو غالبًا رمز الشحن", "body": "إضاءة الرمز أثناء القيادة قد تعني أن الدينامو أو السير أو منظم الشحن لا يعيد شحن البطارية. البطارية الجديدة لا تحل المشكلة إذا كان مصدر الشحن متوقفًا."},
+        {"heading": "متى تتوقف؟", "body": "أوقف الأحمال الكهربائية غير الضرورية واتجه إلى مكان آمن؛ إذا ظهرت رائحة احتراق أو ضعف في الإضاءة أو تغيرت أنظمة السيارة، توقف واتصل بالمساعدة."},
+        {"heading": "الفحص الصحيح", "body": "يجب فحص جهد البطارية والشحن والسير والأسلاك معًا. لا تلمس سير الدينامو والمحرك يعمل، ولا تفصل البطارية أثناء التشغيل لاختبار الدينامو."}
+      ],
+      "en": [
+        {"heading": "The battery symbol often means charging", "body": "A light that appears while driving can mean the alternator, belt, or regulator is not recharging the battery. A new battery will not solve a failed charging source."},
+        {"heading": "When to stop", "body": "Switch off unnecessary electrical loads and reach a safe place. If you smell burning, the lights become weak, or vehicle systems change, stop and call for assistance."},
+        {"heading": "The correct test", "body": "Battery voltage, charging output, belt, and wiring should be checked together. Never touch the alternator belt while the engine runs, and do not disconnect the battery as a test."}
+      ]
+    }
+  },
+  {
+    "slug": "engine-overheating-warning",
+    "titleAr": "ارتفاع حرارة المحرك: خطوات الإنقاذ قبل تلفه",
+    "titleEn": "Engine Overheating: Steps to Protect the Engine",
+    "excerptAr": "تعرف على التصرف الصحيح عند ظهور رمز الحرارة، وما الذي يجب ألا تفعله والمحرك ساخن.",
+    "excerptEn": "Learn what to do when the temperature warning appears and what never to do while the engine is hot.",
+    "image": "images/symbols/Temperature.webp",
+    "altAr": "مؤشر حرارة محرك مرتفع على لوحة قيادة سيارة",
+    "altEn": "High engine temperature warning on a car dashboard",
+    "category": "Temperature",
+    "readTime": 5,
+    "publishedAt": "2026-08-24",
+    "updatedAt": "2026-08-24",
+    "keywordsAr": ["حرارة المحرك", "سائل التبريد", "ارتفاع الحرارة", "رادياتير"],
+    "keywordsEn": ["engine overheating", "coolant", "temperature warning", "radiator"],
+    "relatedSymbolIds": [6, 24],
+    "sources": [
+      {"label": "Hyundai Owner’s Manual: warning indicator lights", "url": "https://ownersmanual.hyundai.com/full_webhelp/NX4/2025/en_GN/warning_indicator_lights.html"}
+    ],
+    "sections": {
+      "ar": [
+        {"heading": "أول تصرف", "body": "خفف السرعة وأوقف السيارة في مكان آمن ثم أطفئ المحرك. افتح غطاء المحرك بحذر لتحسين التهوية، لكن ابتعد عن المروحة والأجزاء الساخنة."},
+        {"heading": "ما الذي يجب ألا تفعله؟", "body": "لا تفتح غطاء الردياتير أو خزان الضغط والمحرك ساخن، ولا تسكب ماءً باردًا على أجزاء ساخنة. خطر الحروق وتلف المكونات أعلى من فائدة الاستعجال."},
+        {"heading": "بعد أن يبرد المحرك", "body": "تحقق من مستوى سائل التبريد والتسربات الظاهرة فقط. إذا كان المستوى منخفضًا أو عادت الحرارة أو ظهر بخار، لا تواصل القيادة واطلب سحب السيارة."}
+      ],
+      "en": [
+        {"heading": "First response", "body": "Reduce speed and stop safely, then switch off the engine. Open the hood carefully to improve ventilation, but stay clear of the fan and hot components."},
+        {"heading": "What should you never do?", "body": "Do not open the radiator cap or pressurized reservoir while the engine is hot, and do not pour cold water onto hot components. Burns and component damage are real risks."},
+        {"heading": "After the engine cools", "body": "Check coolant level and visible leaks only. If the level is low, the temperature returns, or steam appears, do not continue driving; arrange recovery."}
+      ]
+    }
+  }
+]

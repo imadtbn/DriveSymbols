@@ -1,0 +1,35 @@
+name: Validate DriveSymbols
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate JSON, sitemap, local assets, and i18n
+        run: python3 tools/validate_site.py
+
+      - name: Validate JavaScript syntax
+        run: |
+          node --check js/app.js
+          node --check js/search.js
+          node --check js/i18n.js
+          node --check js/article.js
+
+      - name: Check whitespace
+        run: git diff --check

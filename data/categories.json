@@ -1,108 +1,134 @@
 [
-    {
-        "id": "Engine",
-        "name": "المحرك",
-        "image": "images/categories/check-engine.png",
-        "color": "#ef4444",
-        "description": "رموز المحرك ونظام إدارة المحرك",
-        "count": 4
-    },
-    {
-        "id": "Brakes",
-        "name": "الفرامل",
-        "image": "images/categories/brakes.png",
-        "color": "#dc2626",
-        "description": "رموز نظام الفرامل و ABS",
-        "count": 3
-    },
-    {
-        "id": "Battery",
-        "name": "البطارية",
-        "image": "images/categories/battery.webp",
-        "color": "#eab308",
-        "description": "رموز البطارية ونظام الشحن",
-        "count": 2
-    },
-    {
-        "id": "Oil",
-        "name": "الزيت",
-        "image": "images/categories/oil.png",
-        "color": "#f97316",
-        "description": "رموز زيت المحرك وضغط الزيت",
-        "count": 2
-    },
-    {
-        "id": "Temperature",
-        "name": "الحرارة",
-        "image": "images/categories/Temperature.webp",
-        "color": "#dc2626",
-        "description": "رموز حرارة المحرك والتبريد",
-        "count": 2
-    },
-    {
-        "id": "Fuel",
-        "name": "الوقود",
-        "image": "images/categories/Fuel.png",
-        "color": "#f59e0b",
-        "description": "رموز الوقود وفلتر الوقود",
-        "count": 2
-    },
-    {
-        "id": "Tires",
-        "name": "الإطارات",
-        "image": "images/categories/Tires.webp",
-        "color": "#f97316",
-        "description": "رموز الإطارات ونظام TPMS",
-        "count": 2
-    },
-    {
-        "id": "Airbag",
-        "name": "الوسائد الهوائية",
-        "icon": "fa-person-seat",
-        "image": "images/categories/Airbag.webp",
-        "color": "#dc2626",
-        "description": "رموز الوسائد الهوائية وأحزمة الأمان",
-        "count": 2
-    },
-    {
-        "id": "Stability",
-        "name": "نظام الثبات",
-        "image": "images/categories/Stability.webp",
-        "icon": "fa-car-side",
-        "color": "#f59e0b",
-        "description": "رموز ESP ونظام التحكم بالانزلاق",
-        "count": 2
-    },
-    {
-        "id": "Transmission",
-        "name": "ناقل الحركة",
-        "image": "images/categories/Transmission.webp",
-        "color": "#dc2626",
-        "description": "رموز الجيربوكس وناقل الحركة",
-        "count": 2
-    },
-    {
-        "id": "Electrical",
-        "name": "الكهرباء",
-        "image": "images/categories/Electrical.webp",
-        "color": "#eab308",
-        "description": "رموز النظام الكهربائي والفيوزات",
-        "count": 2
-    },
-    {
-        "id": "Lights",
-        "name": "الإضاءة",
-        "image": "images/categories/Lights.png",
-        "color": "#3b82f6",
-        "description": "رموز الإضاءة والأضواء",
-        "count": 3
-    },
-    {
-        "id": "Assistance",
-        "name": "أنظمة المساعدة",
-        "image": "images/categories/Assistance.webp",
-        "color": "#10b981",
-        "description": "رموز أنظمة مساعدة السائق",
-        "count": 3
-    }
+  {
+    "id": "Engine",
+    "name": "المحرك",
+    "image": "images/categories/check-engine.png",
+    "color": "#ef4444",
+    "description": "رموز المحرك ونظام إدارة المحرك",
+    "count": 4,
+    "nameEn": "Engine",
+    "descriptionEn": "Engine and engine management symbols"
+  },
+  {
+    "id": "Brakes",
+    "name": "الفرامل",
+    "image": "images/categories/brakes.png",
+    "color": "#dc2626",
+    "description": "رموز نظام الفرامل و ABS",
+    "count": 3,
+    "nameEn": "Brakes",
+    "descriptionEn": "Brake system and ABS symbols"
+  },
+  {
+    "id": "Battery",
+    "name": "البطارية",
+    "image": "images/categories/battery.webp",
+    "color": "#eab308",
+    "description": "رموز البطارية ونظام الشحن",
+    "count": 2,
+    "nameEn": "Battery",
+    "descriptionEn": "Battery and charging system symbols"
+  },
+  {
+    "id": "Oil",
+    "name": "الزيت",
+    "image": "images/categories/oil.png",
+    "color": "#f97316",
+    "description": "رموز زيت المحرك وضغط الزيت",
+    "count": 2,
+    "nameEn": "Oil",
+    "descriptionEn": "Engine oil and oil pressure symbols"
+  },
+  {
+    "id": "Temperature",
+    "name": "الحرارة",
+    "image": "images/categories/Temperature.webp",
+    "color": "#dc2626",
+    "description": "رموز حرارة المحرك والتبريد",
+    "count": 2,
+    "nameEn": "Temperature",
+    "descriptionEn": "Engine temperature and cooling symbols"
+  },
+  {
+    "id": "Fuel",
+    "name": "الوقود",
+    "image": "images/categories/Fuel.png",
+    "color": "#f59e0b",
+    "description": "رموز الوقود وفلتر الوقود",
+    "count": 2,
+    "nameEn": "Fuel",
+    "descriptionEn": "Fuel and fuel filter symbols"
+  },
+  {
+    "id": "Tires",
+    "name": "الإطارات",
+    "image": "images/categories/Tires.webp",
+    "color": "#f97316",
+    "description": "رموز الإطارات ونظام TPMS",
+    "count": 2,
+    "nameEn": "Tires",
+    "descriptionEn": "Tire pressure and TPMS symbols"
+  },
+  {
+    "id": "Airbag",
+    "name": "الوسائد الهوائية",
+    "icon": "fa-person-seat",
+    "image": "images/categories/Airbag.webp",
+    "color": "#dc2626",
+    "description": "رموز الوسائد الهوائية وأحزمة الأمان",
+    "count": 2,
+    "nameEn": "Airbags",
+    "descriptionEn": "Airbag and seat belt symbols"
+  },
+  {
+    "id": "Stability",
+    "name": "نظام الثبات",
+    "image": "images/categories/Stability.webp",
+    "icon": "fa-car-side",
+    "color": "#f59e0b",
+    "description": "رموز ESP ونظام التحكم بالانزلاق",
+    "count": 2,
+    "nameEn": "Stability",
+    "descriptionEn": "ESP and traction control symbols"
+  },
+  {
+    "id": "Transmission",
+    "name": "ناقل الحركة",
+    "image": "images/categories/Transmission.webp",
+    "color": "#dc2626",
+    "description": "رموز الجيربوكس وناقل الحركة",
+    "count": 2,
+    "nameEn": "Transmission",
+    "descriptionEn": "Gearbox and transmission symbols"
+  },
+  {
+    "id": "Electrical",
+    "name": "الكهرباء",
+    "image": "images/categories/Electrical.webp",
+    "color": "#eab308",
+    "description": "رموز النظام الكهربائي والفيوزات",
+    "count": 2,
+    "nameEn": "Electrical",
+    "descriptionEn": "Electrical system and fuse symbols"
+  },
+  {
+    "id": "Lights",
+    "name": "الإضاءة",
+    "image": "images/categories/Lights.png",
+    "color": "#3b82f6",
+    "description": "رموز الإضاءة والأضواء",
+    "count": 3,
+    "nameEn": "Lights",
+    "descriptionEn": "Lighting and lamp symbols"
+  },
+  {
+    "id": "Assistance",
+    "name": "أنظمة المساعدة",
+    "image": "images/categories/Assistance.webp",
+    "color": "#10b981",
+    "description": "رموز أنظمة مساعدة السائق",
+    "count": 3,
+    "nameEn": "Driver assistance",
+    "descriptionEn": "Driver assistance system symbols"
+  }
 ]

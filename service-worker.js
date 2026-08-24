@@ -1,4 +1,4 @@
-const CACHE_NAME = 'drivesymbols-v2';
+const CACHE_NAME = 'drivesymbols-v3';
 const BASE_PATH = new URL('./', self.location.href).pathname.replace(/\/$/, '');
 
 const asset = path => `${BASE_PATH}${path}`;
@@ -11,6 +11,7 @@ const STATIC_ASSETS = [
   '/brands.html',
   '/favorites.html',
   '/symbol.html',
+  '/article.html',
   '/pages/about.html',
   '/pages/contact.html',
   '/pages/privacy.html',
@@ -26,9 +27,19 @@ const STATIC_ASSETS = [
   '/js/share.js',
   '/js/favorites.js',
   '/js/filters.js',
+  '/js/i18n.js',
+  '/js/article.js',
   '/data/symbols.json',
   '/data/categories.json',
   '/data/brands.json',
+  '/data/articles.json',
+  '/css/articles.css',
+  '/images/articles/engine-warning-cover.jpg',
+  '/images/articles/oil-pressure-cover.jpg',
+  '/images/articles/brakes-abs-cover.jpg',
+  '/images/articles/tire-pressure-cover.jpg',
+  '/images/articles/battery-cover.jpg',
+  '/images/symbols/Temperature.webp',
   '/images/icons/icon-192x192.svg',
   '/images/icons/icon-512x512.svg'
 ].map(asset);

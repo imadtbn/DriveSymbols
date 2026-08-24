@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/responsive.css">
   <link rel="stylesheet" href="css/ads.css">
+  <link rel="stylesheet" href="css/articles.css">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -182,21 +183,38 @@ function escapeHTML(text) {
         .replace(/"/g, "&quot;");
 }
 
+function symbolIsEnglish() {
+    return window.DriveI18n?.getLanguage() === "en";
+}
+
+function symbolText(symbol, field, fallbackField) {
+    return symbolIsEnglish() ? (symbol[field] || symbol[fallbackField]) : symbol[fallbackField];
+}
+
+function symbolSeverity(symbol) {
+    return symbolIsEnglish() ? ({ High: "High", Medium: "Medium", Low: "Low" }[symbol.severity] || symbol.severity) : symbol.severityArabic;
+}
+
+function symbolDriveText(symbol) {
+    return symbolIsEnglish()
+        ? (symbol.canDrive ? "Drive cautiously and arrange an inspection." : "Stop and do not continue driving.")
+        : (symbol.canDrive ? "✅ يمكن القيادة بحذر." : "❌ يجب التوقف وعدم مواصلة القيادة.");
+}
+
 function updateMeta(symbol) {
 
+    const name = symbolText(symbol, "nameEn", "arabicName");
     document.title =
-        `${symbol.arabicName} (${symbol.name}) - DriveSymbols DZ`;
+        `${name} - DriveSymbols`;
 
     $("pageDescription").setAttribute(
         "content",
-        symbol.description
+        symbolText(symbol, "descriptionEn", "description")
     );
 
-    $("breadcrumbName").textContent =
-        symbol.arabicName;
+    $("breadcrumbName").textContent = name;
 
-    $("headerTitle").textContent =
-        symbol.arabicName;
+    $("headerTitle").textContent = name;
 
 }
 
@@ -428,7 +446,7 @@ function renderSymbol() {
             <img
                 id="symbolImage"
                 src="${currentSymbol.image}"
-                alt="${escapeHTML(currentSymbol.arabicName)}"
+                alt="${escapeHTML(symbolText(currentSymbol, "nameEn", "arabicName"))}"
                 loading="eager"
                 onerror="this.src='images/symbols/default.webp'">
 
@@ -438,11 +456,11 @@ function renderSymbol() {
 
             <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1rem;">
 
-                <h1>${escapeHTML(currentSymbol.arabicName)}</h1>
+                    <h1>${escapeHTML(symbolText(currentSymbol, "nameEn", "arabicName"))}</h1>
 
                 <span style="color:var(--text-muted);font-size:1.1rem;">
 
-                    (${escapeHTML(currentSymbol.name)})
+                    (${escapeHTML(symbolIsEnglish() ? currentSymbol.arabicName : currentSymbol.name)})
 
                 </span>
 
@@ -452,19 +470,19 @@ function renderSymbol() {
 
                 <span class="badge ${currentSymbol.severityColor}">
 
-                    ${currentSymbol.severityArabic}
+                    ${escapeHTML(symbolSeverity(currentSymbol))}
 
                 </span>
 
                 <span class="badge">
 
-                    ${currentSymbol.colorArabic}
+                    ${escapeHTML(symbolIsEnglish() ? currentSymbol.color : currentSymbol.colorArabic)}
 
                 </span>
 
                 <span class="badge">
 
-                    ${currentSymbol.categoryArabic}
+                    ${escapeHTML(symbolIsEnglish() ? currentSymbol.category : currentSymbol.categoryArabic)}
 
                 </span>
 
@@ -478,7 +496,7 @@ function renderSymbol() {
 
             <div class="drive-status ${currentSymbol.driveStatus}">
 
-                ${currentSymbol.driveText}
+                    ${escapeHTML(symbolIsEnglish() ? symbolDriveText(currentSymbol) : currentSymbol.driveText)}
 
             </div>
 
@@ -492,7 +510,7 @@ function renderSymbol() {
 
                 <p>
 
-                    ${escapeHTML(currentSymbol.description)}
+                    ${escapeHTML(symbolText(currentSymbol, "descriptionEn", "description"))}
 
                 </p>
 
@@ -508,7 +526,7 @@ function renderSymbol() {
 
                 <ul>
 
-                    ${currentSymbol.causes
+                    ${(symbolIsEnglish() ? (currentSymbol.causesEn || currentSymbol.causes) : currentSymbol.causes)
                         .map(cause => `
                             <li>${escapeHTML(cause)}</li>
                         `)
@@ -528,7 +546,7 @@ function renderSymbol() {
 
                 <p>
 
-                    ${escapeHTML(currentSymbol.solution)}
+                    ${escapeHTML(symbolText(currentSymbol, "solutionEn", "solution"))}
 
                 </p>
 
@@ -560,9 +578,7 @@ function renderSymbol() {
 
                 <p>
 
-                    ${currentSymbol.canDrive
-                        ? "✅ يمكن القيادة بحذر."
-                        : "❌ يجب التوقف وعدم مواصلة القيادة."}
+                    ${symbolDriveText(currentSymbol)}
 
                 </p>
 
@@ -691,7 +707,7 @@ function renderSimilarSymbols() {
 
             <div class="no-results">
 
-                لا توجد رموز مشابهة.
+                ${symbolIsEnglish() ? "No related symbols." : "لا توجد رموز مشابهة."}
 
             </div>
 
@@ -710,7 +726,7 @@ function renderSimilarSymbols() {
 
                 <img
                     src="${symbol.image}"
-                    alt="${escapeHTML(symbol.arabicName)}"
+                    alt="${escapeHTML(symbolText(symbol, "nameEn", "arabicName"))}"
                     loading="lazy"
                     onerror="this.src='images/symbols/default.webp'">
 
@@ -720,7 +736,7 @@ function renderSimilarSymbols() {
 
                 <div class="symbol-card-title">
 
-                    ${escapeHTML(symbol.arabicName)}
+                    ${escapeHTML(symbolText(symbol, "nameEn", "arabicName"))}
 
                 </div>
 
@@ -728,13 +744,13 @@ function renderSimilarSymbols() {
 
                     <span class="badge ${symbol.severityColor}">
 
-                        ${symbol.severityArabic}
+                        ${escapeHTML(symbolIsEnglish() ? symbol.severity : symbol.severityArabic)}
 
                     </span>
 
                     <span>
 
-                        ${escapeHTML(symbol.categoryArabic)}
+                        ${escapeHTML(symbolIsEnglish() ? symbol.category : symbol.categoryArabic)}
 
                     </span>
 
@@ -825,6 +841,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
   </script>
+  <script src="js/i18n.js"></script>
 </body>
 
 </html>

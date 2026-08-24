@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /DriveSymbols/
+Disallow: /DriveSymbols/favorites.html
+Sitemap: https://imadtbn.github.io/DriveSymbols/sitemap.xml
