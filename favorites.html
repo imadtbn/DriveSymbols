@@ -212,7 +212,7 @@
   </button>
 
   <script src="js/ads.js"></script>
-  <script src="js/app.js?v=a0f58f7"></script>
+  <script src="js/app.js?v=9224514"></script>
   <script src="js/ui.js"></script>
 
   <script>
@@ -224,6 +224,7 @@
         allSymbols = await res.json();
         favoriteIds = JSON.parse(localStorage.getItem('favorites') || '[]');
         renderFavorites();
+        document.addEventListener('languagechange', renderFavorites);
       } catch (e) {
         console.error(e);
         document.getElementById('favoritesGrid').innerHTML = `
@@ -236,7 +237,8 @@
     }
 
     function renderFavorites() {
-      const container = document.getElementById('favoritesGrid');
+      const language = window.DriveI18n?.getLanguage() || new URLSearchParams(window.location.search).get('lang') || localStorage.getItem('driveLanguage') || 'ar';
+      const container = document.getElementById('favoritesList');
       const emptyState = document.getElementById('emptyState');
       const statsBar = document.getElementById('favStats');
       if (favoriteIds.length === 0) {
@@ -289,7 +291,7 @@
 
             <img
                 src="${symbol.image}"
-                alt="${symbol.arabicName}"
+                alt="${language === 'en' ? (symbol.nameEn || symbol.arabicName) : symbol.arabicName}"
                 loading="lazy"
                 decoding="async"
                 onerror="this.src='images/symbols/default.webp'">
@@ -300,17 +302,17 @@
 
             <h3 class="symbol-card-title">
 
-                ${symbol.arabicName}
+                ${language === 'en' ? (symbol.nameEn || symbol.arabicName) : symbol.arabicName}
 
             </h3>
 
             <div class="symbol-card-meta">
 
                 <span class="severity-badge ${symbol.severityColor}">
-                    ${symbol.severityArabic}
+                    ${language === 'en' ? ({ High: 'High', Medium: 'Medium', Low: 'Low' }[symbol.severity] || symbol.severity) : symbol.severityArabic}
                 </span>
 
-                <span>${symbol.categoryArabic}</span>
+                <span>${language === 'en' ? (symbol.categoryEn || symbol.category) : symbol.categoryArabic}</span>
 
             </div>
 
@@ -324,7 +326,7 @@
 
                 <span>
 
-                    ${symbol.cost}
+                    ${language === 'en' ? (symbol.costEn || symbol.cost) : symbol.cost}
 
                 </span>
 
@@ -382,7 +384,7 @@
     loadFavorites();
   </script>
 
-  <script src="js/i18n.js?v=a0f58f7"></script>
+  <script src="js/i18n.js?v=9224514"></script>
 </body>
 
 </html>
