@@ -133,7 +133,7 @@
   </button>
 
   <script src="js/ads.js"></script>
-  <script src="js/app.js?v=c9aab1d"></script>
+  <script src="js/app.js?v=a0f58f7"></script>
   <script src="js/ui.js"></script>
   <script>
     // Load categories
@@ -142,18 +142,19 @@
         const response = await fetch('data/categories.json');
         const categories = await response.json();
         const container = document.getElementById('categoriesList');
+        const language = window.DriveI18n?.getLanguage() || new URLSearchParams(window.location.search).get('lang') || localStorage.getItem('driveLanguage') || 'ar';
         container.innerHTML = categories.map((cat, index) => `
           <a href="search.html?category=${cat.id}" class="category-card reveal" style="animation-delay: ${index * 0.1}s">
 <div class="category-image">
     <img
         src="${cat.image}"
-        alt="${cat.name}"
+        alt="${language === 'en' ? cat.nameEn : cat.name}"
         loading="lazy"
         onerror="this.src='images/categories/default.webp'">
 </div>
             <div class="category-info">
-              <h3>${cat.name}</h3>
-              <p>${cat.count} رمز</p>
+              <h3>${language === 'en' ? cat.nameEn : cat.name}</h3>
+              <p>${cat.count} ${language === 'en' ? 'symbols' : 'رمز'}</p>
             </div>
           </a>
         `).join('');
@@ -163,8 +164,9 @@
       }
     }
     loadCategories();
+    document.addEventListener('languagechange', loadCategories);
   </script>
-  <script src="js/i18n.js?v=c9aab1d"></script>
+  <script src="js/i18n.js?v=a0f58f7"></script>
 </body>
 
 </html>

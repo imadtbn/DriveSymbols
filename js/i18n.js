@@ -255,6 +255,27 @@
     if (copyright) copyright.textContent = language === 'en' ? '© 2026 DriveSymbols. All rights reserved.' : '© 2026 DriveSymbols DZ. جميع الحقوق محفوظة.';
   }
 
+  function applyListingHeaderCopy(language) {
+    const page = window.location.pathname.split('/').pop() || 'index.html';
+    const copy = {
+      'categories.html': ['Categories', 'Browse symbols by vehicle system or component.', 'التصنيفات', 'تصفح الرموز حسب النظام أو الجزء المعني'],
+      'brands.html': ['Car brands', 'Explore dashboard symbols by vehicle manufacturer.', 'علامات السيارات', 'تصفح الرموز حسب الشركة المصنّعة للسيارة'],
+      'favorites.html': ['Saved symbols', 'Keep important symbols close for quick reference.', 'المفضلة', 'احفظ الرموز المهمة للوصول السريع']
+    }[page];
+    if (!copy) return;
+    const heading = document.querySelector('.page-header h1');
+    const description = document.querySelector('.page-header p');
+    if (language === 'en') {
+      document.title = `${copy[0]} | DriveSymbols`;
+      if (heading) heading.textContent = copy[0];
+      if (description) description.textContent = copy[1];
+    } else {
+      document.title = `${copy[2]} - DriveSymbols DZ`;
+      if (heading) heading.textContent = copy[2];
+      if (description) description.textContent = copy[3];
+    }
+  }
+
   function applyStaticPageCopy(language) {
     const page = window.location.pathname.split('/').pop() || 'index.html';
     const copies = {
@@ -294,6 +315,7 @@
     ensureToggle();
     translateTextNodes(document.body);
     applyPageCopy(language);
+    applyListingHeaderCopy(language);
     applyStaticPageCopy(language);
     const globalFooterDescription = document.querySelector('.footer-brand p');
     const globalCopyright = document.querySelector('.footer-bottom p');

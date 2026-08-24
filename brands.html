@@ -167,7 +167,7 @@
     </button>
 
     <script src="js/ads.js"></script>
-  <script src="js/app.js?v=c9aab1d"></script>
+  <script src="js/app.js?v=a0f58f7"></script>
     <script src="js/ui.js"></script>
 
     <script>
@@ -215,6 +215,7 @@
         function renderBrands() {
 
             const container = document.getElementById('brandsGrid');
+            const language = window.DriveI18n?.getLanguage() || new URLSearchParams(window.location.search).get('lang') || localStorage.getItem('driveLanguage') || 'ar';
             container.innerHTML = allBrands.map((brand, index) => {
                 const brandSymbols = allSymbols.filter(symbol =>
                     (symbol.brands || []).includes(brand.id)
@@ -226,12 +227,12 @@
 <div class="brand-logo">
     <img
         src="${brand.image}"
-        alt="${brand.name}"
+        alt="${language === 'en' ? (brand.nameEn || brand.name) : brand.name}"
         loading="lazy"
         onerror="this.src='images/brands/default.svg'">
 </div>
-            <h4 style="font-size: var(--font-size-lg); font-weight: 700; margin-bottom: var(--space-xs);">${brand.name}</h4>
-            <p style="font-size: var(--font-size-sm); color: var(--text-muted); margin-bottom: var(--space-sm);">${brand.country}</p>
+            <h4 style="font-size: var(--font-size-lg); font-weight: 700; margin-bottom: var(--space-xs);">${language === 'en' ? (brand.nameEn || brand.name) : brand.name}</h4>
+            <p style="font-size: var(--font-size-sm); color: var(--text-muted); margin-bottom: var(--space-sm);">${language === 'en' ? (brand.countryEn || brand.country) : brand.country}</p>
             <div style="display: flex; align-items: center; justify-content: center; gap: var(--space-sm); flex-wrap: wrap;">
               ${App.renderBrandStats(brandStats)}
             </div>
@@ -255,6 +256,7 @@
             const brandSymbols = allSymbols.filter(symbol =>
                 (symbol.brands || []).includes(brandId)
             );
+            const language = window.DriveI18n?.getLanguage() || new URLSearchParams(window.location.search).get('lang') || localStorage.getItem('driveLanguage') || 'ar';
 
             // تحديث الرابط
             const url = new URL(window.location);
@@ -266,14 +268,16 @@
             document.getElementById("brandDetail").style.display = "block";
 
             // بيانات العلامة
-            document.getElementById("brandDetailName").textContent = brand.name;
-            document.getElementById("brandDetailCountry").textContent = brand.country;
-            document.getElementById("brandNoteName").textContent = brand.name;
+            const displayName = language === 'en' ? (brand.nameEn || brand.name) : brand.name;
+            const displayCountry = language === 'en' ? (brand.countryEn || brand.country) : brand.country;
+            document.getElementById("brandDetailName").textContent = displayName;
+            document.getElementById("brandDetailCountry").textContent = displayCountry;
+            document.getElementById("brandNoteName").textContent = displayName;
 
             const img = document.getElementById("brandDetailImage");
 
             img.src = brand.image || "images/brands/default.svg";
-            img.alt = brand.name;
+            img.alt = displayName;
             img.onerror = () => {
                 img.src = "images/brands/default.svg";
             };
@@ -410,8 +414,9 @@
             }
         });
         loadBrands();
+        document.addEventListener('languagechange', loadBrands);
     </script>
-  <script src="js/i18n.js?v=c9aab1d"></script>
+  <script src="js/i18n.js?v=a0f58f7"></script>
 </body>
 
 </html>

@@ -2,7 +2,7 @@ import re
 from pathlib import Path
 
 root = Path('/home/ubuntu/DriveSymbols-git')
-version = 'c9aab1d'
+version = 'a0f58f7'
 pattern = re.compile(r'((?:\.\./)?js/(?:app|search|i18n|article)\.js)\?v=[^\" ]+')
 for page in root.rglob('*.html'):
     text = page.read_text(encoding='utf-8')
