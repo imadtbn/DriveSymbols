@@ -21,6 +21,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="../css/articles.css">
+  <link rel="stylesheet" href="../css/integrations.css">
 </head>
 <body>
   <header class="header">
@@ -70,7 +71,7 @@
         <div class="reveal" style="margin-bottom: var(--space-2xl);">
           <div class="alert alert-info" style="margin-bottom: var(--space-xl);">
             <i class="fas fa-circle-info"></i>
-            <strong>ملخص سريع:</strong> نحن نحترم خصوصيتك. لا نقوم بجمع أي بيانات شخصية. المعلومات الوحيدة المخزنة هي تفضيلاتك المحلية (المفضلة، الوضع الليلي) على جهازك فقط.
+            <strong>ملخص سريع:</strong> نحترم خصوصيتك. لا نطلب بيانات شخصية ولا نرسل بيانات السيارات أو البحث إلى خادمنا. قد تعمل خدمات خارجية مثل AdSense، ولا يعمل Google Analytics 4 إلا بعد أن يضيف مسؤول الموقع معرّف القياس يدويًا في ملف الإعدادات.
           </div>
         </div>
 
@@ -84,7 +85,7 @@
             </p>
             <ul style="padding-right: var(--space-lg); color: var(--text-secondary); line-height: 2;">
               <li>ملفات تعريف الارتباط (Cookies) للتتبع</li>
-              <li>أدوات تحليلات الطرف الثالث (Google Analytics, Facebook Pixel)</li>
+              <li>Google Analytics 4 أو Facebook Pixel حاليًا؛ يبقى GA4 معطّلًا حتى إضافة Measurement ID يدويًا</li>
               <li>نماذج تسجيل تتطلب بيانات شخصية</li>
               <li>طلبات موقع جغرافي</li>
             </ul>
@@ -125,8 +126,7 @@
           </h2>
           <div class="card" style="padding: var(--space-lg);">
             <p style="color: var(--text-secondary); line-height: 1.8;">
-              هذا الموقع <strong>لا يستخدم</strong> ملفات تعريف الارتباط (Cookies) للتتبع أو الإعلانات.
-              نحن نؤمن بأن تجربة المستخدم يجب أن تكون خالية من التتبع.
+              قد تستخدم خدمات الإعلانات الخارجية، مثل Google AdSense، ملفات تعريف الارتباط أو تقنيات مشابهة وفقًا لإعداداتها وسياساتها. لا نفعّل Google Analytics 4 حاليًا لأن Measurement ID في إعدادات الموقع فارغ. إذا فعّله المسؤول لاحقًا، راجع إعدادات الخصوصية في متصفحك وسياسة Google لمزيد من التفاصيل.
             </p>
           </div>
         </div>
@@ -137,7 +137,7 @@
           </h2>
           <div class="card" style="padding: var(--space-lg);">
             <p style="color: var(--text-secondary); line-height: 1.8;">
-              نحن <strong>لا نشارك</strong> أي بيانات مع أطراف ثالثة. نحن لا نملك أي بيانات لمشاركتها من الأساس.
+              لا نبيع بياناتك ولا نشارك بيانات شخصية يطلبها منك الموقع. قد تُحمّل عناصر الإعلانات من Google AdSense، وقد تتلقى Google بيانات تقنية لازمة لعرض الإعلان وفقًا لسياساتها. كما أن Google Analytics 4 غير مفعّل ما دام معرّف القياس فارغًا.
               زر المشاركة (واتساب، فيسبوك، تيليجرام) يفتح نافذة جديدة في منصة المشاركة المختارة،
               ولا نرسل أي معلومات إليها.
             </p>
@@ -146,7 +146,18 @@
 
         <div class="reveal" style="margin-bottom: var(--space-2xl);">
           <h2 style="font-size: var(--font-size-xl); font-weight: 800; margin-bottom: var(--space-md); color: var(--primary-color); display: flex; align-items: center; gap: var(--space-sm);">
-            <i class="fas fa-lock"></i> 5. الأمان
+            <i class="fas fa-chart-line"></i> 5. التحليلات والإعلانات الخارجية
+          </h2>
+          <div class="card" style="padding: var(--space-lg); margin-bottom: var(--space-xl);">
+            <p style="color: var(--text-secondary); line-height: 1.8;">
+              يتضمن الموقع مواضع مهيأة لـ <strong>Google AdSense</strong>، وقد تُحمّل الإعلانات عند اقترابها من الشاشة. أما <strong>Google Analytics 4</strong> فهو تكامل اختياري لا يرسل أي طلبات عندما تكون خانة Measurement ID فارغة. يستطيع مسؤول الموقع تفعيله بإضافة معرّف يبدأ بـ <code>G-</code> إلى <code>js/site-config.js</code> ثم نشر التعديل. لا نرسل عبر طبقة القياس كلمات البحث الخام أو VIN أو أسماء المستخدمين أو أي معلومات شخصية.
+            </p>
+          </div>
+        </div>
+
+        <div class="reveal" style="margin-bottom: var(--space-2xl);">
+          <h2 style="font-size: var(--font-size-xl); font-weight: 800; margin-bottom: var(--space-md); color: var(--primary-color); display: flex; align-items: center; gap: var(--space-sm);">
+            <i class="fas fa-lock"></i> 6. الأمان
           </h2>
           <div class="card" style="padding: var(--space-lg);">
             <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: var(--space-md);">
@@ -163,7 +174,7 @@
 
         <div class="reveal" style="margin-bottom: var(--space-2xl);">
           <h2 style="font-size: var(--font-size-xl); font-weight: 800; margin-bottom: var(--space-md); color: var(--primary-color); display: flex; align-items: center; gap: var(--space-sm);">
-            <i class="fas fa-user-check"></i> 6. حقوقك
+            <i class="fas fa-user-check"></i> 7. حقوقك
           </h2>
           <div class="card" style="padding: var(--space-lg);">
             <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: var(--space-md);">
@@ -180,7 +191,7 @@
 
         <div class="reveal" style="margin-bottom: var(--space-2xl);">
           <h2 style="font-size: var(--font-size-xl); font-weight: 800; margin-bottom: var(--space-md); color: var(--primary-color); display: flex; align-items: center; gap: var(--space-sm);">
-            <i class="fas fa-children"></i> 7. حماية القاصرين
+            <i class="fas fa-children"></i> 8. حماية القاصرين
           </h2>
           <div class="card" style="padding: var(--space-lg);">
             <p style="color: var(--text-secondary); line-height: 1.8;">
@@ -191,7 +202,7 @@
 
         <div class="reveal" style="margin-bottom: var(--space-2xl);">
           <h2 style="font-size: var(--font-size-xl); font-weight: 800; margin-bottom: var(--space-md); color: var(--primary-color); display: flex; align-items: center; gap: var(--space-sm);">
-            <i class="fas fa-rotate"></i> 8. تغييرات على السياسة
+            <i class="fas fa-rotate"></i> 9. تغييرات على السياسة
           </h2>
           <div class="card" style="padding: var(--space-lg);">
             <p style="color: var(--text-secondary); line-height: 1.8;">
@@ -203,7 +214,7 @@
 
         <div class="reveal">
           <h2 style="font-size: var(--font-size-xl); font-weight: 800; margin-bottom: var(--space-md); color: var(--primary-color); display: flex; align-items: center; gap: var(--space-sm);">
-            <i class="fas fa-envelope"></i> 9. تواصل معنا
+            <i class="fas fa-envelope"></i> 10. تواصل معنا
           </h2>
           <div class="card" style="padding: var(--space-lg);">
             <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: var(--space-md);">
@@ -275,5 +286,7 @@
   <script src="../js/app.js?v=1316866"></script>
   <script src="../js/ui.js"></script>
   <script src="../js/i18n.js?v=1316866"></script>
+  <script src="../js/site-config.js"></script>
+  <script src="../js/analytics.js"></script>
 </body>
 </html>
