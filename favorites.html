@@ -212,7 +212,7 @@
   </button>
 
   <script src="js/ads.js"></script>
-  <script src="js/app.js?v=45bbe0e"></script>
+  <script src="js/app.js?v=1316866"></script>
   <script src="js/ui.js"></script>
 
   <script>
@@ -241,10 +241,24 @@
       const container = document.getElementById('favoritesGrid');
       const emptyState = document.getElementById('emptyState');
       const statsBar = document.getElementById('favStats');
+      const emptyTitle = emptyState.querySelector('h2');
+      const emptyCopy = emptyState.querySelector('p');
+      const emptyButtons = emptyState.querySelectorAll('a');
       if (favoriteIds.length === 0) {
         container.style.display = 'none';
         statsBar.style.display = 'none';
         emptyState.style.display = 'block';
+        if (language === 'en') {
+          if (emptyTitle) emptyTitle.textContent = 'No saved symbols yet';
+          if (emptyCopy) emptyCopy.innerHTML = 'You have not added any symbols yet. Browse the guide and press the heart button to save one for quick access.';
+          if (emptyButtons[0]) emptyButtons[0].innerHTML = '<i class="fas fa-search"></i> Browse symbols';
+          if (emptyButtons[1]) emptyButtons[1].innerHTML = '<i class="fas fa-layer-group"></i> Categories';
+        } else {
+          if (emptyTitle) emptyTitle.textContent = 'المفضلة فارغة';
+          if (emptyCopy) emptyCopy.innerHTML = 'لم تضف أي رموز للمفضلة بعد. تصفح الرموز واضغط على زر القلب لإضافتها هنا للوصول السريع.';
+          if (emptyButtons[0]) emptyButtons[0].innerHTML = '<i class="fas fa-search"></i> تصفح الرموز';
+          if (emptyButtons[1]) emptyButtons[1].innerHTML = '<i class="fas fa-layer-group"></i> التصنيفات';
+        }
         return;
       }
       emptyState.style.display = 'none';
@@ -262,14 +276,15 @@
         if (severityCounts[s.severity] !== undefined) severityCounts[s.severity]++;
       });
       const severityText = [];
+      const severityLabels = language === 'en' ? { High: 'high', Medium: 'medium', Low: 'low' } : { High: 'خطير', Medium: 'متوسط', Low: 'منخفض' };
       if (severityCounts.High > 0) severityText.push(
-        `<span style="color: var(--severity-red);"><i class="fas fa-circle" style="font-size: 0.4rem;"></i> ${severityCounts.High} خطير</span>`
+        `<span style="color: var(--severity-red);"><i class="fas fa-circle" style="font-size: 0.4rem;"></i> ${severityCounts.High} ${severityLabels.High}</span>`
       );
       if (severityCounts.Medium > 0) severityText.push(
-        `<span style="color: var(--severity-yellow);"><i class="fas fa-circle" style="font-size: 0.4rem;"></i> ${severityCounts.Medium} متوسط</span>`
+        `<span style="color: var(--severity-yellow);"><i class="fas fa-circle" style="font-size: 0.4rem;"></i> ${severityCounts.Medium} ${severityLabels.Medium}</span>`
       );
       if (severityCounts.Low > 0) severityText.push(
-        `<span style="color: var(--severity-green);"><i class="fas fa-circle" style="font-size: 0.4rem;"></i> ${severityCounts.Low} منخفض</span>`
+        `<span style="color: var(--severity-green);"><i class="fas fa-circle" style="font-size: 0.4rem;"></i> ${severityCounts.Low} ${severityLabels.Low}</span>`
       );
       document.getElementById('favSeverityStats').innerHTML = severityText.join(' &nbsp; ');
       // Render cards
@@ -384,7 +399,7 @@
     loadFavorites();
   </script>
 
-  <script src="js/i18n.js?v=45bbe0e"></script>
+  <script src="js/i18n.js?v=1316866"></script>
 </body>
 
 </html>
