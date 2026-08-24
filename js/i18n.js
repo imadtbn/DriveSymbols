@@ -276,12 +276,12 @@
     const header = document.querySelector('.page-header');
     const heading = header?.querySelector('h1');
     const description = header?.querySelector('p');
-    const main = document.querySelector('main');
+    const main = document.querySelector('main') || document.querySelector('section.section');
     if (language === 'en') {
       document.title = `${copy.title} | DriveSymbols`;
       if (heading) heading.textContent = copy.title;
       if (description) description.textContent = copy.description;
-      if (main) main.innerHTML = copy.html;
+      if (main) main.outerHTML = copy.html;
     }
   }
 
