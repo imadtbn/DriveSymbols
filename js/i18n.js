@@ -295,6 +295,10 @@
     translateTextNodes(document.body);
     applyPageCopy(language);
     applyStaticPageCopy(language);
+    const globalFooterDescription = document.querySelector('.footer-brand p');
+    const globalCopyright = document.querySelector('.footer-bottom p');
+    if (globalFooterDescription) globalFooterDescription.textContent = language === 'en' ? 'A practical guide to dashboard symbols and safe next steps.' : 'دليل عملي لفهم رموز لوحة القيادة والتصرف الآمن.';
+    if (globalCopyright) globalCopyright.textContent = language === 'en' ? '© 2026 DriveSymbols. All rights reserved.' : '© 2026 DriveSymbols DZ. جميع الحقوق محفوظة.';
     if (language === 'en') {
       document.querySelectorAll('[data-ar][data-en]').forEach(element => {
         element.textContent = element.dataset.en;
