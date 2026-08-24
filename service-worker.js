@@ -77,11 +77,14 @@ const putInCache = (request, response) => {
   return response;
 };
 
-const networkFirst = request => fetch(request)
-  .then(response => putInCache(request, response))
-  .catch(() => caches.match(request).then(cached =>
-    cached || caches.match(asset('/index.html'))
-  ));
+const networkFirst = (request, options = {}) => {
+  const networkRequest = options.noStore ? new Request(request, { cache: 'no-store' }) : request;
+  return fetch(networkRequest)
+    .then(response => putInCache(request, response))
+    .catch(() => caches.match(request).then(cached =>
+      cached || caches.match(asset('/index.html'))
+    ));
+};
 
 const cacheFirst = request => caches.match(request)
   .then(cached => cached || fetch(request).then(response => putInCache(request, response)));
@@ -93,7 +96,7 @@ self.addEventListener('fetch', event => {
   const isDataOrCode = /\.(?:js|json|css)$/.test(pathname);
   event.respondWith(
     event.request.mode === 'navigate' || isDataOrCode
-      ? networkFirst(event.request)
+      ? networkFirst(event.request, { noStore: isDataOrCode })
       : cacheFirst(event.request)
   );
 });
