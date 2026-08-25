@@ -32,7 +32,6 @@ jobs:
           node --check js/article.js
           node --check js/site-config.js
           node --check js/analytics.js
-          node --check js/ads.js
 
       - name: Check whitespace
         run: git diff --check
