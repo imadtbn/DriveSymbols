@@ -30,8 +30,7 @@ jobs:
           node --check js/search.js
           node --check js/i18n.js
           node --check js/article.js
-          node --check js/site-config.js
-          node --check js/analytics.js
+          node --check js/site-tags.js
 
       - name: Check whitespace
         run: git diff --check

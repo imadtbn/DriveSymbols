@@ -1,0 +1,59 @@
+.ad-slot {
+  width: min(100%, 920px);
+  min-height: 90px;
+  margin: var(--space-xl) auto;
+  padding: var(--space-sm);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  background: var(--bg-secondary);
+  text-align: center;
+  overflow: hidden;
+}
+
+.ad-slot::before {
+  content: 'إعلان';
+  display: block;
+  margin-bottom: var(--space-xs);
+  color: var(--text-muted);
+  font-size: var(--font-size-xs);
+}
+
+html[lang='en'] .ad-slot::before {
+  content: 'Advertisement';
+}
+
+.ad-slot--feed,
+.ad-slot--article {
+  min-height: 120px;
+}
+
+.ad-slot--recommendations {
+  min-height: 100px;
+}
+
+.ad-slot .adsbygoogle {
+  display: block;
+  min-height: 72px;
+}
+
+@media (max-width: 640px) {
+  .ad-slot {
+    width: calc(100% - 1rem);
+    min-height: 76px;
+    margin-block: var(--space-lg);
+    border-radius: var(--radius-md);
+  }
+
+  .ad-slot--feed,
+  .ad-slot--article {
+    min-height: 96px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ad-slot,
+  .ad-slot * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

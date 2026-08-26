@@ -32,36 +32,72 @@ for article in articles:
             if not article.get(field):
                 errors.append(f'Missing {field} in {article["slug"]}')
 
-config_path = ROOT / 'js/site-config.js'
-config = config_path.read_text(encoding='utf-8')
-measurement_match = re.search(r"analyticsMeasurementId\s*:\s*['\"]([^'\"]*)['\"]", config)
-if not measurement_match:
-    errors.append('site-config.js is missing analyticsMeasurementId')
+loader_path = ROOT / 'js/site-tags.js'
+if not loader_path.is_file():
+    errors.append('Missing central loader: js/site-tags.js')
+    loader = ''
 else:
-    measurement_id = measurement_match.group(1)
-    if measurement_id and not re.fullmatch(r'G-[A-Z0-9]+', measurement_id, flags=re.I):
-        errors.append('analyticsMeasurementId must be empty or a valid G-XXXXXXXX value')
-runtime_config = re.sub(r'//.*', '', config)
-analytics = (ROOT / 'js/analytics.js').read_text(encoding='utf-8')
-if re.search(r'G-X{3,}|G-XXXXXXXX|MEASUREMENT_ID|YOUR_', runtime_config + analytics, flags=re.I):
-    errors.append('Analytics integration contains a placeholder Measurement ID')
+    loader = loader_path.read_text(encoding='utf-8')
+
+config_patterns = {
+    'gtmId': r"gtmId\s*:\s*['\"]([^'\"]*)['\"]",
+    'ga4Id': r"ga4Id\s*:\s*['\"]([^'\"]*)['\"]",
+    'clarityId': r"clarityId\s*:\s*['\"]([^'\"]*)['\"]",
+    'adsenseClient': r"adsenseClient\s*:\s*['\"]([^'\"]*)['\"]",
+}
+values = {}
+for key, pattern in config_patterns.items():
+    match = re.search(pattern, loader)
+    if not match:
+        errors.append(f'Central loader is missing {key}')
+    else:
+        values[key] = match.group(1)
+
+allowed = {
+    'gtmId': lambda value: bool(re.fullmatch(r'xxxxxxxx|GTM-[A-Z0-9]+', value, flags=re.I)),
+    'ga4Id': lambda value: bool(re.fullmatch(r'xxxxxxxx|G-[A-Z0-9]+', value, flags=re.I)),
+    'clarityId': lambda value: bool(re.fullmatch(r'xxxxxxxx|[a-z0-9]{6,32}', value, flags=re.I)),
+    'adsenseClient': lambda value: bool(re.fullmatch(r'xxxxxxxx|ca-pub-\d+', value, flags=re.I)),
+}
+for key, value in values.items():
+    if not allowed[key](value):
+        errors.append(f'{key} must be a valid ID or xxxxxxxx (found {value!r})')
+
+runtime_loader = re.sub(r'//.*', '', loader)
+if re.search(r"gtag\s*\(\s*['\"]config|googletagmanager\.com/gtag/js", runtime_loader, flags=re.I):
+    errors.append('Central loader must not configure GA4 with direct gtag.js')
 
 html_files = sorted(ROOT.rglob('*.html'))
 for page in html_files:
     text = page.read_text(encoding='utf-8')
+    lower = text.lower()
     if page.name != 'article.html' and 'js/i18n.js' not in text:
         errors.append(f'Missing i18n script: {page}')
 
     script_sources = re.findall(r'<script[^>]+src=["\']([^"\']+)["\'][^>]*>', text, flags=re.I)
-    for required in ('site-config.js', 'analytics.js'):
-        count = sum(required in source for source in script_sources)
-        if count != 1:
-            errors.append(f'{page} must include exactly one {required} script (found {count})')
+    loader_count = sum('site-tags.js' in source for source in script_sources)
+    if loader_count != 1:
+        errors.append(f'{page} must include exactly one central site-tags.js loader (found {loader_count})')
+    for old in ('site-config.js', 'analytics.js', 'ads.js'):
+        if any(old in source for source in script_sources):
+            errors.append(f'Legacy integration script remains in {page}: {old}')
 
-    ad_terms = ('adsense', 'adsbygoogle', 'pagead2', 'google-adsense', 'ad-slot', 'ca-pub-')
-    found_terms = [term for term in ad_terms if term in text.lower()]
-    if found_terms:
-        errors.append(f'Advertising references remain in {page}: {", ".join(found_terms)}')
+    direct_sources = ('googletagmanager.com/gtm.js', 'googletagmanager.com/gtag/js', 'clarity.ms/tag/', 'pagead2.googlesyndication.com')
+    found_direct = [source for source in direct_sources if source in lower]
+    if found_direct:
+        errors.append(f'Direct external integration loader remains in {page}: {", ".join(found_direct)}')
+
+    ad_tags = re.findall(r'<ins\b[^>]*class=["\'][^"\']*\badsbygoogle\b[^"\']*["\'][^>]*>', text, flags=re.I)
+    if ad_tags:
+        css_prefix = '../' if page.parent.name == 'pages' else ''
+        if f'{css_prefix}css/ads.css' not in text:
+            errors.append(f'{page} contains AdSense units but does not load css/ads.css')
+        for tag in ad_tags:
+            for attr in ('data-ad-client', 'data-ad-slot', 'data-ad-format'):
+                if not re.search(rf'{attr}=["\'][^"\']+["\']', tag, flags=re.I):
+                    errors.append(f'{page} AdSense unit missing {attr}')
+    if any(term in lower for term in ('google-adsense-account', 'ca-pub-') ) and not ad_tags:
+        errors.append(f'{page} contains an AdSense publisher reference without an ad unit')
 
     for src in re.findall(r'(?:src|href)="([^"]+)"', text):
         if src.startswith(('http://', 'https://', '#', 'mailto:', 'tel:')):
@@ -79,4 +115,4 @@ if 'Sitemap: https://imadtbn.github.io/DriveSymbols/sitemap.xml' not in robots:
 
 if errors:
     raise SystemExit('\n'.join(errors))
-print('Site validation passed: JSON, sitemap, article images, analytics integration, no advertising references, local assets, i18n scripts, and robots.txt.')
+print('Site validation passed: JSON, sitemap, article images, one central tags loader per page, optional IDs, AdSense units, local assets, i18n scripts, and robots.txt.')
