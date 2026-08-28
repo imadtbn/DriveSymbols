@@ -69,7 +69,11 @@ runtime_loader = re.sub(r'//.*', '', loader)
 if re.search(r"gtag\s*\(\s*['\"]config|googletagmanager\.com/gtag/js", runtime_loader, flags=re.I):
     errors.append('Central loader must not configure GA4 with direct gtag.js')
 
-html_files = sorted(ROOT.rglob('*.html'))
+# Google/Yandex ownership files are verification documents, not site pages.
+html_files = sorted(
+    path for path in ROOT.rglob('*.html')
+    if not path.name.lower().startswith(('google', 'yandex_'))
+)
 for page in html_files:
     text = page.read_text(encoding='utf-8')
     lower = text.lower()
@@ -128,4 +132,4 @@ if 'Sitemap: https://imadtbn.github.io/DriveSymbols/sitemap.xml' not in robots:
 
 if errors:
     raise SystemExit('\n'.join(errors))
-print('Site validation passed: JSON, sitemap, article images, central tags loader, site verification, GTM noscript, configured IDs, AdSense units, local assets, i18n scripts, and robots.txt.')
+print('Site validation passed: JSON, sitemap, article images, central tags loader, site verification, GTM noscript, configured IDs, AdSense units, local assets, i18n scripts, robots.txt, and documented verification-file exclusions.')
