@@ -1,4 +1,4 @@
-const CACHE_NAME = 'drivesymbols-v8';
+const CACHE_NAME = 'drivesymbols-v9';
 const BASE_PATH = new URL('./', self.location.href).pathname.replace(/\/$/, '');
 
 const asset = path => `${BASE_PATH}${path}`;
@@ -29,13 +29,14 @@ const STATIC_ASSETS = [
   '/js/filters.js',
   '/js/i18n.js',
   '/js/article.js',
+  '/js/site-config.js',
+  '/js/site-tags.js',
   '/data/symbols.json',
   '/data/categories.json',
   '/data/brands.json',
   '/data/articles.json',
   '/css/articles.css',
   '/css/ads.css',
-  '/js/site-tags.js',
   '/images/articles/engine-warning-cover.jpg',
   '/images/articles/oil-pressure-cover.jpg',
   '/images/articles/brakes-abs-cover.jpg',
@@ -79,26 +80,12 @@ const putInCache = (request, response) => {
   return response;
 };
 
-const networkFirst = (request, options = {}) => {
-  const networkRequest = options.noStore ? new Request(request, { cache: 'no-store' }) : request;
-  return fetch(networkRequest)
-    .then(response => putInCache(request, response))
-    .catch(() => caches.match(request).then(cached =>
-      cached || caches.match(asset('/index.html'))
-    ));
-};
-
-const cacheFirst = request => caches.match(request)
-  .then(cached => cached || fetch(request).then(response => putInCache(request, response)));
-
 self.addEventListener('fetch', event => {
-  if (event.request.method !== 'GET' || !isAppRequest(event.request)) return;
+  if (!isAppRequest(event.request)) return;
 
-  const pathname = new URL(event.request.url).pathname;
-  const isDataOrCode = /\.(?:js|json|css)$/.test(pathname);
   event.respondWith(
-    event.request.mode === 'navigate' || isDataOrCode
-      ? networkFirst(event.request, { noStore: isDataOrCode })
-      : cacheFirst(event.request)
+    fetch(event.request)
+      .then(response => putInCache(event.request, response))
+      .catch(() => caches.match(event.request).then(cached => cached || Response.error()))
   );
 });
