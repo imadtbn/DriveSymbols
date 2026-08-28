@@ -1,27 +1,39 @@
 (() => {
   'use strict';
 
+  // Centralized analytics configuration. site-config.js is the single source of truth for GA4.
+  const config = window.DriveSymbolsConfig || {};
   const TAG_CONFIG = Object.freeze({
-    // ضع هنا رمز Google Site Verification إذا احتجت إلى تغييره.
     siteVerification: 'f5Xi4oFx0v5dN6iPZd9qCw-7vnc3vIbAeYF9jr4vwVM',
-    // معرف حاوية Google Tag Manager المقدم من مالك الموقع.
     gtmId: 'GTM-W28BWS3L',
-    // معرف GA4 المقدم من مالك الموقع.
-    ga4Id: 'G-ZESVTL55XT',
-    // direct يجعل Google tag قابلاً للاكتشاف؛ لا تضبط نفس GA4 Tag داخل GTM.
+    ga4Id: config.analyticsMeasurementId || '',
     ga4Mode: 'direct',
-    // معرف Microsoft Clarity غير متوفر حاليًا.
     clarityId: 'xxxxxxxx',
-    // معرف AdSense المرفق سابقًا.
     adsenseClient: 'ca-pub-5656416032906373'
   });
 
   const state = window.__driveSymbolsSiteTags || (window.__driveSymbolsSiteTags = {});
   const isConfigured = (value, pattern) => Boolean(value) && !/^x+$/i.test(value) && pattern.test(value);
-  const validGtm = isConfigured(TAG_CONFIG.gtmId, /^GTM-[A-Z0-9]+$/i);
-  const validGa4 = isConfigured(TAG_CONFIG.ga4Id, /^G-[A-Z0-9]+$/i);
-  const validClarity = isConfigured(TAG_CONFIG.clarityId, /^[a-z0-9]{6,32}$/i);
-  const validAdsense = isConfigured(TAG_CONFIG.adsenseClient, /^ca-pub-\d+$/i);
+
+  const isValidGa4Id = value => isConfigured(value, /^G-[A-Z0-9]+$/i);
+  const isValidGtmId = value => isConfigured(value, /^GTM-[A-Z0-9]+$/i);
+  const isValidClarityId = value => isConfigured(value, /^[a-z0-9]{6,32}$/i);
+  const isValidAdsenseClient = value => isConfigured(value, /^ca-pub-\d+$/i);
+
+  const validGtm = isValidGtmId(TAG_CONFIG.gtmId);
+  const validGa4 = isValidGa4Id(TAG_CONFIG.ga4Id);
+  const validClarity = isValidClarityId(TAG_CONFIG.clarityId);
+  const validAdsense = isValidAdsenseClient(TAG_CONFIG.adsenseClient);
+
+  // Public validation helper for diagnostics and Tag Assistant troubleshooting.
+  const validateGA4 = () => ({
+    id: TAG_CONFIG.ga4Id || null,
+    valid: validGa4,
+    mode: TAG_CONFIG.ga4Mode,
+    source: config.analyticsMeasurementId ? 'site-config.js' : 'missing'
+  });
+
+  const getGA4Id = () => validGa4 ? TAG_CONFIG.ga4Id : null;
 
   const appendScriptOnce = (key, src, attributes = {}) => {
     if (state[key]) return state[key];
@@ -71,7 +83,6 @@
   };
 
   const loadClarity = () => {
-    // When GTM is configured, Clarity must be configured as a GTM tag instead.
     if (!validClarity || validGtm || state.clarity) return Promise.resolve(null);
     window.clarity = window.clarity || function (...args) {
       (window.clarity.q = window.clarity.q || []).push(args);
@@ -117,7 +128,13 @@
     scheduleAdsense();
   };
 
-  window.DriveSymbolsSiteTags = Object.freeze({ config: TAG_CONFIG, init });
+  window.DriveSymbolsSiteTags = Object.freeze({
+    config: TAG_CONFIG,
+    getGA4Id,
+    validateGA4,
+    init
+  });
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init, { once: true });
   } else {
