@@ -1,6 +1,6 @@
-/* DriveSymbols analytics integration. Add the GA4 Measurement ID manually when ready. */
+/* DriveSymbols analytics configuration. */
 window.DriveSymbolsConfig = Object.freeze({
-  // ضع معرّف GA4 هنا، مثل G-XXXXXXXXXX، عند الرغبة في تفعيل التحليلات.
-  analyticsMeasurementId: '',
+  // GA4 Measurement ID for the DriveSymbols web data stream.
+  analyticsMeasurementId: 'G-ZESVTL55XT',
   analyticsEnabled: true
 });
