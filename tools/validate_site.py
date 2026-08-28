@@ -43,6 +43,7 @@ config_patterns = {
     'siteVerification': r"siteVerification\s*:\s*['\"]([^'\"]*)['\"]",
     'gtmId': r"gtmId\s*:\s*['\"]([^'\"]*)['\"]",
     'ga4Id': r"ga4Id\s*:\s*['\"]([^'\"]*)['\"]",
+    'ga4Mode': r"ga4Mode\s*:\s*['\"]([^'\"]*)['\"]",
     'clarityId': r"clarityId\s*:\s*['\"]([^'\"]*)['\"]",
     'adsenseClient': r"adsenseClient\s*:\s*['\"]([^'\"]*)['\"]",
 }
@@ -58,6 +59,7 @@ allowed = {
     'siteVerification': lambda value: bool(re.fullmatch(r'[A-Za-z0-9_-]{20,100}', value)),
     'gtmId': lambda value: bool(re.fullmatch(r'xxxxxxxx|GTM-[A-Z0-9]+', value, flags=re.I)),
     'ga4Id': lambda value: bool(re.fullmatch(r'xxxxxxxx|G-[A-Z0-9]+', value, flags=re.I)),
+    'ga4Mode': lambda value: value in ('gtm', 'direct'),
     'clarityId': lambda value: bool(re.fullmatch(r'xxxxxxxx|[a-z0-9]{6,32}', value, flags=re.I)),
     'adsenseClient': lambda value: bool(re.fullmatch(r'xxxxxxxx|ca-pub-\d+', value, flags=re.I)),
 }
@@ -66,8 +68,11 @@ for key, value in values.items():
         errors.append(f'{key} must be a valid ID or xxxxxxxx (found {value!r})')
 
 runtime_loader = re.sub(r'//.*', '', loader)
-if re.search(r"gtag\s*\(\s*['\"]config|googletagmanager\.com/gtag/js", runtime_loader, flags=re.I):
-    errors.append('Central loader must not configure GA4 with direct gtag.js')
+ga4_mode = values.get('ga4Mode')
+if ga4_mode == 'gtm' and re.search(r"gtag\s*\(\s*['\"]config|googletagmanager\.com/gtag/js", runtime_loader, flags=re.I):
+    errors.append('GA4 GTM mode must not configure GA4 with direct gtag.js')
+if ga4_mode == 'direct' and not re.search(r"gtag\s*\(\s*['\"]config|googletagmanager\.com/gtag/js", runtime_loader, flags=re.I):
+    errors.append('GA4 direct mode must include one direct Google tag configuration')
 
 # Google/Yandex ownership files are verification documents, not site pages.
 html_files = sorted(
