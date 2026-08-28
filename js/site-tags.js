@@ -1,39 +1,39 @@
 (() => {
   'use strict';
 
-  // Centralized analytics configuration. site-config.js is the single source of truth for GA4.
-  const config = window.DriveSymbolsConfig || {};
-  const TAG_CONFIG = Object.freeze({
-    siteVerification: 'f5Xi4oFx0v5dN6iPZd9qCw-7vnc3vIbAeYF9jr4vwVM',
-    gtmId: 'GTM-W28BWS3L',
-    ga4Id: config.analyticsMeasurementId || '',
-    ga4Mode: 'direct',
-    clarityId: 'xxxxxxxx',
-    adsenseClient: 'ca-pub-5656416032906373'
-  });
-
   const state = window.__driveSymbolsSiteTags || (window.__driveSymbolsSiteTags = {});
-  const isConfigured = (value, pattern) => Boolean(value) && !/^x+$/i.test(value) && pattern.test(value);
+  const CONFIG_PATH = 'site-config.js';
 
+  const isConfigured = (value, pattern) => Boolean(value) && !/^x+$/i.test(value) && pattern.test(value);
   const isValidGa4Id = value => isConfigured(value, /^G-[A-Z0-9]+$/i);
   const isValidGtmId = value => isConfigured(value, /^GTM-[A-Z0-9]+$/i);
   const isValidClarityId = value => isConfigured(value, /^[a-z0-9]{6,32}$/i);
   const isValidAdsenseClient = value => isConfigured(value, /^ca-pub-\d+$/i);
 
-  const validGtm = isValidGtmId(TAG_CONFIG.gtmId);
-  const validGa4 = isValidGa4Id(TAG_CONFIG.ga4Id);
-  const validClarity = isValidClarityId(TAG_CONFIG.clarityId);
-  const validAdsense = isValidAdsenseClient(TAG_CONFIG.adsenseClient);
+  // site-config.js is the single source of truth for GA4.
+  const loadSiteConfig = () => {
+    if (window.DriveSymbolsConfig) return Promise.resolve(window.DriveSymbolsConfig);
+    if (state.configPromise) return state.configPromise;
 
-  // Public validation helper for diagnostics and Tag Assistant troubleshooting.
-  const validateGA4 = () => ({
-    id: TAG_CONFIG.ga4Id || null,
-    valid: validGa4,
-    mode: TAG_CONFIG.ga4Mode,
-    source: config.analyticsMeasurementId ? 'site-config.js' : 'missing'
-  });
+    const existing = [...document.scripts].find(script => script.src.endsWith(`/js/${CONFIG_PATH}`) || script.dataset.siteTag === 'site-config');
+    if (existing) {
+      state.configPromise = new Promise(resolve => {
+        if (window.DriveSymbolsConfig) return resolve(window.DriveSymbolsConfig);
+        existing.addEventListener('load', () => resolve(window.DriveSymbolsConfig || {}), { once: true });
+      });
+      return state.configPromise;
+    }
 
-  const getGA4Id = () => validGa4 ? TAG_CONFIG.ga4Id : null;
+    state.configPromise = new Promise(resolve => {
+      const script = document.createElement('script');
+      script.src = new URL(CONFIG_PATH, document.currentScript?.src || `${location.origin}/js/site-tags.js`).href;
+      script.dataset.siteTag = 'site-config';
+      script.addEventListener('load', () => resolve(window.DriveSymbolsConfig || {}), { once: true });
+      script.addEventListener('error', () => resolve({}), { once: true });
+      document.head.appendChild(script);
+    });
+    return state.configPromise;
+  };
 
   const appendScriptOnce = (key, src, attributes = {}) => {
     if (state[key]) return state[key];
@@ -54,6 +54,37 @@
     });
     return state[key];
   };
+
+  const createConfig = source => Object.freeze({
+    siteVerification: 'f5Xi4oFx0v5dN6iPZd9qCw-7vnc3vIbAeYF9jr4vwVM',
+    gtmId: 'GTM-W28BWS3L',
+    ga4Id: source.analyticsMeasurementId || '',
+    ga4Mode: 'direct',
+    clarityId: 'xxxxxxxx',
+    adsenseClient: 'ca-pub-5656416032906373'
+  });
+
+  let TAG_CONFIG = createConfig({});
+  let validGtm = false;
+  let validGa4 = false;
+  let validClarity = false;
+  let validAdsense = false;
+
+  const refreshValidation = () => {
+    validGtm = isValidGtmId(TAG_CONFIG.gtmId);
+    validGa4 = isValidGa4Id(TAG_CONFIG.ga4Id);
+    validClarity = isValidClarityId(TAG_CONFIG.clarityId);
+    validAdsense = isValidAdsenseClient(TAG_CONFIG.adsenseClient);
+  };
+
+  const getGA4Id = () => validGa4 ? TAG_CONFIG.ga4Id : null;
+
+  const validateGA4 = () => ({
+    id: TAG_CONFIG.ga4Id || null,
+    valid: validGa4,
+    mode: TAG_CONFIG.ga4Mode,
+    source: validGa4 ? 'site-config.js' : 'missing-or-invalid'
+  });
 
   const loadGtm = () => {
     if (!validGtm) return Promise.resolve(null);
@@ -76,7 +107,7 @@
     };
     if (!state.ga4Started) {
       window.gtag('js', new Date());
-      window.gtag('config', TAG_CONFIG.ga4Id);
+      window.gtag('config', TAG_CONFIG.ga4Id, { send_page_view: true });
       state.ga4Started = true;
     }
     return appendScriptOnce('ga4', `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(TAG_CONFIG.ga4Id)}`);
@@ -121,23 +152,29 @@
     units.forEach(unit => observer.observe(unit));
   };
 
-  const init = () => {
+  const init = async () => {
+    const source = await loadSiteConfig();
+    TAG_CONFIG = createConfig(source);
+    refreshValidation();
+
     loadGtm();
     loadGa4Direct();
     loadClarity();
     scheduleAdsense();
+
+    if (!validGa4) {
+      console.warn('[DriveSymbols] GA4 Measurement ID is missing or invalid. Check js/site-config.js.');
+    } else {
+      console.info(`[DriveSymbols] GA4 initialized: ${TAG_CONFIG.ga4Id}`);
+    }
   };
 
   window.DriveSymbolsSiteTags = Object.freeze({
-    config: TAG_CONFIG,
+    get config() { return TAG_CONFIG; },
     getGA4Id,
     validateGA4,
     init
   });
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init, { once: true });
-  } else {
-    init();
-  }
+  init();
 })();
