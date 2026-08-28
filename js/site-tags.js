@@ -1,21 +1,26 @@
 (() => {
   'use strict';
 
-  const config = Object.freeze({
-    // ضع هنا معرف حاوية Google Tag Manager مثل GTM-XXXXXXX.
-    gtmId: 'xxxxxxxx',
-    // ضع هنا معرف Google Analytics 4 مثل G-XXXXXXXXXX؛ تتم إدارته عبر GTM ولا يُحمّل gtag.js مباشرة.
-    ga4Id: 'xxxxxxxx',
-    // ضع هنا معرف Microsoft Clarity عند توفره.
+  const TAG_CONFIG = Object.freeze({
+    // ضع هنا رمز Google Site Verification إذا احتجت إلى تغييره.
+    siteVerification: 'f5Xi4oFx0v5dN6iPZd9qCw-7vnc3vIbAeYF9jr4vwVM',
+    // معرف حاوية Google Tag Manager المقدم من مالك الموقع.
+    gtmId: 'GTM-W28BWS3L',
+    // معرف GA4 المقدم من مالك الموقع؛ القياس يمر عبر GTM فقط لتجنب page_view المكرر.
+    ga4Id: 'G-ZESVTL55XT',
+    ga4Mode: 'gtm',
+    // معرف Microsoft Clarity غير متوفر حاليًا.
     clarityId: 'xxxxxxxx',
-    // معرف AdSense مأخوذ من ملف adsbygoogle المرفق.
+    // معرف AdSense المرفق سابقًا.
     adsenseClient: 'ca-pub-5656416032906373'
   });
 
   const state = window.__driveSymbolsSiteTags || (window.__driveSymbolsSiteTags = {});
-  const validGtm = /^GTM-[A-Z0-9]+$/i.test(config.gtmId);
-  const validClarity = /^[a-z0-9]{6,32}$/i.test(config.clarityId) && !/^x+$/i.test(config.clarityId);
-  const validAdsense = /^ca-pub-\d+$/.test(config.adsenseClient);
+  const isConfigured = (value, pattern) => Boolean(value) && !/^x+$/i.test(value) && pattern.test(value);
+  const validGtm = isConfigured(TAG_CONFIG.gtmId, /^GTM-[A-Z0-9]+$/i);
+  const validGa4 = isConfigured(TAG_CONFIG.ga4Id, /^G-[A-Z0-9]+$/i);
+  const validClarity = isConfigured(TAG_CONFIG.clarityId, /^[a-z0-9]{6,32}$/i);
+  const validAdsense = isConfigured(TAG_CONFIG.adsenseClient, /^ca-pub-\d+$/i);
 
   const appendScriptOnce = (key, src, attributes = {}) => {
     if (state[key]) return state[key];
@@ -42,9 +47,12 @@
     window.dataLayer = window.dataLayer || [];
     if (!state.gtmStarted) {
       window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+      if (validGa4 && TAG_CONFIG.ga4Mode === 'gtm') {
+        window.dataLayer.push({ event: 'driveSymbols.config', driveSymbolsGa4Id: TAG_CONFIG.ga4Id });
+      }
       state.gtmStarted = true;
     }
-    return appendScriptOnce('gtm', `https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(config.gtmId)}`);
+    return appendScriptOnce('gtm', `https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(TAG_CONFIG.gtmId)}`);
   };
 
   const loadClarity = () => {
@@ -53,13 +61,13 @@
     window.clarity = window.clarity || function (...args) {
       (window.clarity.q = window.clarity.q || []).push(args);
     };
-    return appendScriptOnce('clarity', `https://www.clarity.ms/tag/${encodeURIComponent(config.clarityId)}`);
+    return appendScriptOnce('clarity', `https://www.clarity.ms/tag/${encodeURIComponent(TAG_CONFIG.clarityId)}`);
   };
 
   const loadAdsense = () => {
     const units = [...document.querySelectorAll('ins.adsbygoogle')];
     if (!validAdsense || !units.length) return Promise.resolve(null);
-    const src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${encodeURIComponent(config.adsenseClient)}`;
+    const src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${encodeURIComponent(TAG_CONFIG.adsenseClient)}`;
     return appendScriptOnce('adsense', src, { crossorigin: 'anonymous' }).then(() => {
       window.adsbygoogle = window.adsbygoogle || [];
       units.forEach(unit => {
@@ -93,7 +101,7 @@
     scheduleAdsense();
   };
 
-  window.DriveSymbolsSiteTags = Object.freeze({ config, init });
+  window.DriveSymbolsSiteTags = Object.freeze({ config: TAG_CONFIG, init });
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init, { once: true });
   } else {

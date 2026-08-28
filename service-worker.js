@@ -1,4 +1,4 @@
-const CACHE_NAME = 'drivesymbols-v7';
+const CACHE_NAME = 'drivesymbols-v8';
 const BASE_PATH = new URL('./', self.location.href).pathname.replace(/\/$/, '');
 
 const asset = path => `${BASE_PATH}${path}`;

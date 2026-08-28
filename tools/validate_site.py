@@ -40,6 +40,7 @@ else:
     loader = loader_path.read_text(encoding='utf-8')
 
 config_patterns = {
+    'siteVerification': r"siteVerification\s*:\s*['\"]([^'\"]*)['\"]",
     'gtmId': r"gtmId\s*:\s*['\"]([^'\"]*)['\"]",
     'ga4Id': r"ga4Id\s*:\s*['\"]([^'\"]*)['\"]",
     'clarityId': r"clarityId\s*:\s*['\"]([^'\"]*)['\"]",
@@ -54,6 +55,7 @@ for key, pattern in config_patterns.items():
         values[key] = match.group(1)
 
 allowed = {
+    'siteVerification': lambda value: bool(re.fullmatch(r'[A-Za-z0-9_-]{20,100}', value)),
     'gtmId': lambda value: bool(re.fullmatch(r'xxxxxxxx|GTM-[A-Z0-9]+', value, flags=re.I)),
     'ga4Id': lambda value: bool(re.fullmatch(r'xxxxxxxx|G-[A-Z0-9]+', value, flags=re.I)),
     'clarityId': lambda value: bool(re.fullmatch(r'xxxxxxxx|[a-z0-9]{6,32}', value, flags=re.I)),
@@ -73,6 +75,17 @@ for page in html_files:
     lower = text.lower()
     if page.name != 'article.html' and 'js/i18n.js' not in text:
         errors.append(f'Missing i18n script: {page}')
+
+    verification_tags = re.findall(r'<meta[^>]+name=["\']google-site-verification["\'][^>]*>', text, flags=re.I)
+    if len(verification_tags) != 1:
+        errors.append(f'{page} must include exactly one Google Site Verification meta tag (found {len(verification_tags)})')
+    elif values.get('siteVerification') and values['siteVerification'] not in verification_tags[0]:
+        errors.append(f'{page} Google Site Verification meta does not match central config')
+
+    noscript_count = text.count('data-site-tag="gtm-noscript"')
+    if valid_gtm := bool(values.get('gtmId')) and not values['gtmId'].lower().startswith('x'):
+        if noscript_count != 1:
+            errors.append(f'{page} must include exactly one GTM noscript when GTM is configured (found {noscript_count})')
 
     script_sources = re.findall(r'<script[^>]+src=["\']([^"\']+)["\'][^>]*>', text, flags=re.I)
     loader_count = sum('site-tags.js' in source for source in script_sources)
@@ -115,4 +128,4 @@ if 'Sitemap: https://imadtbn.github.io/DriveSymbols/sitemap.xml' not in robots:
 
 if errors:
     raise SystemExit('\n'.join(errors))
-print('Site validation passed: JSON, sitemap, article images, one central tags loader per page, optional IDs, AdSense units, local assets, i18n scripts, and robots.txt.')
+print('Site validation passed: JSON, sitemap, article images, central tags loader, site verification, GTM noscript, configured IDs, AdSense units, local assets, i18n scripts, and robots.txt.')
