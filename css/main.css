@@ -1879,3 +1879,47 @@ h4 {
     font-size:.85rem;
 
 }
+/* Semantic navigation and footer link icons, shared by all pages. */
+.header .container { gap: clamp(0.5rem, 1.3vw, 1rem); }
+.logo { flex-shrink: 0; white-space: nowrap; }
+.nav { gap: clamp(0.5rem, 1vw, 1.125rem); min-width: 0; }
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.4rem;
+  white-space: nowrap;
+  line-height: 1.4;
+  font-size: 0.92rem;
+  padding: 0.45rem 0.15rem;
+}
+.nav-icon {
+  display: inline-block;
+  flex: 0 0 1.15rem;
+  width: 1.15rem;
+  text-align: center;
+  color: var(--primary-color);
+  font-size: 0.92em;
+}
+.header-actions { flex-shrink: 0; }
+.nav-link:focus-visible, .footer-links a:focus-visible, .mobile-menu-btn:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  line-height: 1.65;
+  text-decoration: none;
+}
+.footer-link-icon {
+  flex: 0 0 1.1rem;
+  width: 1.1rem;
+  text-align: center;
+  color: var(--accent-color);
+  font-size: 0.95em;
+}
+.footer-links a:hover .footer-link-icon,
+.footer-links a:focus-visible .footer-link-icon { color: #fbbf24; }

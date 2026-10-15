@@ -304,9 +304,34 @@ const App = {
   initMobileMenu() {
     const btn = document.getElementById('mobileMenuBtn');
     const nav = document.getElementById('mainNav');
-    if (btn && nav) {
-      btn.addEventListener('click', () => nav.classList.toggle('active'));
-    }
+    if (!btn || !nav) return;
+
+    const setOpen = (open) => {
+      nav.classList.toggle('active', open);
+      btn.setAttribute('aria-expanded', String(open));
+      const english = document.documentElement.lang === 'en';
+      btn.setAttribute('aria-label', english ? (open ? 'Close menu' : 'Open menu') : (open ? 'إغلاق القائمة' : 'فتح القائمة'));
+    };
+
+    setOpen(false);
+    btn.addEventListener('click', () => setOpen(!nav.classList.contains('active')));
+    nav.addEventListener('click', (event) => {
+      if (event.target.closest('a')) setOpen(false);
+    });
+    document.addEventListener('click', (event) => {
+      if (nav.classList.contains('active') && !nav.contains(event.target) && !btn.contains(event.target)) {
+        setOpen(false);
+      }
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && nav.classList.contains('active')) {
+        setOpen(false);
+        btn.focus();
+      }
+    });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 1180 && nav.classList.contains('active')) setOpen(false);
+    });
   },
 
   initScrollTop() {

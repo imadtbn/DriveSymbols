@@ -278,3 +278,80 @@
   }
 
 }
+/* Tablet and narrow desktop: use a scrollable drawer instead of crowding links. */
+@media (max-width: 1180px) {
+  .header .container { height: 64px; }
+  .mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .nav {
+    position: fixed;
+    top: 64px;
+    right: 0;
+    left: auto;
+    width: min(86vw, 340px);
+    max-width: none;
+    height: calc(100vh - 64px);
+    height: calc(100dvh - 64px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 1rem;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0.25rem;
+    background: var(--bg-card);
+    border-left: 1px solid var(--border-color);
+    box-shadow: var(--shadow-xl);
+    z-index: 1001;
+    transform: translateX(105%);
+    transition: transform var(--transition-normal), visibility var(--transition-normal);
+    visibility: hidden;
+    pointer-events: none;
+  }
+  html[dir="ltr"] .nav {
+    right: auto;
+    left: 0;
+    transform: translateX(-105%);
+    border-left: 0;
+    border-right: 1px solid var(--border-color);
+  }
+  .nav.active,
+  html[dir="ltr"] .nav.active {
+    transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
+  }
+  html[dir="rtl"] .nav.active { right: 0; }
+  .nav-link {
+    width: 100%;
+    min-height: 44px;
+    padding: 0.75rem 0.875rem;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    white-space: normal;
+  }
+  .nav-link::after { display: none; }
+  .nav-link.active, .nav-link:hover, .nav-link:focus-visible {
+    background: rgba(37, 99, 235, 0.09);
+  }
+  .nav-icon { flex-basis: 1.35rem; width: 1.35rem; font-size: 1rem; }
+}
+@media (max-width: 768px) {
+  .header .container { height: 60px; }
+  .nav {
+    top: 60px;
+    height: calc(100vh - 60px);
+    height: calc(100dvh - 60px);
+  }
+  .footer-links a { justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav { transition: none; }
+}
